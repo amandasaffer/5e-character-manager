@@ -1,0 +1,135 @@
+<template name="characters">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<h3>Character Sheets</h3>
+				<ul class="group-list">
+				    {{#each mycharacters}}
+				      <li><a href="{{pathFor 'editCharacter'}}">{{name}}</a> </li>
+				    {{/each}}
+				</ul>
+				<button id="create-character" class="btn btn-primary"><i class="fa fa-plus"></i> Add Character Sheet</button>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template name="createCharacter">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<h3>Create your character</h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label>Character Name</label>
+							<input type="text" name="charname" class="form-control" placeholder="">
+						</div>
+
+						<div class="col-sm-2">
+							<label>Class</label>
+							<input type="text" name="class" class="form-control" placeholder="Fighter">
+						</div>
+
+						<div class="col-sm-1">
+							<label>Level</label>
+							<input type="text" name="level" class="form-control" placeholder="0">
+						</div>
+
+						<div class="col-sm-2">
+							<label>Background</label>
+							<input type="text" name="background" class="form-control" placeholder="Hermit">
+						</div>
+
+						<div class="col-sm-2">
+							<label>Race</label>
+							<input type="text" name="race" class="form-control" placeholder="Half-Elf">
+						</div>
+
+						<div class="col-sm-2">
+							<label>Alignment</label>
+							<input type="text" name="alignment" class="form-control" placeholder="Chaotic Good">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button type="submit" class="btn btn-primary">Create Character</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="editCharacter">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<h3>Create your character</h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label>Character Name</label>
+							<input type="text" name="charname" class="form-control" value="{{name}}" placeholder="">
+						</div>
+
+						<div class="col-sm-2">
+							<label>Class</label>
+							<input type="text" name="class" class="form-control" value="{{class}}" placeholder="Fighter">
+						</div>
+
+						<div class="col-sm-1">
+							<label>Level</label>
+							<input type="text" name="level" class="form-control" value="{{level}}" placeholder="0">
+						</div>
+
+						<div class="col-sm-2">
+							<label>Background</label>
+							<input type="text" name="background" class="form-control" value="{{background}}" placeholder="Hermit">
+						</div>
+
+						<div class="col-sm-2">
+							<label>Race</label>
+							<input type="text" name="race" class="form-control" value="{{race}}" placeholder="Half-Elf">
+						</div>
+
+						<div class="col-sm-2">
+							<label>Alignment</label>
+							<input type="text" name="alignment" class="form-control" value="{{alignment}}" placeholder="Chaotic Good">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button type="submit" class="btn btn-primary">Save Character</button> <button class="delete btn btn-danger">Delete Character</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="displayCharacter">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<h3>{{name}}</h3>
+				<p>{{name}} is a level {{level}} {{class}}.</p>
+			</div>
+		</div>
+	</div>
+</template>
