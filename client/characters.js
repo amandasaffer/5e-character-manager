@@ -1,3 +1,8 @@
+var calculateModifier = function(abilityScore) {
+	var modifier = Math.floor((abilityScore - 10) / 2);
+	return modifier;
+};
+
 Template.characters.events({
 	'click #create-character': function(e) {
 		Router.go('createCharacter');
@@ -11,6 +16,18 @@ Template.characters.helpers({
 });
 
 Template.createCharacter.events({
+	'blur .ability': function(e) {
+		e.preventDefault();
+		var mod = calculateModifier($(e.target).val());
+
+		if(mod > 0) {
+			mod = "+" + mod;
+		}
+
+		$(e.target).next().html(mod);
+		// console.log(mod);
+	},
+
 	'submit form': function(e) {
 		e.preventDefault();
 
@@ -20,7 +37,19 @@ Template.createCharacter.events({
 			level: $(e.target).find('[name=level]').val(),
 			background: $(e.target).find('[name=background]').val(),
 			race: $(e.target).find('[name=race]').val(),
-			alignment: $(e.target).find('[name=alignment]').val()
+			alignment: $(e.target).find('[name=alignment]').val(),
+			strAbility: $(e.target).find('[name=str]').val(),
+			strMod: $(e.target).find('#strMod').html(),
+			dexAbility: $(e.target).find('[name=dex]').val(),
+			dexMod: $(e.target).find('#dexMod').html(),
+			conAbility: $(e.target).find('[name=con]').val(),
+			conMod: $(e.target).find('#conMod').html(),
+			intAbility: $(e.target).find('[name=int]').val(),
+			intMod: $(e.target).find('#intMod').html(),
+			wisAbility: $(e.target).find('[name=wis]').val(),
+			wisMod: $(e.target).find('#wisMod').html(),
+			chaAbility: $(e.target).find('[name=cha]').val(),
+			chaMod: $(e.target).find('#chaMod').html()
 		}
 
 		Meteor.call('addCharacter', character, function(error, id) {
@@ -34,6 +63,17 @@ Template.createCharacter.events({
 });
 
 Template.editCharacter.events({
+	'blur .ability': function(e) {
+		e.preventDefault();
+		var mod = calculateModifier($(e.target).val());
+
+		if(mod > 0) {
+			mod = "+" + mod;
+		}
+
+		$(e.target).next().html(mod);
+	},
+
 	'submit form': function(e) {
 		e.preventDefault();
 
@@ -45,7 +85,19 @@ Template.editCharacter.events({
 			level: $(e.target).find('[name=level]').val(),
 			background: $(e.target).find('[name=background]').val(),
 			race: $(e.target).find('[name=race]').val(),
-			alignment: $(e.target).find('[name=alignment]').val()
+			alignment: $(e.target).find('[name=alignment]').val(),
+			strAbility: $(e.target).find('[name=str]').val(),
+			strMod: $(e.target).find('#strMod').html(),
+			dexAbility: $(e.target).find('[name=dex]').val(),
+			dexMod: $(e.target).find('#dexMod').html(),
+			conAbility: $(e.target).find('[name=con]').val(),
+			conMod: $(e.target).find('#conMod').html(),
+			intAbility: $(e.target).find('[name=int]').val(),
+			intMod: $(e.target).find('#intMod').html(),
+			wisAbility: $(e.target).find('[name=wis]').val(),
+			wisMod: $(e.target).find('#wisMod').html(),
+			chaAbility: $(e.target).find('[name=cha]').val(),
+			chaMod: $(e.target).find('#chaMod').html()
 		}
 
 		Characters.update(currentCharacterId, {$set: characterProperties}, function(error) {

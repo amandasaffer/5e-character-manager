@@ -5,7 +5,7 @@
 				<h3>Character Sheets</h3>
 				<ul class="group-list">
 				    {{#each mycharacters}}
-				      <li><a href="{{pathFor 'editCharacter'}}">{{name}}</a> </li>
+				      <li><a href="{{pathFor 'editCharacter'}}">{{name}}</a></li>
 				    {{/each}}
 				</ul>
 				<button id="create-character" class="btn btn-primary"><i class="fa fa-plus"></i> Add Character Sheet</button>
@@ -59,6 +59,98 @@
 					</div>
 
 					<div class="form-group">
+						<div class="col-sm-2 ability-scores">
+							<label for="">Ability Scores</label>
+							<div class="input-group input-group-sm strength">
+								<span class="input-group-addon fixed">STR</span>
+								<input type="text" name="str" class="form-control ability" placeholder="">
+  								<span id="strMod" class="input-group-addon fixed thin"></span>
+							</div>
+
+							<div class="input-group input-group-sm dexterity">
+								<span class="input-group-addon fixed">DEX</span>
+								<input type="text" name="dex" class="form-control ability" placeholder="">
+  								<span id="dexMod" class="input-group-addon fixed thin"></span>
+							</div>
+
+							<div class="input-group input-group-sm constitution">
+								<span class="input-group-addon fixed">CON</span>
+								<input type="text" name="con" class="form-control ability" placeholder="">
+  								<span id="conMod" class="input-group-addon fixed thin"></span>
+							</div>	
+
+							<div class="input-group input-group-sm intelligence">
+								<span class="input-group-addon fixed">INT</span>
+								<input type="text" name="int" class="form-control ability" placeholder="">
+  								<span id="intMod" class="input-group-addon fixed thin"></span>
+							</div>
+
+							<div class="input-group input-group-sm wisdom">
+								<span class="input-group-addon fixed">WIS</span>
+								<input type="text" name="wis" class="form-control ability" placeholder="">
+  								<span id="wisMod" class="input-group-addon fixed thin"></span>
+							</div>
+
+							<div class="input-group input-group-sm charisma">
+								<span class="input-group-addon fixed">CHA</span>
+								<input type="text" name="cha" class="form-control ability" placeholder="">
+  								<span id="chaMod" class="input-group-addon fixed thin"></span>
+							</div>
+						</div>
+
+						<div class="col-sm-2 saving-throws">
+							<label for="">Saving Throws</label>
+							<div class="input-group input-group-sm strength">
+								<span class="input-group-addon">
+									<input type="checkbox">
+								</span>
+								<input type="text" name="" class="form-control ability" placeholder="">
+  								<!-- <span id="" class="input-group-addon fixed">STR</span> -->
+							</div>
+
+							<div class="input-group input-group-sm dexterity">
+								<span class="input-group-addon">
+									<input type="checkbox">
+								</span>
+								<input type="text" name="" class="form-control ability" placeholder="">
+  								<!-- <span id="" class="input-group-addon fixed">DEX</span> -->
+							</div>
+
+							<div class="input-group input-group-sm constitution">
+								<span class="input-group-addon">
+									<input type="checkbox">
+								</span>
+								<input type="text" name="" class="form-control ability" placeholder="">
+  								<!-- <span id="" class="input-group-addon fixed">CON</span> -->
+							</div>	
+
+							<div class="input-group input-group-sm intelligence">
+								<span class="input-group-addon">
+									<input type="checkbox">
+								</span>
+								<input type="text" name="" class="form-control ability" placeholder="">
+  								<!-- <span id="" class="input-group-addon fixed">INT</span> -->
+							</div>
+
+							<div class="input-group input-group-sm wisdom">
+								<span class="input-group-addon">
+									<input type="checkbox">
+								</span>
+								<input type="text" name="" class="form-control ability" placeholder="">
+  								<!-- <span id="" class="input-group-addon fixed">WIS</span> -->
+							</div>
+
+							<div class="input-group input-group-sm charisma">
+								<span class="input-group-addon">
+									<input type="checkbox">
+								</span>
+								<input type="text" name="" class="form-control ability" placeholder="">
+  								<!-- <span id="" class="input-group-addon fixed">CHA</span> -->
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
 						<div class="col-sm-12">
 							<button type="submit" class="btn btn-primary">Create Character</button>
 						</div>
@@ -69,11 +161,14 @@
 	</div>
 </template>
 
+
+
+
 <template name="editCharacter">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<h3>Create your character</h3>
+				<h3>Edit your character</h3>
 			</div>
 		</div>
 
@@ -109,6 +204,47 @@
 						<div class="col-sm-2">
 							<label>Alignment</label>
 							<input type="text" name="alignment" class="form-control" value="{{alignment}}" placeholder="Chaotic Good">
+						</div>
+					</div>
+
+					<div class="form-group ability-scores">
+						<div class="col-sm-2">
+							<label for="">Ability Scores</label>
+							<div class="input-group input-group-sm">
+								<span class="input-group-addon fixed">STR</span>
+								<input type="text" name="str" class="form-control ability" value="{{strAbility}}" placeholder="">
+  								<span id="strMod" class="input-group-addon">{{strMod}}</span>
+							</div>
+
+							<div class="input-group input-group-sm">
+								<span class="input-group-addon fixed">DEX</span>
+								<input type="text" name="dex" class="form-control ability" value="{{dexAbility}}" placeholder="">
+  								<span id="dexMod" class="input-group-addon">{{dexMod}}</span>
+							</div>
+
+							<div class="input-group input-group-sm">
+								<span class="input-group-addon fixed">CON</span>
+								<input type="text" name="con" class="form-control ability" value="{{conAbility}}" placeholder="">
+  								<span id="conMod" class="input-group-addon">{{conMod}}</span>
+							</div>
+
+							<div class="input-group input-group-sm">
+								<span class="input-group-addon fixed">INT</span>
+								<input type="text" name="int" class="form-control ability" value="{{intAbility}}" placeholder="">
+  								<span id="intMod" class="input-group-addon">{{intMod}}</span>
+							</div>
+
+							<div class="input-group input-group-sm">
+								<span class="input-group-addon fixed">WIS</span>
+								<input type="text" name="wis" class="form-control ability" value="{{wisAbility}}" placeholder="">
+  								<span id="wisMod" class="input-group-addon">{{wisMod}}</span>
+							</div>
+
+							<div class="input-group input-group-sm">
+								<span class="input-group-addon fixed">CHA</span>
+								<input type="text" name="cha" class="form-control ability" value="{{chaAbility}}" placeholder="">
+  								<span id="chaMod" class="input-group-addon">{{chaMod}}</span>
+							</div>
 						</div>
 					</div>
 
