@@ -26,127 +26,293 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form class="form-horizontal" role="form">
-					<div class="form-group">
-						<div class="col-sm-3">
-							<label>Character Name</label>
-							<input type="text" name="charname" class="form-control" placeholder="">
-						</div>
+					<div class="form-group" style="margin-bottom: 60px;">
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-sm-5">
+									<label>Character Name</label>
+									<input type="text" name="charname" class="form-control" placeholder="">
+								</div>
 
-						<div class="col-sm-2">
-							<label>Class</label>
-							<input type="text" name="class" class="form-control" placeholder="Fighter">
-						</div>
+								<div class="col-sm-4">
+									<label>Class</label>
+									<input type="text" name="class" class="form-control" placeholder="Fighter">
+								</div>
 
-						<div class="col-sm-1">
-							<label>Level</label>
-							<input type="text" name="level" class="form-control" placeholder="0">
-						</div>
+								<div class="col-sm-3">
+									<label>Level</label>
+									<input type="text" name="level" class="form-control" placeholder="0">
+								</div>
+							</div>
 
-						<div class="col-sm-2">
-							<label>Background</label>
-							<input type="text" name="background" class="form-control" placeholder="Hermit">
-						</div>
+							<div class="row" style="margin-top: 20px;">
+								<div class="col-sm-4">
+									<label>Background</label>
+									<input type="text" name="background" class="form-control" placeholder="Hermit">
+								</div>
 
-						<div class="col-sm-2">
-							<label>Race</label>
-							<input type="text" name="race" class="form-control" placeholder="Half-Elf">
-						</div>
+								<div class="col-sm-4">
+									<label>Race</label>
+									<input type="text" name="race" class="form-control" placeholder="Half-Elf">
+								</div>
 
-						<div class="col-sm-2">
-							<label>Alignment</label>
-							<input type="text" name="alignment" class="form-control" placeholder="Chaotic Good">
+								<div class="col-sm-4">
+									<label>Alignment</label>
+									<input type="text" name="alignment" class="form-control" placeholder="Chaotic Good">
+								</div>
+							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<div class="col-sm-2 ability-scores">
-							<label for="">Ability Scores</label>
-							<div class="input-group input-group-sm strength">
-								<span class="input-group-addon fixed">STR</span>
-								<input type="text" name="str" class="form-control ability" placeholder="">
-  								<span id="strMod" class="input-group-addon fixed thin"></span>
+						<div class="col-sm-2">
+							<label for="">Proficiency Bonus</label>
+							<input type="text" name="proficiency" class="form-control">
+
+							<span class="instruction">Enter your proficiency bonus first to ensure all bonuses are calculated correctly.</span>
+						</div>
+
+						<div class="col-md-4">
+							<div class="row">
+								<div class="col-sm-6 ability-scores">
+									<label for="">Ability Scores</label>
+									<div class="input-group input-group-sm strength">
+										<span class="input-group-addon fixed">STR</span>
+										<input type="text" name="str" class="form-control ability">
+		  								<span id="strMod" class="input-group-addon fixed thin"></span>
+									</div>
+
+									<div class="input-group input-group-sm dexterity">
+										<span class="input-group-addon fixed">DEX</span>
+										<input type="text" name="dex" class="form-control ability" placeholder="">
+		  								<span id="dexMod" class="input-group-addon fixed thin"></span>
+									</div>
+
+									<div class="input-group input-group-sm constitution">
+										<span class="input-group-addon fixed">CON</span>
+										<input type="text" name="con" class="form-control ability" placeholder="">
+		  								<span id="conMod" class="input-group-addon fixed thin"></span>
+									</div>	
+
+									<div class="input-group input-group-sm intelligence">
+										<span class="input-group-addon fixed">INT</span>
+										<input type="text" name="int" class="form-control ability" placeholder="">
+		  								<span id="intMod" class="input-group-addon fixed thin"></span>
+									</div>
+
+									<div class="input-group input-group-sm wisdom">
+										<span class="input-group-addon fixed">WIS</span>
+										<input type="text" name="wis" class="form-control ability" placeholder="">
+		  								<span id="wisMod" class="input-group-addon fixed thin"></span>
+									</div>
+
+									<div class="input-group input-group-sm charisma">
+										<span class="input-group-addon fixed">CHA</span>
+										<input type="text" name="cha" class="form-control ability" placeholder="">
+		  								<span id="chaMod" class="input-group-addon fixed thin"></span>
+									</div>
+								</div>
+
+								<div class="col-sm-6 saving-throws">
+									<label for="">Saving Throws</label>
+									<div class="input-group input-group-sm strength">
+										<span class="input-group-addon fixed">STR</span>
+										<span id="strSave" name="str" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed">
+											<input type="checkbox" class="save-proficiency">
+										</span>
+									</div>
+
+									<div class="input-group input-group-sm dexterity">
+										<span class="input-group-addon fixed">DEX</span>
+										<span id="dexSave" name="dex" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed">
+											<input type="checkbox" class="save-proficiency">
+										</span>
+									</div>
+
+									<div class="input-group input-group-sm constitution">
+										<span class="input-group-addon fixed">CON</span>
+										<span id="conSave" name="con" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed">
+											<input type="checkbox" class="save-proficiency">
+										</span>
+									</div>	
+
+									<div class="input-group input-group-sm intelligence">
+										<span class="input-group-addon fixed">INT</span>
+										<span id="intSave" name="int" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed">
+											<input type="checkbox" class="save-proficiency">
+										</span>
+									</div>
+
+									<div class="input-group input-group-sm wisdom">
+										<span class="input-group-addon fixed">WIS</span>
+										<span id="wisSave" name="wis" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed">
+											<input type="checkbox" class="save-proficiency">
+										</span>
+									</div>
+
+									<div class="input-group input-group-sm charisma">
+										<span class="input-group-addon fixed">CHA</span>
+										<span id="chaSave" name="cha" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed">
+											<input type="checkbox" class="save-proficiency">
+										</span>
+									</div>
+								</div>
 							</div>
-
-							<div class="input-group input-group-sm dexterity">
-								<span class="input-group-addon fixed">DEX</span>
-								<input type="text" name="dex" class="form-control ability" placeholder="">
-  								<span id="dexMod" class="input-group-addon fixed thin"></span>
-							</div>
-
-							<div class="input-group input-group-sm constitution">
-								<span class="input-group-addon fixed">CON</span>
-								<input type="text" name="con" class="form-control ability" placeholder="">
-  								<span id="conMod" class="input-group-addon fixed thin"></span>
-							</div>	
-
-							<div class="input-group input-group-sm intelligence">
-								<span class="input-group-addon fixed">INT</span>
-								<input type="text" name="int" class="form-control ability" placeholder="">
-  								<span id="intMod" class="input-group-addon fixed thin"></span>
-							</div>
-
-							<div class="input-group input-group-sm wisdom">
-								<span class="input-group-addon fixed">WIS</span>
-								<input type="text" name="wis" class="form-control ability" placeholder="">
-  								<span id="wisMod" class="input-group-addon fixed thin"></span>
-							</div>
-
-							<div class="input-group input-group-sm charisma">
-								<span class="input-group-addon fixed">CHA</span>
-								<input type="text" name="cha" class="form-control ability" placeholder="">
-  								<span id="chaMod" class="input-group-addon fixed thin"></span>
+							<div class="row">
+								<div class="col-sm-12">
+									<span class="instruction"><strong>Passive Perception:</strong> 00</span>
+								</div>
 							</div>
 						</div>
 
-						<div class="col-sm-2 saving-throws">
-							<label for="">Saving Throws</label>
-							<div class="input-group input-group-sm strength">
-								<span class="input-group-addon">
-									<input type="checkbox">
-								</span>
-								<input type="text" name="" class="form-control ability" placeholder="">
-  								<!-- <span id="" class="input-group-addon fixed">STR</span> -->
-							</div>
+						<div class="col-md-6 general-proficiences">
+							<label>General Proficiencies</label>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Acrobatics (DEX)</span>
+										<span name="dex" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
 
-							<div class="input-group input-group-sm dexterity">
-								<span class="input-group-addon">
-									<input type="checkbox">
-								</span>
-								<input type="text" name="" class="form-control ability" placeholder="">
-  								<!-- <span id="" class="input-group-addon fixed">DEX</span> -->
-							</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Animal Handling (WIS)</span>
+										<span name="wis" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Arcana (INT)</span>
+										<span name="int" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Athletics (STR)</span>
+										<span name="str" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Deception (CHA)</span>
+										<span name="cha" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">History (INT)</span>
+										<span name="int" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Insight (WIS)</span>
+										<span name="wis" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Intimidation (CHA)</span>
+										<span name="cha" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Investigation (INT)</span>
+										<span name="int" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+								</div> 
+								<div class="col-md-6">
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Medicine (WIS)</span>
+										<span name="wis" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
 
-							<div class="input-group input-group-sm constitution">
-								<span class="input-group-addon">
-									<input type="checkbox">
-								</span>
-								<input type="text" name="" class="form-control ability" placeholder="">
-  								<!-- <span id="" class="input-group-addon fixed">CON</span> -->
-							</div>	
-
-							<div class="input-group input-group-sm intelligence">
-								<span class="input-group-addon">
-									<input type="checkbox">
-								</span>
-								<input type="text" name="" class="form-control ability" placeholder="">
-  								<!-- <span id="" class="input-group-addon fixed">INT</span> -->
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Nature (INT)</span>
+										<span name="int" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Perception (WIS)</span>
+										<span name="wis" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Performance (CHA)</span>
+										<span name="cha" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Persuasion (CHA)</span>
+										<span name="cha" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Religion (INT)</span>
+										<span name="int" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Sleight of Hand (DEX)</span>
+										<span name="dex" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Stealth (DEX)</span>
+										<span name="dex" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+									<div class="input-group input-group-sm">
+										<span class="input-group-addon fixed prof-name">Survival (WIS)</span>
+										<span name="wis" class="input-group-addon fixed"></span>
+		  								<span class="input-group-addon fixed thin">
+											<input type="checkbox" class="gen-proficiency">
+										</span>
+									</div>
+								</div>
 							</div>
+						</div>
+					</div>
 
-							<div class="input-group input-group-sm wisdom">
-								<span class="input-group-addon">
-									<input type="checkbox">
-								</span>
-								<input type="text" name="" class="form-control ability" placeholder="">
-  								<!-- <span id="" class="input-group-addon fixed">WIS</span> -->
-							</div>
-
-							<div class="input-group input-group-sm charisma">
-								<span class="input-group-addon">
-									<input type="checkbox">
-								</span>
-								<input type="text" name="" class="form-control ability" placeholder="">
-  								<!-- <span id="" class="input-group-addon fixed">CHA</span> -->
-							</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias repellendus dicta, in libero debitis aperiam ipsum quia veritatis atque itaque officiis eligendi, ex explicabo iure nihil, deleniti velit. Rerum, ducimus.</p>
 						</div>
 					</div>
 

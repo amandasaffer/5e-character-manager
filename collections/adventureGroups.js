@@ -9,12 +9,20 @@ Groups.allow({
   },
 
   update: function(userId, doc) {
-  	// let collection owner modify
+    var loggedInUser = Meteor.user();
+    if(Roles.userIsInRole(loggedInUser, 'admin')) {
+      return true;
+    }
+
     return doc.userId === userId;
   },
 
   remove: function(userId, doc) {
-  	// let collection owner remove
+    var loggedInUser = Meteor.user();
+    if(Roles.userIsInRole(loggedInUser, 'admin')) {
+      return true;
+    }
+
     return doc.userId === userId;
   }
 })

@@ -2,10 +2,10 @@
 
 body
 	font-size 16px
-	line-height 1.65
 
 p
 	margin 0 0 30px
+	line-height 1.65
 
 	&.clean
 		margin 0 0 10px
@@ -26,12 +26,14 @@ ul.group-list
 	input[type=password]
 		margin 0 0 10px
 
-.form-inline
+// .form-inline
 
 .form-horizontal
+	label
+		margin 0 0 10px 0
 	.form-group
 		margin-top 40px
-		.ability-scores, .saving-throws
+		.ability-scores, .saving-throws, .general-proficiences
 			.input-group
 				margin-bottom 10px
 
@@ -40,3 +42,18 @@ ul.group-list
 
 					&.thin
 						width 35px
+					&.fat
+						width 90px
+		
+		.general-proficiences
+			.input-group
+				span.fixed
+					&.prof-name
+						width 180px
+						text-align left
+		
+		span.instruction
+			display block
+			font-size 13px
+			line-height 1.3
+			margin 10px 0

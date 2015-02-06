@@ -4,7 +4,9 @@ Template.groups.greeting = function () {
 
 Template.groups.events({
   'click .fa-minus-circle': function(e) {
-  	Groups.remove(this._id);
+    e.preventDefault();
+    var currentId = this._id;
+  	Groups.remove(currentId);
   }
 });
 
@@ -14,7 +16,8 @@ Template.addGroup.events({
     var groupName = $('#groupName').val();
 
     Groups.insert({
-      name: groupName
+      name: groupName,
+      userId: Meteor.userId()
     });
 
     $('#groupName').val('');

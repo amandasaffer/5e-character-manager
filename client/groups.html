@@ -8,7 +8,7 @@
 				<ul class="group-list">
 				    {{#each groups}}
 				      <li>{{name}}  
-				      {{#if isInRole 'admin'}} &nbsp;<i class="fa fa-minus-circle"></i> {{/if}}
+				      {{#if isInRole 'admin'}} &nbsp;<i id="{{_id}}" class="fa fa-minus-circle"></i> {{/if}}
 				      </li>
 				    {{/each}}
 				</ul>
@@ -25,6 +25,6 @@
 			<label class="sr-only" for="groupName">Group Name:</label>
 			<input type="text" class="form-control" id="groupName" placeholder="Group name">
 		</div>
-		<button id="add-group" class="btn btn-primary"><i class="fa fa-plus"></i> Add Group</button>
+		<button id="add-group" type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Add Group</button>
 	</form>
 </template>
