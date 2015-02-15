@@ -4,13 +4,30 @@ var calculateModifier = function(abilityScore) {
 };
 
 var proficiencyBonus,
-	firstChar,
-	strSave,
-	dexSave,
-	conSave,
-	intSave,
-	wisSave,
-	chaSave;
+	strSavingThrow,
+	dexSavingThrow,
+	conSavingThrow,
+	intSavingThrow,
+	wisSavingThrow,
+	chaSavingThrow,
+	acrobaticsProf,
+	animalhandlingProf,
+	arcanaProf,
+	athleticsProf,
+	deceptionProf,
+	historyProf,
+	insightProf,
+	intimidationProf,
+	investigationProf,
+	medicineProf,
+	natureProf,
+	perceptionProf,
+	performanceProf,
+	persuasionProf,
+	religionProf,
+	sleightofhandProf,
+	stealthProf,
+	survivalProf;
 
 
 Template.characters.events({
@@ -27,45 +44,118 @@ Template.characters.helpers({
 
 Template.createCharacter.rendered = function() {
 	var profValue = $('[name=proficiency]').val('+0');
+	$('')
+	proficiencyBonus = 0;
+	abilityScores = [];
 };
 
 Template.createCharacter.events({
 	'blur .ability': function(e) {
 		e.preventDefault();
+
+		// define starting variables
 		var mod = calculateModifier($(e.target).val());
 		var ability = $(e.target).attr('name');
+		var abilityScore = $(e.target).val();
+		var scoreIndex = $(e.target).data('score-index');
 
-		// find the relevant saving throw
-		var matched = $('.saving-throws [name=' + ability + '], .general-proficiences [name=' + ability + ']');
+		// find relevant saving throw elements and store their selector strings
+		var matched = $('.saving-throws [data-score-index=' + scoreIndex + '], .general-proficiencies [data-score-index=' + scoreIndex + ']');
 
+		// if modifier number is positive, add plus sign to indicate
 		if(mod > 0) {
 			mod = "+" + mod;
 		}
 
-		// set modifier
-		$(e.target).next().html(mod);
-		// set saving throw modifier
-		$(matched).text(mod);
-	},
+		if($(e.target).val() != '') {
+			// set ability score modifier
+			$(e.target).next().html(mod);
+			// set other affected modifiers (saving throws, general proficiencies)
+			// TODO: What to do if user updates ability scores after proficiency is checked?
+			$(matched).text(mod);
+		}
 
-	// TODO: update modifiers on blur action
-	'blur [name=proficiency]': function(e) {
-		e.preventDefault();
-		proficiencyBonus = $(e.target).val();
-		var firstChar = proficiencyBonus.substr(0,1);
-
-		if(firstChar == "+") {
-			proficiencyBonus = proficiencyBonus.substr(1);
+		if(abilityScore.length > 0) {
+			abilityScores[scoreIndex] = abilityScore;
 		}
 	},
 
+	'blur [name=proficiency]': function(e) {
+		e.preventDefault();
+
+		// if there was no proficiency bonus, set the proficiency bonus
+		if(proficiencyBonus == 0) {
+			oldProficiency = 0;
+			proficiencyBonus = $(e.target).val();
+			
+		// if there was already a proficiency bonus, store the old value and the difference between the two	
+		} else {
+			oldProficiency = proficiencyBonus;
+			proficiencyDifference = $(e.target).val() - proficiencyBonus;
+			proficiencyBonus = $(e.target).val();
+		}
+
+		// if the first character is a +, remove it
+		var firstChar = proficiencyBonus.substr(0,1);
+		if(firstChar == "+") {
+			proficiencyBonus = proficiencyBonus.substr(1);
+		}
+
+		// get checked proficiencies (if any) when bonus is modified, 
+		// automatically add bonus to it.
+		var selected = [];
+	    $('input.gen-proficiency:checked, input.save-proficiency:checked').each(function() {
+	      selected.push($(this).data('add-proficiency-to'));
+	    });	
+
+		if ( abilityScores.length < 6 ) {
+			console.log('not all ability scores are filled out. do not apply proficiency bonuses yet');
+		} else {
+			// if not changing from zero, get difference and apply
+			if(oldProficiency != 0) {
+				// get all checked elements (selected array)
+				console.log('modified proficiency bonus from another number. apply difference of ' + proficiencyDifference)
+				console.log(selected);
+				
+				// loop through the array and add proficiencyDifference to existing modifiers
+				$('input.gen-proficiency:checked').each(function() {
+			    	var existingMod = $(this).parent().prev().text();
+			    	var updateMod = parseInt(existingMod) + parseInt(proficiencyDifference);
+
+			    	if(updateMod > 0) {
+						updateMod = "+" + updateMod;
+					}
+
+			    	$(this).parent().prev().text(updateMod);
+			    });
+			// else, just apply proficiency bonus straight up
+			} else {
+				// loop through the array and add proficiencyDifference to existing modifiers
+				$('input.gen-proficiency:checked, input.save-proficiency:checked').each(function() {
+			    	var existingMod = $(this).parent().prev().text();
+			    	var updateMod = parseInt(existingMod) + parseInt(proficiencyBonus);
+
+			    	if(updateMod > 0) {
+						updateMod = "+" + updateMod;
+					}
+
+			    	$(this).parent().prev().text(updateMod);
+			    });
+			}
+		}
+		
+	},
+
+	// TODO: What to do if user updates proficiency in middle of updating ability scores?
 	'click .save-proficiency, click .gen-proficiency': function(e) {
 		var modifier = $(e.target).parent().prev().text();
 		var isChecked = $(e.target).is(':checked');
 		
 		if( isChecked ) {
+			// currently checked
 			modifier = parseInt(modifier) + parseInt(proficiencyBonus);
 		} else {
+			// currently unchecked
 			modifier = parseInt(modifier) - parseInt(proficiencyBonus);
 		}
 		
@@ -73,7 +163,12 @@ Template.createCharacter.events({
 			modifier = "+" + modifier;
 		}
 
-		var blah = $(e.target).parent().prev().text(modifier);
+		// if the ability score modifier ISN'T zero, apply proficiencies
+		if($(e.target).parent().prev().text().length != 0) {
+			$(e.target).parent().prev().text(modifier);
+		}
+
+
 	},
 
 	'submit form': function(e) {
