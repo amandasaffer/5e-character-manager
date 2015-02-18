@@ -61,250 +61,293 @@
 									<input type="text" name="alignment" class="form-control" placeholder="Chaotic Good">
 								</div>
 							</div>
+
+							<div class="row" style="margin-top: 40px;">
+								<div class="col-sm-3">
+									<label>Armor Class</label>
+									<input type="text" name="ac" class="form-control" placeholder="">
+								</div>
+
+								<div class="col-sm-3">
+									<label>Initiative</label>
+									<input type="text" name="initiative" class="form-control" placeholder="">
+								</div>
+
+								<div class="col-sm-3">
+									<label>Speed</label>
+									<input type="text" name="speed" class="form-control" placeholder="">
+								</div>
+							</div>
+
+							<div class="row" style="margin-top: 20px;">
+								<div class="col-sm-3">
+									<label>Hit Points</label>
+									<input type="text" name="hitpoints" class="form-control" placeholder="">
+								</div>
+
+								<div class="col-sm-3">
+									<label>Hit Dice</label>
+									<input type="text" name="hitpoints" class="form-control" placeholder="">
+								</div>
+							</div>
 						</div>
-					</div>
 
-					<div class="form-group">
-						<div class="col-sm-2">
-							<label for="">Proficiency Bonus</label>
-							<input type="text" name="proficiency" class="form-control">
-
-							<span class="instruction">Enter your proficiency bonus first to ensure all bonuses are calculated correctly.</span>
-						</div>
-
-						<div class="col-md-4">
+						<div class="col-sm-12 col-md-6 general-proficiencies">
 							<div class="row">
-								<div class="col-sm-6 ability-scores">
+								<div class="col-sm-6">
+									<label for="">Proficiency Bonus</label>
+									<input type="text" name="proficiency" class="form-control">
+
+									<span class="instruction">Enter your proficiency bonus first to ensure all bonuses are calculated correctly.</span>
+								</div>
+								<div class="col-sm-6">
+									<label for="">Passive Perception</label>
+									<input type="text" name="passive-percep" class="form-control" value="10">
+
+									<span class="instruction">Passive perception is calculated by 10 + Perception Modifier.</span>
+								</div>
+							</div>
+
+							<div class="row" style="margin-top: 25px;">
+								<div class="col-sm-12 ability-scores">
 									<label for="">Ability Scores</label>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">STR</span>
-										<input type="text" data-score-index="0" class="form-control ability">
-		  								<span class="base-modifier input-group-addon fixed thin"></span>
-									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="input-group input-group-md" style="width: 100%;">
+												<span class="input-group-addon fixed fat">STR</span>
+												<input type="text" data-score-index="0" class="form-control ability">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
 
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">DEX</span>
-										<input type="text" data-score-index="1" class="form-control ability" placeholder="">
-		  								<span class="base-modifier input-group-addon fixed thin"></span>
-									</div>
+											<div class="input-group input-group-md" style="width: 100%;">
+												<span class="input-group-addon fixed fat">DEX</span>
+												<input type="text" data-score-index="1" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
 
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">CON</span>
-										<input type="text" data-score-index="2" class="form-control ability" placeholder="">
-		  								<span class="base-modifier input-group-addon fixed thin"></span>
+											<div class="input-group input-group-md" style="width: 100%;">
+												<span class="input-group-addon fixed fat">CON</span>
+												<input type="text" data-score-index="2" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="input-group input-group-md" style="width: 100%;">
+												<span class="input-group-addon fixed fat">INT</span>
+												<input type="text" data-score-index="3" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+
+											<div class="input-group input-group-md" style="width: 100%;">
+												<span class="input-group-addon fixed fat">WIS</span>
+												<input type="text" data-score-index="4" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+
+											<div class="input-group input-group-md" style="width: 100%;">
+												<span class="input-group-addon fixed fat">CHA</span>
+												<input type="text" data-score-index="5" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+										</div>
 									</div>	
-
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">INT</span>
-										<input type="text" data-score-index="3" class="form-control ability" placeholder="">
-		  								<span class="base-modifier input-group-addon fixed thin"></span>
-									</div>
-
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">WIS</span>
-										<input type="text" data-score-index="4" class="form-control ability" placeholder="">
-		  								<span class="base-modifier input-group-addon fixed thin"></span>
-									</div>
-
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">CHA</span>
-										<input type="text" data-score-index="5" class="form-control ability" placeholder="">
-		  								<span class="base-modifier input-group-addon fixed thin"></span>
-									</div>
 								</div>
+							</div>
 
-								<div class="col-sm-6 saving-throws">
+							<div class="row" style="margin-top: 25px;">
+								<div class="col-sm-12 saving-throws">
 									<label for="">Saving Throws</label>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">STR</span>
-										<span data-score-index="0" class="input-group-addon fixed"></span>
-		  								<span class="input-group-addon fixed">
-											<input type="checkbox" class="save-proficiency">
-										</span>
-									</div>
+									<div class="row">
+										<div class="col-sm-6 col-md-6">
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Strength</span>
+												<span data-score-index="0" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
 
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">DEX</span>
-										<span data-score-index="1" class="input-group-addon fixed"></span>
-		  								<span class="input-group-addon fixed">
-											<input type="checkbox" class="save-proficiency">
-										</span>
-									</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Dexterity</span>
+												<span data-score-index="1" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
 
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">CON</span>
-										<span data-score-index="2" class="input-group-addon fixed"></span>
-		  								<span class="input-group-addon fixed">
-											<input type="checkbox" class="save-proficiency">
-										</span>
-									</div>	
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Constitution</span>
+												<span data-score-index="2" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>	
+										</div>
+										<div class="col-sm-6 col-md-6">
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Intelligence</span>
+												<span data-score-index="3" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
 
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">INT</span>
-										<span data-score-index="3" class="input-group-addon fixed"></span>
-		  								<span class="input-group-addon fixed">
-											<input type="checkbox" class="save-proficiency">
-										</span>
-									</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Wisdom</span>
+												<span data-score-index="4" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
 
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">WIS</span>
-										<span data-score-index="4" class="input-group-addon fixed"></span>
-		  								<span class="input-group-addon fixed">
-											<input type="checkbox" class="save-proficiency">
-										</span>
-									</div>
-
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed">CHA</span>
-										<span data-score-index="5" class="input-group-addon fixed"></span>
-		  								<span class="input-group-addon fixed">
-											<input type="checkbox" class="save-proficiency">
-										</span>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Charisma</span>
+												<span data-score-index="5" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<!-- 10 + perception modifier -->
-									<span class="instruction"><strong>Passive Perception:</strong> </span>
-								</div>
-							</div>
-						</div>
 
-						<div class="col-md-6 general-proficiencies">
-							<label>Skill Proficiencies</label>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Acrobatics (DEX)</span>
-										<span name="dex" data-score-index="1" class="input-group-addon fixed acrobatics-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="acrobatics" class="gen-proficiency">
-										</span>
-									</div>
+							<div class="row" style="margin-top: 25px;">
+								<div class="col-sm-12 general-proficiencies">
+									<label for="">Skill Proficiencies</label>
+									<div class="row">
+										<div class="col-sm-6 col-md-6">
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Acrobatics (DEX)</span>
+												<span data-score-index="1" class="input-group-addon fixed acrobatics-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="acrobatics" class="gen-proficiency">
+												</span>
+											</div>
 
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Animal Handling (WIS)</span>
-										<span name="wis" data-score-index="4" class="input-group-addon fixed animalhandling-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="animal-handling" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Arcana (INT)</span>
-										<span name="int" data-score-index="3" class="input-group-addon fixed arcana-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="arcana" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Athletics (STR)</span>
-										<span name="str" data-score-index="0" class="input-group-addon fixed athletics-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="athletics" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Deception (CHA)</span>
-										<span name="cha" data-score-index="5" class="input-group-addon fixed deception-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="deception" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">History (INT)</span>
-										<span name="int" data-score-index="3" class="input-group-addon fixed history-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="history" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Insight (WIS)</span>
-										<span name="wis" data-score-index="4" class="input-group-addon fixed insight-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="insight" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Intimidation (CHA)</span>
-										<span name="cha" data-score-index="5" class="input-group-addon fixed intimidation-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="intimidation" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Investigation (INT)</span>
-										<span name="int" data-score-index="3" class="input-group-addon fixed investigation-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="investigation" class="gen-proficiency">
-										</span>
-									</div>
-								</div> 
-								<div class="col-md-6">
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Medicine (WIS)</span>
-										<span name="wis" data-score-index="4" class="input-group-addon fixed medicine-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="medicine" class="gen-proficiency">
-										</span>
-									</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Animal Handling (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed animalhandling-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="animal-handling" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Arcana (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed arcana-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="arcana" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Athletics (STR)</span>
+												<span data-score-index="0" class="input-group-addon fixed athletics-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="athletics" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Deception (CHA)</span>
+												<span data-score-index="5" class="input-group-addon fixed deception-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="deception" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">History (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed history-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="history" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Insight (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed insight-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="insight" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Intimidation (CHA)</span>
+												<span data-score-index="5" class="input-group-addon fixed intimidation-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="intimidation" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Investigation (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed investigation-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="investigation" class="gen-proficiency">
+												</span>
+											</div>
+										</div> 
+										<div class="col-md-6">
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Medicine (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed medicine-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="medicine" class="gen-proficiency">
+												</span>
+											</div>
 
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Nature (INT)</span>
-										<span name="int" data-score-index="3" class="input-group-addon fixed nature-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="nature" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Perception (WIS)</span>
-										<span name="wis" data-score-index="4" class="input-group-addon fixed perception-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="perception" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Performance (CHA)</span>
-										<span name="cha" data-score-index="5" class="input-group-addon fixed performance-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="performance" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Persuasion (CHA)</span>
-										<span name="cha" data-score-index="5" class="input-group-addon fixed persuasion-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="persuasion" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Religion (INT)</span>
-										<span name="int" data-score-index="3" class="input-group-addon fixed religion-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="religion" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Sleight of Hand (DEX)</span>
-										<span name="dex" data-score-index="1" class="input-group-addon fixed soh-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="soh" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Stealth (DEX)</span>
-										<span name="dex" data-score-index="1" class="input-group-addon fixed stealth-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="stealth" class="gen-proficiency">
-										</span>
-									</div>
-									<div class="input-group input-group-sm">
-										<span class="input-group-addon fixed prof-name">Survival (WIS)</span>
-										<span name="wis" data-score-index="4" class="input-group-addon fixed survival-prof"></span>
-		  								<span class="input-group-addon fixed thin">
-											<input type="checkbox" data-add-proficiency-to="stealth" class="gen-proficiency">
-										</span>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Nature (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed nature-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="nature" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Perception (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed perception-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="perception" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Performance (CHA)</span>
+												<span data-score-index="5" class="input-group-addon fixed performance-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="performance" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Persuasion (CHA)</span>
+												<span data-score-index="5" class="input-group-addon fixed persuasion-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="persuasion" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Religion (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed religion-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="religion" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Sleight of Hand (DEX)</span>
+												<span data-score-index="1" class="input-group-addon fixed soh-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="soh" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Stealth (DEX)</span>
+												<span data-score-index="1" class="input-group-addon fixed stealth-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="stealth" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Survival (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed survival-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="stealth" class="gen-proficiency">
+												</span>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

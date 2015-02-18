@@ -28,13 +28,14 @@ applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreI
 	var combinedModifier = pureModifier + proficiencyBonus;
 	combinedModifier = addPositiveMod(combinedModifier);
 
-	// BUG: it's taking the last 'blurred' ability score as the modifier
     $('input.gen-proficiency:checked, input.save-proficiency:checked').each(function() {
-      $(this).parent().prev().text(combinedModifier);
+    	// only apply modifier during loop if ability (str, dex, etc.) matches the proficiency
+    	if ($(this).parent().prev().data('score-index') === scoreIndex) {
+    		$(this).parent().prev().text(combinedModifier);
+    	}
     });	
 	
 	return;
-	// $(matched).text(combinedModifier);
 };
 
 var proficiencyBonus,
@@ -80,6 +81,8 @@ Template.createCharacter.rendered = function() {
 	var profValue = $('[name=proficiency]').val('+2');
 	proficiencyBonus = 2;
 	abilityScores = [];
+
+	$('.gen-proficiency, .save-proficiency').prop("disabled", true);
 };
 
 Template.createCharacter.events({
@@ -95,10 +98,8 @@ Template.createCharacter.events({
 			modifier = '+' + modifier;
 		}
 
-		// BUG: if update ability score, update happens on second blur, not first?
 		if( abilityScores.length < 6 || abilityScores[scoreIndex] != abilityScore ) {
-			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);
-			
+			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);	
 		} else {
 			console.log('loop will run');
 			$('.base-modifier').each(function(scoreIndex, obj) {
@@ -112,10 +113,18 @@ Template.createCharacter.events({
 			abilityScores[scoreIndex] = abilityScore;
 		}
 
+		if(abilityScores.length < 6) {
+			console.log('disable proficiency checkboxes');
+		} else {
+			console.log('ok, do proficiencies');
+			$('.gen-proficiency, .save-proficiency').prop("disabled", false);
+		}
+
 		// set ability score modifier
 		$(e.target).next().html(modifier);
 	},
 
+	// BUG: instead of adding the appropriate ability modifier, it adds the last one (cha)
 	'blur [name=proficiency]': function(e) {
 		e.preventDefault();
 		proficiencyBonus = $(e.target).val();
@@ -158,6 +167,7 @@ Template.createCharacter.events({
 		e.preventDefault();
 
 		var character = {
+			// TODO: These are horribly out of date
 			name: $(e.target).find('[name=charname]').val(),
 			class: $(e.target).find('[name=class]').val(),
 			level: $(e.target).find('[name=level]').val(),
