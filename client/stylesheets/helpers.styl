@@ -1,0 +1,54 @@
+hr
+	clear both
+	border-style none
+	height 1px
+	margin 0
+	display block
+
+spacer(n)
+	height n
+
+	&.nomob
+		@media handheld, screen and (max-width: 768px)
+			display none
+
+	&.notab
+		@media handheld, screen and (max-width: 992px)
+			display none
+
+	&.mobonly
+		display none
+		
+		@media handheld, screen and (max-width: 768px)
+			display block
+
+hr.spacer5
+	spacer(5px)
+
+hr.spacer10
+	spacer(10px)
+
+hr.spacer20
+	spacer(20px)
+
+hr.spacer30
+	spacer(30px)
+
+hr.spacer40
+	spacer(40px)
+
+hr.spacer50
+	spacer(50px)
+
+hr.spacer60
+	spacer(60px)
+hr.spacer100
+	spacer(100px)
+	
+
+.fullwidthline
+	height 1px
+	border-bottom 1px solid #ccc
+	width 100%
+	display block
+	margin 10px 0

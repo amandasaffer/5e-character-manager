@@ -1,4 +1,6 @@
 <template name="characters">
+	<hr class="spacer60">
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
@@ -16,18 +18,20 @@
 
 
 <template name="createCharacter">
+	<hr class="spacer60">
+
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
-				<h3>Create your character</h3>
-			</div>
-		</div>
-
-		<div class="row">
 			<div class="col-md-12">
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal create-character" role="form">
 					<div class="form-group" style="margin-bottom: 60px;">
-						<div class="col-md-6">
+						<div class="col-sm-12 col-md-6">
+							<div class="row">
+								<div class="col-sm-12">
+									<h5>Overview</h5>
+								</div>
+							</div>
+
 							<div class="row">
 								<div class="col-sm-5">
 									<label>Character Name</label>
@@ -36,7 +40,20 @@
 
 								<div class="col-sm-4">
 									<label>Class</label>
-									<input type="text" name="class" class="form-control" placeholder="Fighter">
+									<select name="class" class="form-control">
+									  <option>Barbarian</option>
+									  <option>Bard</option>
+									  <option>Cleric</option>
+									  <option>Druid</option>
+									  <option>Fighter</option>
+									  <option>Monk</option>
+									  <option>Paladin</option>
+									  <option>Ranger</option>
+									  <option>Rogue</option>
+									  <option>Sorcerer</option>
+									  <option>Warlock</option>
+									  <option>Wizard</option>
+									</select>
 								</div>
 
 								<div class="col-sm-3">
@@ -48,51 +65,136 @@
 							<div class="row" style="margin-top: 20px;">
 								<div class="col-sm-4">
 									<label>Background</label>
-									<input type="text" name="background" class="form-control" placeholder="Hermit">
+									<select name="background" class="form-control">
+									  <option>Acolyte</option>
+									  <option>Charlatan</option>
+									  <option>Criminal</option>
+									  <option>Entertainer</option>
+									  <option>Folk Hero</option>
+									  <option>Guild Artisan</option>
+									  <option>Hermit</option>
+									  <option>Noble</option>
+									  <option>Outlander</option>
+									  <option>Sage</option>
+									  <option>Sailor</option>
+									  <option>Soldier</option>
+									  <option>Urchin</option>
+									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Race</label>
-									<input type="text" name="race" class="form-control" placeholder="Half-Elf">
+
+									<select name="race" class="form-control">
+									  <option>Dwarf</option>
+									  <option>Elf</option>
+									  <option>Halfling</option>
+									  <option>Human</option>
+									  <option>Dragonborn</option>
+									  <option>Gnome</option>
+									  <option>Half-Elf</option>
+									  <option>Half-Orc</option>
+									  <option>Tiefling</option>
+									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Alignment</label>
-									<input type="text" name="alignment" class="form-control" placeholder="Chaotic Good">
+
+									<select name="alignment" class="form-control">
+									  <option>Lawful Good</option>
+									  <option>Neutral Good</option>
+									  <option>Chaotic Good</option>
+									  <option>Lawful Neutral</option>
+									  <option>(True) Neutral</option>
+									  <option>Chaotic Neutral</option>
+									  <option>Lawful Evil</option>
+									  <option>Neutral Evil</option>
+									  <option>Chaotic Evil</option>
+									</select>
 								</div>
 							</div>
 
+							<div class="fullwidthline" style="margin: 50px 0 40px;"></div>
+
 							<div class="row" style="margin-top: 40px;">
-								<div class="col-sm-3">
+								<div class="col-sm-12">
+									<h5>Bullshit</h5>
+								</div>
+
+								<div class="col-sm-4">
 									<label>Armor Class</label>
 									<input type="text" name="ac" class="form-control" placeholder="">
 								</div>
 
-								<div class="col-sm-3">
+								<div class="col-sm-4">
 									<label>Initiative</label>
 									<input type="text" name="initiative" class="form-control" placeholder="">
 								</div>
 
-								<div class="col-sm-3">
+								<div class="col-sm-4">
 									<label>Speed</label>
 									<input type="text" name="speed" class="form-control" placeholder="">
 								</div>
 							</div>
 
 							<div class="row" style="margin-top: 20px;">
-								<div class="col-sm-3">
+								<div class="col-sm-4">
 									<label>Hit Points</label>
 									<input type="text" name="hitpoints" class="form-control" placeholder="">
 								</div>
 
-								<div class="col-sm-3">
+								<div class="col-sm-4">
 									<label>Hit Dice</label>
 									<input type="text" name="hitpoints" class="form-control" placeholder="">
 								</div>
 							</div>
+
+							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<h5>Weapons</h5>
+								</div>
+
+								<div class="col-sm-4">
+									<label>Name</label>
+									<input type="text" name="weapon-name" class="form-control" placeholder="Battleaxe">
+								</div>
+								<div class="col-sm-3">
+									<label>Atk Bonus</label>
+									<input type="text" name="atkbonus" class="form-control" placeholder="+4">
+								</div>
+								<div class="col-sm-5">
+									<label>Damage</label>
+									<input type="text" name="weapon-damage" class="form-control" placeholder="1d8 + 4">
+								</div>
+
+								<hr class="spacer20">
+
+								<div class="col-sm-12">
+									<button id="add-weapon" class="btn btn-primary"><i class="fa fa-plus"></i> Add Weapon</button>
+								</div>
+							</div>
+
+							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
+
+							<div class="row">
+								<div class="col-sm-12">
+									<label for="">Equipment</label>
+									<textarea class="form-control" rows="6" style="resize: vertical;"></textarea>
+								</div>
+							</div>
 						</div>
 
+						<hr class="spacer60 visible-sm visible-xs">
+
 						<div class="col-sm-12 col-md-6 general-proficiencies">
+							<div class="row">
+								<div class="col-sm-12">
+									<h5>Skills &amp; Proficiencies</h5>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-sm-6">
 									<label for="">Proficiency Bonus</label>
@@ -113,38 +215,38 @@
 									<label for="">Ability Scores</label>
 									<div class="row">
 										<div class="col-md-6">
-											<div class="input-group input-group-md" style="width: 100%;">
+											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">STR</span>
 												<input type="text" data-score-index="0" class="form-control ability">
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
-											<div class="input-group input-group-md" style="width: 100%;">
+											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">DEX</span>
 												<input type="text" data-score-index="1" class="form-control ability" placeholder="">
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
-											<div class="input-group input-group-md" style="width: 100%;">
+											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">CON</span>
 												<input type="text" data-score-index="2" class="form-control ability" placeholder="">
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 										</div>
 										<div class="col-md-6">
-											<div class="input-group input-group-md" style="width: 100%;">
+											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">INT</span>
 												<input type="text" data-score-index="3" class="form-control ability" placeholder="">
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
-											<div class="input-group input-group-md" style="width: 100%;">
+											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">WIS</span>
 												<input type="text" data-score-index="4" class="form-control ability" placeholder="">
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
-											<div class="input-group input-group-md" style="width: 100%;">
+											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">CHA</span>
 												<input type="text" data-score-index="5" class="form-control ability" placeholder="">
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
@@ -354,9 +456,27 @@
 						</div>
 					</div>
 
-					<div class="form-group">
+					<div class="fullwidthline"></div>
+
+					<div class="row">
 						<div class="col-sm-12">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias repellendus dicta, in libero debitis aperiam ipsum quia veritatis atque itaque officiis eligendi, ex explicabo iure nihil, deleniti velit. Rerum, ducimus.</p>
+							<h5>Features &amp; Traits</h5>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label>Name</label>
+							<input type="text" name="trait-name" class="form-control" placeholder="">
+						</div>
+
+						<div class="col-sm-4">
+							<label>Name</label>
+							<input type="text" name="trait-name" class="form-control" placeholder="">
+						</div>
+
+						<div class="col-sm-4">
+							<label>Name</label>
+							<input type="text" name="trait-name" class="form-control" placeholder="">
 						</div>
 					</div>
 
@@ -370,6 +490,14 @@
 		</div>
 	</div>
 </template>
+
+
+
+
+
+
+
+
 
 
 

@@ -1,9 +1,10 @@
 /* CSS declarations go here */
+@import url('http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic');
 
 body
 	font-size 16px
-	// background url('/images/green_cup.png')
-	background url('/images/concrete_seamless.png')
+	background url('/images/green_cup.png')
+	// background url('/images/concrete_seamless.png')
 
 p
 	margin 0 0 30px
@@ -28,7 +29,37 @@ ul.group-list
 	input[type=password]
 		margin 0 0 10px
 
-// .form-inline
+
+form.create-character
+	label
+		font-family "PT Serif", serif
+	input[type=text]
+		height 34px
+		padding-top 7px
+	input[type=text], select, textarea
+		background-color #d1d4c9
+		box-shadow inset 0 4px 4px -4px darken(#9da291, 10%)
+		border 1px solid darken(#9da291, 10%)
+		font-family "PT Sans", sans-serif
+	
+	h5
+		font-family "PT Serif", serif
+		font-size 32px
+		opacity .5
+		margin 0 0 15px 0
+		display block
+
+	.input-group
+		&.input-group-sm
+			.input-group-addon
+				padding 7px 10px
+		.input-group-addon
+			// background darken(#9ba08d, 2%)
+			// border-color darken(#9ba08d, 15%)
+			background  darken(#d1d4c9, 7%)
+			border-color darken(#9ba08d, 1%)
+			color darken(#9ba08d, 45%)
+			// box-shadow inset 0 3px 3px -3px white
 
 .form-horizontal
 	label
