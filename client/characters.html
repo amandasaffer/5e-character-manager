@@ -43,12 +43,12 @@
 							<div class="row">
 								<div class="col-sm-5">
 									<label>Name</label>
-									<input type="text" name="charname" class="form-control" placeholder="">
+									<input type="text" name="charname" class="form-control" placeholder="" tabindex=1>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Class</label>
-									<select name="class" class="form-control">
+									<select name="class" class="form-control" tabindex=2>
 									  <option>Barbarian</option>
 									  <option>Bard</option>
 									  <option>Cleric</option>
@@ -66,14 +66,14 @@
 
 								<div class="col-sm-3">
 									<label>Level</label>
-									<input type="text" name="level" class="form-control" placeholder="0">
+									<input type="text" name="level" class="form-control" placeholder="0" tabindex=3>
 								</div>
 							</div>
 
 							<div class="row" style="margin-top: 20px;">
 								<div class="col-sm-4">
 									<label>Background</label>
-									<select name="background" class="form-control">
+									<select name="background" class="form-control" tabindex=4>
 									  <option>Acolyte</option>
 									  <option>Charlatan</option>
 									  <option>Criminal</option>
@@ -93,7 +93,7 @@
 								<div class="col-sm-4">
 									<label>Race</label>
 
-									<select name="race" class="form-control">
+									<select name="race" class="form-control" tabindex=5>
 									  <option>Dwarf</option>
 									  <option>Elf</option>
 									  <option>Halfling</option>
@@ -109,7 +109,7 @@
 								<div class="col-sm-4">
 									<label>Alignment</label>
 
-									<select name="alignment" class="form-control">
+									<select name="alignment" class="form-control" tabindex=6>
 									  <option>Lawful Good</option>
 									  <option>Neutral Good</option>
 									  <option>Chaotic Good</option>
@@ -132,29 +132,29 @@
 
 								<div class="col-sm-4">
 									<label>Armor Class</label>
-									<input type="text" name="ac" class="form-control" placeholder="">
+									<input type="text" name="ac" class="form-control" placeholder="" tabindex=15>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Initiative</label>
-									<input type="text" name="initiative" class="form-control" placeholder="+0">
+									<input type="text" name="initiative" class="form-control" placeholder="+0" tabindex=16>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Speed</label>
-									<input type="text" name="speed" class="form-control" placeholder="">
+									<input type="text" name="speed" class="form-control" placeholder="" tabindex=17>
 								</div>
 							</div>
 
 							<div class="row" style="margin-top: 20px;">
 								<div class="col-sm-4">
 									<label>Hit Points</label>
-									<input type="text" name="hitpoints" class="form-control" placeholder="">
+									<input type="text" name="hitpoints" class="form-control" placeholder="" tabindex=18>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Hit Dice</label>
-									<input type="text" name="hitdice" class="form-control" placeholder="">
+									<input type="text" name="hitdice" class="form-control" placeholder="" tabindex=19>
 								</div>
 							</div>
 
@@ -212,13 +212,13 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<label for="">Proficiency Bonus</label>
-									<input type="text" name="proficiency" class="form-control">
+									<input type="text" name="proficiency" class="form-control" tabindex=7>
 
 									<span class="instruction">Enter your proficiency bonus first to ensure all bonuses are calculated correctly.</span>
 								</div>
 								<div class="col-sm-6">
 									<label for="">Passive Perception</label>
-									<input type="text" name="passive-percep" class="form-control" value="10">
+									<input type="text" name="passive-percep" class="form-control" value="10" tabindex=8>
 
 									<span class="instruction">Passive perception is calculated by 10 + Perception Modifier.</span>
 								</div>
@@ -231,38 +231,38 @@
 										<div class="col-md-6">
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">STR</span>
-												<input type="text" data-score-index="0" class="form-control ability">
+												<input type="text" data-score-index="0" class="form-control ability" tabindex=9>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">DEX</span>
-												<input type="text" data-score-index="1" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="1" class="form-control ability" placeholder="" tabindex=10>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">CON</span>
-												<input type="text" data-score-index="2" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="2" class="form-control ability" placeholder="" tabindex=11>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">INT</span>
-												<input type="text" data-score-index="3" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="3" class="form-control ability" placeholder="" tabindex=12>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">WIS</span>
-												<input type="text" data-score-index="4" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="4" class="form-control ability" placeholder="" tabindex=13>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">CHA</span>
-												<input type="text" data-score-index="5" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="5" class="form-control ability" placeholder="" tabindex=14>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 										</div>
@@ -497,7 +497,7 @@
 
 								<div class="row">
 									<div class="col-sm-12">
-										<textarea class="form-control trait-description" rows="5" style="resize: vertical;" placeholder=""></textarea>
+										<textarea class="form-control trait-description" rows="5" style="resize: vertical;" placeholder="Description"></textarea>
 									</div>
 								</div>
 							</div>
