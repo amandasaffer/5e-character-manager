@@ -1,5 +1,6 @@
 <template name="characters">
 	<hr class="spacer60">
+	<hr class="spacer60">
 
 	<div class="container">
 		<div class="row">
@@ -19,8 +20,15 @@
 
 <template name="createCharacter">
 	<hr class="spacer60">
+	<hr class="spacer60">
 
 	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Character Creation</h2>
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="col-md-12">
 				<form class="form-horizontal create-character" role="form">
@@ -34,7 +42,7 @@
 
 							<div class="row">
 								<div class="col-sm-5">
-									<label>Character Name</label>
+									<label>Name</label>
 									<input type="text" name="charname" class="form-control" placeholder="">
 								</div>
 
@@ -129,7 +137,7 @@
 
 								<div class="col-sm-4">
 									<label>Initiative</label>
-									<input type="text" name="initiative" class="form-control" placeholder="">
+									<input type="text" name="initiative" class="form-control" placeholder="+0">
 								</div>
 
 								<div class="col-sm-4">
@@ -146,7 +154,7 @@
 
 								<div class="col-sm-4">
 									<label>Hit Dice</label>
-									<input type="text" name="hitpoints" class="form-control" placeholder="">
+									<input type="text" name="hitdice" class="form-control" placeholder="">
 								</div>
 							</div>
 
@@ -180,16 +188,22 @@
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
 
 							<div class="row">
+								<div class="col-md-12">
+									<h5>Equipment, etc.</h5>
+								</div>
+							</div>
+
+							<div class="row">
 								<div class="col-sm-12">
 									<label for="">Equipment</label>
-									<textarea class="form-control" rows="6" style="resize: vertical;"></textarea>
+									<textarea class="form-control" name="equipment" rows="6" style="resize: vertical;"></textarea>
 								</div>
 							</div>
 						</div>
 
 						<hr class="spacer60 visible-sm visible-xs">
 
-						<div class="col-sm-12 col-md-6 general-proficiencies">
+						<div class="col-sm-12 col-md-6 general-proficiencies" style="padding-left: 50px;">
 							<div class="row">
 								<div class="col-sm-12">
 									<h5>Skills &amp; Proficiencies</h5>
@@ -457,28 +471,47 @@
 					</div>
 
 					<div class="fullwidthline"></div>
+					<hr class="spacer30">
 
-					<div class="row">
-						<div class="col-sm-12">
+					<div class="row" style="margin-bottom: 0; padding-bottom; 0;">
+						<div class="col-sm-12" style="margin-bottom: 0; padding-bottom; 0;">
 							<h5>Features &amp; Traits</h5>
+							<input type="hidden" name="count" value="1" />
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label>Name</label>
-							<input type="text" name="trait-name" class="form-control" placeholder="">
+
+					<div class="form-group"  style="margin-top: 0; padding-top; 0;">
+
+						<div id="traits">
+							<div class="col-sm-6 col-md-4 trait trait1" id="charTrait">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-file-o"></i></span>
+											<input type="text" class="trait-name form-control" placeholder="Trait/Feature Name">
+										</div>
+									</div>
+								</div>
+
+								<hr class="spacer20">
+
+								<div class="row">
+									<div class="col-sm-12">
+										<textarea class="form-control trait-description" rows="5" style="resize: vertical;" placeholder=""></textarea>
+									</div>
+								</div>
+							</div>
 						</div>
 
-						<div class="col-sm-4">
-							<label>Name</label>
-							<input type="text" name="trait-name" class="form-control" placeholder="">
-						</div>
-
-						<div class="col-sm-4">
-							<label>Name</label>
-							<input type="text" name="trait-name" class="form-control" placeholder="">
+						<div class="col-sm-4 col-md-2 add-feat-trait">
+							<div class="add-box">
+								<i class="fa fa-plus fa-2x"></i>
+								<span class="add">Add</span>
+							</div>
 						</div>
 					</div>
+
+					<hr class="spacer30">
 
 					<div class="form-group">
 						<div class="col-sm-12">
@@ -496,99 +529,504 @@
 
 
 
-
-
-
-
-
-
 <template name="editCharacter">
+	<hr class="spacer60">
+	<hr class="spacer60">
+
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
-				<h3>Edit your character</h3>
+			<div class="col-md-12">
+				<h2>Character Creation</h2>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-12">
-				<form class="form-horizontal" role="form">
-					<div class="form-group">
-						<div class="col-sm-3">
-							<label>Character Name</label>
-							<input type="text" name="charname" class="form-control" value="{{name}}" placeholder="">
+				<form class="form-horizontal create-character" role="form">
+					<div class="form-group" style="margin-bottom: 60px;">
+						<div class="col-sm-12 col-md-6">
+							<div class="row">
+								<div class="col-sm-12">
+									<h5>Overview</h5>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-5">
+									<label>Name</label>
+									<input type="text" name="charname" class="form-control" placeholder="">
+								</div>
+
+								<div class="col-sm-4">
+									<label>Class</label>
+									<select name="class" class="form-control">
+									  <option>Barbarian</option>
+									  <option>Bard</option>
+									  <option>Cleric</option>
+									  <option>Druid</option>
+									  <option>Fighter</option>
+									  <option>Monk</option>
+									  <option>Paladin</option>
+									  <option>Ranger</option>
+									  <option>Rogue</option>
+									  <option>Sorcerer</option>
+									  <option>Warlock</option>
+									  <option>Wizard</option>
+									</select>
+								</div>
+
+								<div class="col-sm-3">
+									<label>Level</label>
+									<input type="text" name="level" class="form-control" placeholder="0">
+								</div>
+							</div>
+
+							<div class="row" style="margin-top: 20px;">
+								<div class="col-sm-4">
+									<label>Background</label>
+									<select name="background" class="form-control">
+									  <option>Acolyte</option>
+									  <option>Charlatan</option>
+									  <option>Criminal</option>
+									  <option>Entertainer</option>
+									  <option>Folk Hero</option>
+									  <option>Guild Artisan</option>
+									  <option>Hermit</option>
+									  <option>Noble</option>
+									  <option>Outlander</option>
+									  <option>Sage</option>
+									  <option>Sailor</option>
+									  <option>Soldier</option>
+									  <option>Urchin</option>
+									</select>
+								</div>
+
+								<div class="col-sm-4">
+									<label>Race</label>
+
+									<select name="race" class="form-control">
+									  <option>Dwarf</option>
+									  <option>Elf</option>
+									  <option>Halfling</option>
+									  <option>Human</option>
+									  <option>Dragonborn</option>
+									  <option>Gnome</option>
+									  <option>Half-Elf</option>
+									  <option>Half-Orc</option>
+									  <option>Tiefling</option>
+									</select>
+								</div>
+
+								<div class="col-sm-4">
+									<label>Alignment</label>
+
+									<select name="alignment" class="form-control">
+									  <option>Lawful Good</option>
+									  <option>Neutral Good</option>
+									  <option>Chaotic Good</option>
+									  <option>Lawful Neutral</option>
+									  <option>(True) Neutral</option>
+									  <option>Chaotic Neutral</option>
+									  <option>Lawful Evil</option>
+									  <option>Neutral Evil</option>
+									  <option>Chaotic Evil</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="fullwidthline" style="margin: 50px 0 40px;"></div>
+
+							<div class="row" style="margin-top: 40px;">
+								<div class="col-sm-12">
+									<h5>Bullshit</h5>
+								</div>
+
+								<div class="col-sm-4">
+									<label>Armor Class</label>
+									<input type="text" name="ac" class="form-control" placeholder="">
+								</div>
+
+								<div class="col-sm-4">
+									<label>Initiative</label>
+									<input type="text" name="initiative" class="form-control" placeholder="">
+								</div>
+
+								<div class="col-sm-4">
+									<label>Speed</label>
+									<input type="text" name="speed" class="form-control" placeholder="">
+								</div>
+							</div>
+
+							<div class="row" style="margin-top: 20px;">
+								<div class="col-sm-4">
+									<label>Hit Points</label>
+									<input type="text" name="hitpoints" class="form-control" placeholder="">
+								</div>
+
+								<div class="col-sm-4">
+									<label>Hit Dice</label>
+									<input type="text" name="hitpoints" class="form-control" placeholder="">
+								</div>
+							</div>
+
+							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<h5>Weapons</h5>
+								</div>
+
+								<div class="col-sm-4">
+									<label>Name</label>
+									<input type="text" name="weapon-name" class="form-control" placeholder="Battleaxe">
+								</div>
+								<div class="col-sm-3">
+									<label>Atk Bonus</label>
+									<input type="text" name="atkbonus" class="form-control" placeholder="+4">
+								</div>
+								<div class="col-sm-5">
+									<label>Damage</label>
+									<input type="text" name="weapon-damage" class="form-control" placeholder="1d8 + 4">
+								</div>
+
+								<hr class="spacer20">
+
+								<div class="col-sm-12">
+									<button id="add-weapon" class="btn btn-primary"><i class="fa fa-plus"></i> Add Weapon</button>
+								</div>
+							</div>
+
+							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<h5>Equipment, etc.</h5>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-12">
+									<label for="">Equipment</label>
+									<textarea class="form-control" rows="6" style="resize: vertical;"></textarea>
+								</div>
+							</div>
 						</div>
 
-						<div class="col-sm-2">
-							<label>Class</label>
-							<input type="text" name="class" class="form-control" value="{{class}}" placeholder="Fighter">
-						</div>
+						<hr class="spacer60 visible-sm visible-xs">
 
-						<div class="col-sm-1">
-							<label>Level</label>
-							<input type="text" name="level" class="form-control" value="{{level}}" placeholder="0">
-						</div>
+						<div class="col-sm-12 col-md-6 general-proficiencies" style="padding-left: 50px;">
+							<div class="row">
+								<div class="col-sm-12">
+									<h5>Skills &amp; Proficiencies</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<label for="">Proficiency Bonus</label>
+									<input type="text" name="proficiency" class="form-control">
 
-						<div class="col-sm-2">
-							<label>Background</label>
-							<input type="text" name="background" class="form-control" value="{{background}}" placeholder="Hermit">
-						</div>
+									<span class="instruction">Enter your proficiency bonus first to ensure all bonuses are calculated correctly.</span>
+								</div>
+								<div class="col-sm-6">
+									<label for="">Passive Perception</label>
+									<input type="text" name="passive-percep" class="form-control" value="10">
 
-						<div class="col-sm-2">
-							<label>Race</label>
-							<input type="text" name="race" class="form-control" value="{{race}}" placeholder="Half-Elf">
-						</div>
+									<span class="instruction">Passive perception is calculated by 10 + Perception Modifier.</span>
+								</div>
+							</div>
 
-						<div class="col-sm-2">
-							<label>Alignment</label>
-							<input type="text" name="alignment" class="form-control" value="{{alignment}}" placeholder="Chaotic Good">
+							<div class="row" style="margin-top: 25px;">
+								<div class="col-sm-12 ability-scores">
+									<label for="">Ability Scores</label>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="input-group input-group-sm" style="width: 100%;">
+												<span class="input-group-addon fixed fat">STR</span>
+												<input type="text" data-score-index="0" class="form-control ability">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+
+											<div class="input-group input-group-sm" style="width: 100%;">
+												<span class="input-group-addon fixed fat">DEX</span>
+												<input type="text" data-score-index="1" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+
+											<div class="input-group input-group-sm" style="width: 100%;">
+												<span class="input-group-addon fixed fat">CON</span>
+												<input type="text" data-score-index="2" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="input-group input-group-sm" style="width: 100%;">
+												<span class="input-group-addon fixed fat">INT</span>
+												<input type="text" data-score-index="3" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+
+											<div class="input-group input-group-sm" style="width: 100%;">
+												<span class="input-group-addon fixed fat">WIS</span>
+												<input type="text" data-score-index="4" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+
+											<div class="input-group input-group-sm" style="width: 100%;">
+												<span class="input-group-addon fixed fat">CHA</span>
+												<input type="text" data-score-index="5" class="form-control ability" placeholder="">
+				  								<span class="base-modifier input-group-addon fixed thin"></span>
+											</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+
+							<div class="row" style="margin-top: 25px;">
+								<div class="col-sm-12 saving-throws">
+									<label for="">Saving Throws</label>
+									<div class="row">
+										<div class="col-sm-6 col-md-6">
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Strength</span>
+												<span data-score-index="0" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
+
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Dexterity</span>
+												<span data-score-index="1" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
+
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Constitution</span>
+												<span data-score-index="2" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>	
+										</div>
+										<div class="col-sm-6 col-md-6">
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Intelligence</span>
+												<span data-score-index="3" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
+
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Wisdom</span>
+												<span data-score-index="4" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
+
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Charisma</span>
+												<span data-score-index="5" class="input-group-addon fixed"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" class="save-proficiency">
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row" style="margin-top: 25px;">
+								<div class="col-sm-12 general-proficiencies">
+									<label for="">Skill Proficiencies</label>
+									<div class="row">
+										<div class="col-sm-6 col-md-6">
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Acrobatics (DEX)</span>
+												<span data-score-index="1" class="input-group-addon fixed acrobatics-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="acrobatics" class="gen-proficiency">
+												</span>
+											</div>
+
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Animal Handling (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed animalhandling-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="animal-handling" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Arcana (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed arcana-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="arcana" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Athletics (STR)</span>
+												<span data-score-index="0" class="input-group-addon fixed athletics-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="athletics" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Deception (CHA)</span>
+												<span data-score-index="5" class="input-group-addon fixed deception-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="deception" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">History (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed history-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="history" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Insight (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed insight-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="insight" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Intimidation (CHA)</span>
+												<span data-score-index="5" class="input-group-addon fixed intimidation-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="intimidation" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Investigation (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed investigation-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="investigation" class="gen-proficiency">
+												</span>
+											</div>
+										</div> 
+										<div class="col-md-6">
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Medicine (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed medicine-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="medicine" class="gen-proficiency">
+												</span>
+											</div>
+
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Nature (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed nature-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="nature" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Perception (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed perception-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="perception" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Performance (CHA)</span>
+												<span data-score-index="5" class="input-group-addon fixed performance-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="performance" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Persuasion (CHA)</span>
+												<span data-score-index="5" class="input-group-addon fixed persuasion-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="persuasion" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Religion (INT)</span>
+												<span data-score-index="3" class="input-group-addon fixed religion-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="religion" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Sleight of Hand (DEX)</span>
+												<span data-score-index="1" class="input-group-addon fixed soh-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="soh" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Stealth (DEX)</span>
+												<span data-score-index="1" class="input-group-addon fixed stealth-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="stealth" class="gen-proficiency">
+												</span>
+											</div>
+											<div class="input-group input-group-sm">
+												<span class="input-group-addon fixed prof-name">Survival (WIS)</span>
+												<span data-score-index="4" class="input-group-addon fixed survival-prof"></span>
+				  								<span class="input-group-addon fixed thin">
+													<input type="checkbox" data-add-proficiency-to="stealth" class="gen-proficiency">
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
-					<div class="form-group ability-scores">
-						<div class="col-sm-2">
-							<label for="">Ability Scores</label>
-							<div class="input-group input-group-sm">
-								<span class="input-group-addon fixed">STR</span>
-								<input type="text" name="str" class="form-control ability" value="{{strAbility}}" placeholder="">
-  								<span id="strMod" class="input-group-addon">{{strMod}}</span>
-							</div>
+					<div class="fullwidthline"></div>
+					<hr class="spacer30">
 
-							<div class="input-group input-group-sm">
-								<span class="input-group-addon fixed">DEX</span>
-								<input type="text" name="dex" class="form-control ability" value="{{dexAbility}}" placeholder="">
-  								<span id="dexMod" class="input-group-addon">{{dexMod}}</span>
-							</div>
+					<div class="row" style="margin-bottom: 0; padding-bottom; 0;">
+						<div class="col-sm-12" style="margin-bottom: 0; padding-bottom; 0;">
+							<h5>Features &amp; Traits</h5>
+							<input type="hidden" name="count" value="1" />
+						</div>
+					</div>
 
-							<div class="input-group input-group-sm">
-								<span class="input-group-addon fixed">CON</span>
-								<input type="text" name="con" class="form-control ability" value="{{conAbility}}" placeholder="">
-  								<span id="conMod" class="input-group-addon">{{conMod}}</span>
-							</div>
+					<div class="form-group"  style="margin-top: 0; padding-top; 0;">
 
-							<div class="input-group input-group-sm">
-								<span class="input-group-addon fixed">INT</span>
-								<input type="text" name="int" class="form-control ability" value="{{intAbility}}" placeholder="">
-  								<span id="intMod" class="input-group-addon">{{intMod}}</span>
-							</div>
+						<div id="traits">
+							<div class="col-sm-6 col-md-4 trait trait1" id="charTrait">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-file-o"></i></span>
+											<input type="text" class="trait-name form-control" placeholder="Trait/Feature Name">
+										</div>
+									</div>
+								</div>
 
-							<div class="input-group input-group-sm">
-								<span class="input-group-addon fixed">WIS</span>
-								<input type="text" name="wis" class="form-control ability" value="{{wisAbility}}" placeholder="">
-  								<span id="wisMod" class="input-group-addon">{{wisMod}}</span>
-							</div>
+								<hr class="spacer20">
 
-							<div class="input-group input-group-sm">
-								<span class="input-group-addon fixed">CHA</span>
-								<input type="text" name="cha" class="form-control ability" value="{{chaAbility}}" placeholder="">
-  								<span id="chaMod" class="input-group-addon">{{chaMod}}</span>
+								<div class="row">
+									<div class="col-sm-12">
+										<textarea class="form-control trait-description" rows="5" style="resize: vertical;" placeholder=""></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4 col-md-2 add-feat-trait">
+							<div class="add-box">
+								<i class="fa fa-plus fa-2x"></i>
+								<span class="add">Add</span>
 							</div>
 						</div>
 					</div>
+
+					<hr class="spacer30">
 
 					<div class="form-group">
 						<div class="col-sm-12">
-							<button type="submit" class="btn btn-primary">Save Character</button> <button class="delete btn btn-danger">Delete Character</button>
+							<button type="submit" class="btn btn-primary">Create Character</button>
 						</div>
 					</div>
 				</form>

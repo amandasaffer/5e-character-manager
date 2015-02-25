@@ -1,11 +1,44 @@
 /* CSS declarations go here */
-@import url('http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic');
+@import url('http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic');
 
 body
 	font-size 16px
-	background url('/images/green_cup.png')
-	// background url('/images/concrete_seamless.png')
+	background #ddd
 
+
+/* Header
+ * Lorem ipsum dolor sit amet
+ */
+
+nav.navbar
+	height 70px
+	font-family "Lato", sans-serif
+
+	.navbar-header
+		height 70px
+		padding-top 10px
+	
+	.navbar-collapse
+		padding-top 10px
+	
+	a.navbar-brand
+		font-weight 700
+		font-size 24px
+		strong
+			opacity .5
+			font-weight 900
+			
+
+
+h2
+	font-family "Lato", sans-serif
+	font-size 40px
+	text-transform uppercase
+	font-weight 900
+	opacity .8
+	margin 0 0 10px 0
+	display block
+	
 p
 	margin 0 0 30px
 	line-height 1.65
@@ -32,34 +65,65 @@ ul.group-list
 
 form.create-character
 	label
-		font-family "PT Serif", serif
+		font-family "Lato", sans-serif
+		font-size 14px
+		margin 0 0 7px
 	input[type=text]
 		height 34px
-		padding-top 7px
 	input[type=text], select, textarea
-		background-color #d1d4c9
-		box-shadow inset 0 4px 4px -4px darken(#9da291, 10%)
-		border 1px solid darken(#9da291, 10%)
-		font-family "PT Sans", sans-serif
+		background-color #fff
+		padding-top 8px
+		box-shadow none
+		border none
+		font-family "Lato", sans-serif
 	
 	h5
-		font-family "PT Serif", serif
-		font-size 32px
-		opacity .5
-		margin 0 0 15px 0
+		font-family "Lato", sans-serif
+		font-size 26px
+		text-transform uppercase
+		font-weight 900
+		opacity .3
+		margin 0 0 20px 0
 		display block
 
 	.input-group
 		&.input-group-sm
 			.input-group-addon
-				padding 7px 10px
+				padding 8px 10px
 		.input-group-addon
-			// background darken(#9ba08d, 2%)
-			// border-color darken(#9ba08d, 15%)
-			background  darken(#d1d4c9, 7%)
-			border-color darken(#9ba08d, 1%)
-			color darken(#9ba08d, 45%)
-			// box-shadow inset 0 3px 3px -3px white
+			background  darken(#ddd, 10%)
+			// border-color darken(#ddd, 25%)
+			border none
+			color darken(#ddd, 60%)
+	
+	.add-feat-trait
+		cursor pointer
+		margin-top 10px
+	
+	.trait
+		margin-top 50px
+		
+		&:nth-child(1), &:nth-child(2), &:nth-child(3)
+			margin-top 10px
+		
+	.add-box
+		background #ccc
+		text-align center
+		padding 55px 40px
+		border-radius 5px
+		
+		span.add
+			font-family "Lato", sans-serif
+			font-size 12px
+			text-transform uppercase
+			letter-spacing 1px
+			display block
+			margin-top 8px
+			font-weight 700
+			opacity .7
+		
+		&:hover
+			background #bbb
 
 .form-horizontal
 	label
