@@ -165,24 +165,41 @@
 									<h5>Weapons</h5>
 								</div>
 
-								<div class="col-sm-4">
-									<label>Name</label>
-									<input type="text" name="weapon-name" class="form-control" placeholder="Battleaxe">
-								</div>
-								<div class="col-sm-3">
-									<label>Atk Bonus</label>
-									<input type="text" name="atkbonus" class="form-control" placeholder="+4">
-								</div>
-								<div class="col-sm-5">
-									<label>Damage</label>
-									<input type="text" name="weapon-damage" class="form-control" placeholder="1d8 + 4">
+								<div class="weapon" data-weapon-number="0">
+									<div class="col-sm-4">
+										<label>Name</label>
+										<input type="text" name="weapon-name" class="form-control weapon-input" data-weapon-index="0" placeholder="Battleaxe">
+									</div>
+									<div class="col-sm-3">
+										<label>Atk Bonus</label>
+										<input type="text" name="atkbonus" class="form-control weapon-input" data-weapon-index="1" placeholder="+4">
+									</div>
+									<div class="col-sm-5">
+										<label>Damage</label>
+										<input type="text" name="weapon-damage" class="form-control weapon-input" data-weapon-index="2" placeholder="1d8 + 4">
+									</div>
 								</div>
 
-								<hr class="spacer20">
+								<hr class="spacer30">
 
-								<div class="col-sm-12">
+								<div class="weapon" data-weapon-number="1">
+									<div class="col-sm-4">
+										<label>Name</label>
+										<input type="text" name="weapon-name" class="form-control weapon-input" data-weapon-index="0" placeholder="">
+									</div>
+									<div class="col-sm-3">
+										<label>Atk Bonus</label>
+										<input type="text" name="atkbonus" class="form-control weapon-input" data-weapon-index="1" placeholder="">
+									</div>
+									<div class="col-sm-5">
+										<label>Damage</label>
+										<input type="text" name="weapon-damage" class="form-control weapon-input" data-weapon-index="2" placeholder="">
+									</div>
+								</div>
+
+								<!-- <div class="col-sm-12">
 									<button id="add-weapon" class="btn btn-primary"><i class="fa fa-plus"></i> Add Weapon</button>
-								</div>
+								</div> -->
 							</div>
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
@@ -483,12 +500,12 @@
 					<div class="form-group"  style="margin-top: 0; padding-top; 0;">
 
 						<div id="traits">
-							<div class="col-sm-6 col-md-4 trait trait1" id="charTrait">
+							<div class="col-sm-6 col-md-4 trait" data-trait-count="1" id="charTrait">
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-file-o"></i></span>
-											<input type="text" class="trait-name form-control" placeholder="Trait/Feature Name">
+											<input type="text" class="trait-name form-control" data-trait-index="0" placeholder="Trait/Feature Name">
 										</div>
 									</div>
 								</div>
@@ -497,7 +514,7 @@
 
 								<div class="row">
 									<div class="col-sm-12">
-										<textarea class="form-control trait-description" rows="5" style="resize: vertical;" placeholder="Description"></textarea>
+										<textarea class="form-control trait-description" rows="5" style="resize: vertical;" data-trait-index="1" placeholder="Description"></textarea>
 									</div>
 								</div>
 							</div>
@@ -790,7 +807,7 @@
 												<span class="input-group-addon fixed prof-name">Strength</span>
 												<span data-score-index="0" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="strength">
 												</span>
 											</div>
 
@@ -798,7 +815,7 @@
 												<span class="input-group-addon fixed prof-name">Dexterity</span>
 												<span data-score-index="1" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="dexterity">
 												</span>
 											</div>
 
@@ -806,7 +823,7 @@
 												<span class="input-group-addon fixed prof-name">Constitution</span>
 												<span data-score-index="2" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" class="save-proficiency"  data-add-proficiency-to="constitution">
 												</span>
 											</div>	
 										</div>
@@ -815,7 +832,7 @@
 												<span class="input-group-addon fixed prof-name">Intelligence</span>
 												<span data-score-index="3" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="intelligence">
 												</span>
 											</div>
 
@@ -823,7 +840,7 @@
 												<span class="input-group-addon fixed prof-name">Wisdom</span>
 												<span data-score-index="4" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="wisdom">
 												</span>
 											</div>
 
@@ -831,7 +848,7 @@
 												<span class="input-group-addon fixed prof-name">Charisma</span>
 												<span data-score-index="5" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="charisma">
 												</span>
 											</div>
 										</div>

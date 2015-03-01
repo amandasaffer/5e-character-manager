@@ -43,32 +43,6 @@ applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreI
 	return;
 };
 
-var proficiencyBonus,
-	strSavingThrow,
-	dexSavingThrow,
-	conSavingThrow,
-	intSavingThrow,
-	wisSavingThrow,
-	chaSavingThrow,
-	acrobaticsProf,
-	animalhandlingProf,
-	arcanaProf,
-	athleticsProf,
-	deceptionProf,
-	historyProf,
-	insightProf,
-	intimidationProf,
-	investigationProf,
-	medicineProf,
-	natureProf,
-	perceptionProf,
-	performanceProf,
-	persuasionProf,
-	religionProf,
-	sleightofhandProf,
-	stealthProf,
-	survivalProf;
-
 
 Template.characters.events({
 	'click #create-character': function(e) {
@@ -87,7 +61,11 @@ Template.createCharacter.rendered = function() {
 	proficiencyBonus = 2;
 	abilityScores = [];
 	abilityModifiers = [];
-	saveModifiers = [];
+	proficiencies = [];
+	weapons = [];
+	traits = [];
+
+	// initialize trait count as one
 	traitCount = 1;
 
 	$('.gen-proficiency, .save-proficiency').prop("disabled", true);
@@ -148,18 +126,52 @@ Template.createCharacter.events({
 		}	
 	},
 
-	// TODO: What to do if user updates proficiency in middle of updating ability scores?
+	'blur .weapon input': function(e) {
+		var weaponNumber = parseInt( $(e.target).closest('.weapon').data('weapon-number') );
+		var weaponIndex = parseInt( $(e.target).data('weapon-index') );
+
+		if(weapons.length - 1 < weaponNumber) {
+			weapons[weaponNumber] = [];
+		}
+		weapons[weaponNumber][weaponIndex] = $(e.target).val();
+
+		console.log(weapons);
+	},
+
+	'blur .trait input, blur .trait textarea': function(e) {
+		var traitNumber = traitCount - 1;
+		var traitIndex = parseInt( $(e.target).data('trait-index') );
+
+		if(traits.length - 1 < traitNumber) {
+			traits[traitNumber] = [];
+		}
+
+		traits[traitNumber][traitIndex] = $(e.target).val();
+
+		console.log(traits);
+	},
+
 	'click .save-proficiency, click .gen-proficiency': function(e) {
 		var modifier = $(e.target).parent().prev().text();
 		var isChecked = $(e.target).is(':checked');
 		
+		// TODO FIX THIS WACKY SHIT
+		var thisProficiency = $(e.target).parent().prev().prev().text();
+		
 		if( isChecked ) {
-			// currently checked
+			// checked after click
 			modifier = parseInt(modifier) + parseInt(proficiencyBonus);
+			
+			proficiencies.push(thisProficiency);
 		} else {
-			// currently unchecked
+			// unchecked after click
 			modifier = parseInt(modifier) - parseInt(proficiencyBonus);
+
+			var profIndex = proficiencies.indexOf(thisProficiency);
+			proficiencies.splice(profIndex, 1);
 		}
+
+		console.log(proficiencies);
 		
 		if(modifier > 0) {
 			modifier = "+" + modifier;
@@ -175,7 +187,7 @@ Template.createCharacter.events({
 		if( $(e.target).data('add-proficiency-to') === 'perception') {
 	    	var addPerception = parseInt($('.perception-prof').text());
 	    	$('input[name=passive-percep]').val(10 + addPerception);
-	    }	
+	    }
 	},
 
 	'click .add-feat-trait': function(e) {
@@ -188,7 +200,8 @@ Template.createCharacter.events({
 		});
 
 		newTrait.removeAttr('id');
-		newTrait.addClass('trait' + traitCount);
+		// newTrait.addClass('trait' + traitCount);
+		newTrait.data('trait-count', traitCount);
 
 		$(newTrait).appendTo('#traits');
 
@@ -217,62 +230,22 @@ Template.createCharacter.events({
 			speed: $(e.target).find('[name=speed]').val(),
 			hitPoints: $(e.target).find('[name=hitpoints]').val(),
 			hitDice: $(e.target).find('[name=hitdice]').val(),
-
-			// weapons
-			// TODO: figure how to implement like this
-			// weapons: ['battleaxe', '+4', '1d8 + 4'], ['battleaxe', '+4', '1d8 + 4']
+	
 			
 			// equipment
+			weapons: weapons,
 			equipment: $(e.target).find('[name=equipment]').val(),
+
+			// features and traits
+			traits: traits,	
 			
 			proficiency: proficiencyBonus,
 		 	passivePerception: $('input[name=passive-percep]').val(),
 			abilityScores: abilityScores,
 			abilityModifiers: abilityModifiers,
-
-			// TODO: implement this array
 			saveModifiers: saveModifiers
 
 		}
-
-		// var character = {
-		// 	// TODO: These are horribly out of date
-		// 	name: $(e.target).find('[name=charname]').val(),
-		// 	class: $(e.target).find('[name=class]').val(),
-		// 	level: $(e.target).find('[name=level]').val(),
-		// 	background: $(e.target).find('[name=background]').val(),
-		// 	race: $(e.target).find('[name=race]').val(),
-		// 	alignment: $(e.target).find('[name=alignment]').val(),
-			
-		// 	proficiency: proficiencyBonus,
-		//  passivePerception: $('input[name=passive-percep]').val(),
-		//	abilityScores: abilityScores,
-
-		// 	strAbility: $(e.target).find('[name=str]').val(),
-		// 	strMod: $(e.target).find('#strMod').html(),
-		// 	strSave: $(e.target).find('#strSave').html(),
-
-		// 	dexAbility: $(e.target).find('[name=dex]').val(),
-		// 	dexMod: $(e.target).find('#dexMod').html(),
-		// 	dexSave: $(e.target).find('#dexSave').html(),
-
-		// 	conAbility: $(e.target).find('[name=con]').val(),
-		// 	conMod: $(e.target).find('#conMod').html(),
-		// 	conSave: $(e.target).find('#conSave').html(),
-
-		// 	intAbility: $(e.target).find('[name=int]').val(),
-		// 	intMod: $(e.target).find('#intMod').html(),
-		// 	intSave: $(e.target).find('#intSave').html(),
-
-		// 	wisAbility: $(e.target).find('[name=wis]').val(),
-		// 	wisMod: $(e.target).find('#wisMod').html(),
-		// 	wisSave: $(e.target).find('#wisSave').html(),
-
-		// 	chaAbility: $(e.target).find('[name=cha]').val(),
-		// 	chaMod: $(e.target).find('#chaMod').html(),
-		// 	chaSave: $(e.target).find('#chaSave').html()
-
-		// }
 
 		Meteor.call('addCharacter', character, function(error, id) {
 			if (error) {
