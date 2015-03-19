@@ -185,7 +185,7 @@
 								<div class="weapon" data-weapon-number="1">
 									<div class="col-sm-4">
 										<label>Name</label>
-										<input type="text" name="weapon-name" class="form-control weapon-input" data-weapon-index="0" placeholder="">
+										<input type="text" name="weapon" class="form-control weapon-input" data-weapon-index="0" placeholder="">
 									</div>
 									<div class="col-sm-3">
 										<label>Atk Bonus</label>
@@ -193,13 +193,9 @@
 									</div>
 									<div class="col-sm-5">
 										<label>Damage</label>
-										<input type="text" name="weapon-damage" class="form-control weapon-input" data-weapon-index="2" placeholder="">
+										<input type="text" name="damage" class="form-control weapon-input" data-weapon-index="2" placeholder="">
 									</div>
 								</div>
-
-								<!-- <div class="col-sm-12">
-									<button id="add-weapon" class="btn btn-primary"><i class="fa fa-plus"></i> Add Weapon</button>
-								</div> -->
 							</div>
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
@@ -509,9 +505,7 @@
 										</div>
 									</div>
 								</div>
-
 								<hr class="spacer20">
-
 								<div class="row">
 									<div class="col-sm-12">
 										<textarea class="form-control trait-description" rows="5" style="resize: vertical;" data-trait-index="1" placeholder="Description"></textarea>
@@ -553,7 +547,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Character Creation</h2>
+				<h2>Edit Character</h2>
 			</div>
 		</div>
 
@@ -571,82 +565,82 @@
 							<div class="row">
 								<div class="col-sm-5">
 									<label>Name</label>
-									<input type="text" name="charname" class="form-control" placeholder="">
+									<input type="text" name="charname" class="form-control" value="{{name}}" tabindex=1>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Class</label>
-									<select name="class" class="form-control">
-									  <option>Barbarian</option>
-									  <option>Bard</option>
-									  <option>Cleric</option>
-									  <option>Druid</option>
-									  <option>Fighter</option>
-									  <option>Monk</option>
-									  <option>Paladin</option>
-									  <option>Ranger</option>
-									  <option>Rogue</option>
-									  <option>Sorcerer</option>
-									  <option>Warlock</option>
-									  <option>Wizard</option>
+									<select name="class" class="form-control" tabindex=2>
+									  <option {{selected class "Barbarian"}}>Barbarian</option>
+									  <option {{selected class "Bard"}}>Bard</option>
+									  <option {{selected class "Cleric"}}>Cleric</option>
+									  <option {{selected class "Druid"}}>Druid</option>
+									  <option {{selected class "Fighter"}}>Fighter</option>
+									  <option {{selected class "Monk"}}>Monk</option>
+									  <option {{selected class "Paladin"}}>Paladin</option>
+									  <option {{selected class "Ranger"}}>Ranger</option>
+									  <option {{selected class "Rogue"}}>Rogue</option>
+									  <option {{selected class "Sorcerer"}}>Sorcerer</option>
+									  <option {{selected class "Warlock"}}>Warlock</option>
+									  <option {{selected class "Wizard"}}>Wizard</option>
 									</select>
 								</div>
 
 								<div class="col-sm-3">
 									<label>Level</label>
-									<input type="text" name="level" class="form-control" placeholder="0">
+									<input type="text" name="level" class="form-control" placeholder="0" tabindex=3 value="{{level}}">
 								</div>
 							</div>
 
 							<div class="row" style="margin-top: 20px;">
 								<div class="col-sm-4">
 									<label>Background</label>
-									<select name="background" class="form-control">
-									  <option>Acolyte</option>
-									  <option>Charlatan</option>
-									  <option>Criminal</option>
-									  <option>Entertainer</option>
-									  <option>Folk Hero</option>
-									  <option>Guild Artisan</option>
-									  <option>Hermit</option>
-									  <option>Noble</option>
-									  <option>Outlander</option>
-									  <option>Sage</option>
-									  <option>Sailor</option>
-									  <option>Soldier</option>
-									  <option>Urchin</option>
+									<select name="background" class="form-control" tabindex=4>
+									  <option {{selected background "Acolyte"}}>Acolyte</option>
+									  <option {{selected background "Charlatan"}}>Charlatan</option>
+									  <option  {{selected background "Criminal"}}>Criminal</option>
+									  <option  {{selected background "Entertainer"}}>Entertainer</option>
+									  <option  {{selected background "Folk Hero"}}>Folk Hero</option>
+									  <option  {{selected background "Guild Artisan"}}>Guild Artisan</option>
+									  <option  {{selected background "Hermit"}}>Hermit</option>
+									  <option  {{selected background "Noble"}}>Noble</option>
+									  <option  {{selected background "Outlander"}}>Outlander</option>
+									  <option  {{selected background "Sage"}}>Sage</option>
+									  <option  {{selected background "Sailor"}}>Sailor</option>
+									  <option  {{selected background "Soldier"}}>Soldier</option>
+									  <option  {{selected background "Urchin"}}>Urchin</option>
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Race</label>
 
-									<select name="race" class="form-control">
-									  <option>Dwarf</option>
-									  <option>Elf</option>
-									  <option>Halfling</option>
-									  <option>Human</option>
-									  <option>Dragonborn</option>
-									  <option>Gnome</option>
-									  <option>Half-Elf</option>
-									  <option>Half-Orc</option>
-									  <option>Tiefling</option>
+									<select name="race" class="form-control" tabindex=5>
+									  <option {{selected race "Dwarf"}}>Dwarf</option>
+									  <option {{selected race "Elf"}}>Elf</option>
+									  <option {{selected race "Halfling"}}>Halfling</option>
+									  <option {{selected race "Human"}}>Human</option>
+									  <option {{selected race "Dragonborn"}}>Dragonborn</option>
+									  <option {{selected race "Gnome"}}>Gnome</option>
+									  <option {{selected race "Half-Elf"}}>Half-Elf</option>
+									  <option {{selected race "Half-Orc"}}>Half-Orc</option>
+									  <option {{selected race "Tiefling"}}>Tiefling</option>
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Alignment</label>
 
-									<select name="alignment" class="form-control">
-									  <option>Lawful Good</option>
-									  <option>Neutral Good</option>
-									  <option>Chaotic Good</option>
-									  <option>Lawful Neutral</option>
-									  <option>(True) Neutral</option>
-									  <option>Chaotic Neutral</option>
-									  <option>Lawful Evil</option>
-									  <option>Neutral Evil</option>
-									  <option>Chaotic Evil</option>
+									<select name="alignment" class="form-control" tabindex=6>
+									  <option {{selected alignment "Lawful Good"}}>Lawful Good</option>
+									  <option {{selected alignment "Neutral Good"}}>Neutral Good</option>
+									  <option {{selected alignment "Chaotic Good"}}>Chaotic Good</option>
+									  <option {{selected alignment "Lawful Neutral"}}>Lawful Neutral</option>
+									  <option {{selected alignment "(True) Neutral"}}>(True) Neutral</option>
+									  <option {{selected alignment "Chaotic Neutral"}}>Chaotic Neutral</option>
+									  <option {{selected alignment "Lawful Evil"}}>Lawful Evil</option>
+									  <option {{selected alignment "Neutral Evil"}}>Neutral Evil</option>
+									  <option  {{selected alignment "Chaotic Evil"}}>Chaotic Evil</option>
 									</select>
 								</div>
 							</div>
@@ -660,29 +654,29 @@
 
 								<div class="col-sm-4">
 									<label>Armor Class</label>
-									<input type="text" name="ac" class="form-control" placeholder="">
+									<input type="text" name="ac" class="form-control" placeholder="" tabindex=15 value="{{ac}}">
 								</div>
 
 								<div class="col-sm-4">
 									<label>Initiative</label>
-									<input type="text" name="initiative" class="form-control" placeholder="">
+									<input type="text" name="initiative" class="form-control" placeholder="+0" tabindex=16 value="{{initiative}}">
 								</div>
 
 								<div class="col-sm-4">
 									<label>Speed</label>
-									<input type="text" name="speed" class="form-control" placeholder="">
+									<input type="text" name="speed" class="form-control" placeholder="" tabindex=17 value="{{speed}}">
 								</div>
 							</div>
 
 							<div class="row" style="margin-top: 20px;">
 								<div class="col-sm-4">
 									<label>Hit Points</label>
-									<input type="text" name="hitpoints" class="form-control" placeholder="">
+									<input type="text" name="hitpoints" class="form-control" placeholder="" tabindex=18 value="{{hitPoints}}">
 								</div>
 
 								<div class="col-sm-4">
 									<label>Hit Dice</label>
-									<input type="text" name="hitpoints" class="form-control" placeholder="">
+									<input type="text" name="hitdice" class="form-control" placeholder="" tabindex=19 value="{{hitDice}}">
 								</div>
 							</div>
 
@@ -693,24 +687,24 @@
 									<h5>Weapons</h5>
 								</div>
 
-								<div class="col-sm-4">
-									<label>Name</label>
-									<input type="text" name="weapon-name" class="form-control" placeholder="Battleaxe">
-								</div>
-								<div class="col-sm-3">
-									<label>Atk Bonus</label>
-									<input type="text" name="atkbonus" class="form-control" placeholder="+4">
-								</div>
-								<div class="col-sm-5">
-									<label>Damage</label>
-									<input type="text" name="weapon-damage" class="form-control" placeholder="1d8 + 4">
+								{{#each weapons}}
+								<div class="weapon" data-weapon-number="0">
+									<div class="col-sm-4">
+										<label>Name</label>
+										<input type="text" name="weapon-name" class="form-control weapon-input" data-weapon-index="0" value="{{name}}">
+									</div>
+									<div class="col-sm-3">
+										<label>Atk Bonus</label>
+										<input type="text" name="atkbonus" class="form-control weapon-input" data-weapon-index="1" value="{{atkbonus}}">
+									</div>
+									<div class="col-sm-5">
+										<label>Damage</label>
+										<input type="text" name="weapon-damage" class="form-control weapon-input" data-weapon-index="2" value="{{damage}}">
+									</div>
 								</div>
 
-								<hr class="spacer20">
-
-								<div class="col-sm-12">
-									<button id="add-weapon" class="btn btn-primary"><i class="fa fa-plus"></i> Add Weapon</button>
-								</div>
+								<hr class="spacer30">
+								{{/each}}
 							</div>
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
@@ -724,7 +718,7 @@
 							<div class="row">
 								<div class="col-sm-12">
 									<label for="">Equipment</label>
-									<textarea class="form-control" rows="6" style="resize: vertical;"></textarea>
+									<textarea class="form-control" name="equipment" rows="6" style="resize: vertical;" value="{{equipment}}"></textarea>
 								</div>
 							</div>
 						</div>
@@ -740,13 +734,13 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<label for="">Proficiency Bonus</label>
-									<input type="text" name="proficiency" class="form-control">
+									<input type="text" name="proficiency" class="form-control" tabindex=7 value="{{proficiency}}">
 
 									<span class="instruction">Enter your proficiency bonus first to ensure all bonuses are calculated correctly.</span>
 								</div>
 								<div class="col-sm-6">
 									<label for="">Passive Perception</label>
-									<input type="text" name="passive-percep" class="form-control" value="10">
+									<input type="text" name="passive-percep" class="form-control" tabindex=8 value="{{passivePerception}}">
 
 									<span class="instruction">Passive perception is calculated by 10 + Perception Modifier.</span>
 								</div>
@@ -759,38 +753,38 @@
 										<div class="col-md-6">
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">STR</span>
-												<input type="text" data-score-index="0" class="form-control ability">
+												<input type="text" data-score-index="0" class="form-control ability" tabindex=9 value="{{abilityScores.[0]}}">
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">DEX</span>
-												<input type="text" data-score-index="1" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="1" class="form-control ability" placeholder="" value="{{abilityScores.[1]}}" tabindex=10>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">CON</span>
-												<input type="text" data-score-index="2" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="2" class="form-control ability" placeholder="" value="{{abilityScores.[2]}}" tabindex=11>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">INT</span>
-												<input type="text" data-score-index="3" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="3" class="form-control ability" placeholder="" value="{{abilityScores.[3]}}" tabindex=12>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">WIS</span>
-												<input type="text" data-score-index="4" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="4" class="form-control ability" placeholder="" value="{{abilityScores.[4]}}" tabindex=13>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">CHA</span>
-												<input type="text" data-score-index="5" class="form-control ability" placeholder="">
+												<input type="text" data-score-index="5" class="form-control ability" placeholder="" value="{{abilityScores.[5]}}" tabindex=14>
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 										</div>
@@ -807,7 +801,7 @@
 												<span class="input-group-addon fixed prof-name">Strength</span>
 												<span data-score-index="0" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="strength">
+													<input type="checkbox" class="save-proficiency">
 												</span>
 											</div>
 
@@ -815,7 +809,7 @@
 												<span class="input-group-addon fixed prof-name">Dexterity</span>
 												<span data-score-index="1" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="dexterity">
+													<input type="checkbox" class="save-proficiency">
 												</span>
 											</div>
 
@@ -823,7 +817,7 @@
 												<span class="input-group-addon fixed prof-name">Constitution</span>
 												<span data-score-index="2" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency"  data-add-proficiency-to="constitution">
+													<input type="checkbox" class="save-proficiency">
 												</span>
 											</div>	
 										</div>
@@ -832,7 +826,7 @@
 												<span class="input-group-addon fixed prof-name">Intelligence</span>
 												<span data-score-index="3" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="intelligence">
+													<input type="checkbox" class="save-proficiency">
 												</span>
 											</div>
 
@@ -840,7 +834,7 @@
 												<span class="input-group-addon fixed prof-name">Wisdom</span>
 												<span data-score-index="4" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="wisdom">
+													<input type="checkbox" class="save-proficiency">
 												</span>
 											</div>
 
@@ -848,7 +842,7 @@
 												<span class="input-group-addon fixed prof-name">Charisma</span>
 												<span data-score-index="5" class="input-group-addon fixed"></span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency" data-add-proficiency-to="charisma">
+													<input type="checkbox" class="save-proficiency">
 												</span>
 											</div>
 										</div>
@@ -1011,12 +1005,12 @@
 					<div class="form-group"  style="margin-top: 0; padding-top; 0;">
 
 						<div id="traits">
-							<div class="col-sm-6 col-md-4 trait trait1" id="charTrait">
+							<!-- <div class="col-sm-6 col-md-4 trait" data-trait-count="1" id="charTrait">
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-file-o"></i></span>
-											<input type="text" class="trait-name form-control" placeholder="Trait/Feature Name">
+											<input type="text" class="trait-name form-control" data-trait-index="0" placeholder="Trait/Feature Name">
 										</div>
 									</div>
 								</div>
@@ -1025,10 +1019,31 @@
 
 								<div class="row">
 									<div class="col-sm-12">
-										<textarea class="form-control trait-description" rows="5" style="resize: vertical;" placeholder=""></textarea>
+										<textarea class="form-control trait-description" rows="5" style="resize: vertical;" data-trait-index="1" placeholder="Description"></textarea>
 									</div>
 								</div>
-							</div>
+							</div> -->
+
+							{{#each traits}}
+								<div class="col-sm-6 col-md-4 trait" data-trait-count="" id="charTrait">
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-file-o"></i></span>
+												<input type="text" class="trait-name form-control" data-trait-index="0" value="{{name}}">
+											</div>
+										</div>
+									</div>
+
+									<hr class="spacer20">
+
+									<div class="row">
+										<div class="col-sm-12">
+											<textarea class="form-control trait-description" rows="5" style="resize: vertical;" data-trait-index="1" value="{{description}}"></textarea>
+										</div>
+									</div>
+								</div>
+							{{/each}}
 						</div>
 
 						<div class="col-sm-4 col-md-2 add-feat-trait">
@@ -1039,25 +1054,14 @@
 						</div>
 					</div>
 
-					<hr class="spacer30">
-
 					<div class="form-group">
 						<div class="col-sm-12">
-							<button type="submit" class="btn btn-primary">Create Character</button>
+							<button type="submit" class="btn btn-primary">Update Character</button>
 						</div>
 					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</template>
 
-<template name="displayCharacter">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-				<h3>{{name}}</h3>
-				<p>{{name}} is a level {{level}} {{class}}.</p>
+					<hr class="spacer30">
+				</form>
 			</div>
 		</div>
 	</div>

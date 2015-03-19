@@ -11,6 +11,21 @@ var addPositiveMod = function(num) {
 	return num;
 }
 
+var cleanProficiency = function(text) {
+	text = text.replace('(STR)','');
+	text = text.replace('(DEX)','');
+	text = text.replace('(CON)','');
+	text = text.replace('(INT)','');
+	text = text.replace('(WIS)','');
+	text = text.replace('(CHA)','');
+
+	if(/\s+$/.test(text)) {
+		text = text.substr(0, text.length - 1);
+	}
+
+	return text;
+}
+
 applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreIndex) {
 	abilityScoreModifier = parseInt(abilityScoreModifier);
 	var pureModifier = abilityScoreModifier;
@@ -127,26 +142,45 @@ Template.createCharacter.events({
 	},
 
 	'blur .weapon input': function(e) {
+		// get the weapon number (first or second)
 		var weaponNumber = parseInt( $(e.target).closest('.weapon').data('weapon-number') );
+
+		// get the value name and data associated
 		var weaponIndex = parseInt( $(e.target).data('weapon-index') );
+		var theData = $(e.target).val();
 
+		// if object doesn't exist, initialize it
 		if(weapons.length - 1 < weaponNumber) {
-			weapons[weaponNumber] = [];
+			weapons[weaponNumber] = {};
 		}
-		weapons[weaponNumber][weaponIndex] = $(e.target).val();
 
-		console.log(weapons);
+		if (weaponIndex === 0) {
+			weapons[weaponNumber].name = $(e.target).val();
+		} else if (weaponIndex === 1) {
+			weapons[weaponNumber].atkbonus = $(e.target).val();
+		} else {
+			weapons[weaponNumber].damage = $(e.target).val();
+		}
 	},
 
 	'blur .trait input, blur .trait textarea': function(e) {
+		// get the trait number (first or second)
 		var traitNumber = traitCount - 1;
-		var traitIndex = parseInt( $(e.target).data('trait-index') );
 
+		// get the value name and data associated
+		var traitIndex = parseInt( $(e.target).data('trait-index') );
+		var theData = $(e.target).val();
+
+		// if object doesn't exist, initialize it
 		if(traits.length - 1 < traitNumber) {
-			traits[traitNumber] = [];
+			traits[traitNumber] = {};
 		}
 
-		traits[traitNumber][traitIndex] = $(e.target).val();
+		if (traitIndex === 0) {
+			traits[traitNumber].name = $(e.target).val();
+		} else {
+			traits[traitNumber].description = $(e.target).val();
+		}
 
 		console.log(traits);
 	},
@@ -154,19 +188,18 @@ Template.createCharacter.events({
 	'click .save-proficiency, click .gen-proficiency': function(e) {
 		var modifier = $(e.target).parent().prev().text();
 		var isChecked = $(e.target).is(':checked');
-		
-		// TODO FIX THIS WACKY SHIT
+
 		var thisProficiency = $(e.target).parent().prev().prev().text();
+		thisProficiency = cleanProficiency(thisProficiency);
 		
 		if( isChecked ) {
 			// checked after click
 			modifier = parseInt(modifier) + parseInt(proficiencyBonus);
-			
+			// add to proficiencies array
 			proficiencies.push(thisProficiency);
 		} else {
-			// unchecked after click
 			modifier = parseInt(modifier) - parseInt(proficiencyBonus);
-
+			// remove from proficiencies array
 			var profIndex = proficiencies.indexOf(thisProficiency);
 			proficiencies.splice(profIndex, 1);
 		}
@@ -242,8 +275,7 @@ Template.createCharacter.events({
 			proficiency: proficiencyBonus,
 		 	passivePerception: $('input[name=passive-percep]').val(),
 			abilityScores: abilityScores,
-			abilityModifiers: abilityModifiers,
-			saveModifiers: saveModifiers
+			abilityModifiers: abilityModifiers
 
 		}
 
@@ -257,63 +289,201 @@ Template.createCharacter.events({
 	}
 });
 
+Template.editCharacter.rendered = function(e) {
+	var test = this.ac;
+
+	console.log(test);
+};
+
+Template.editCharacter.helpers({
+	test: function() {
+		return this.class;
+	}
+});
+
+// Template.editCharacter.trait_with_index = function() {
+//     var traits = Template.editCharacter.traits();
+
+//     for(var i = 0; i=traits.length; i++) {
+//         traits[i].index = i;
+//     }
+
+//     return traits;
+// };
+
 Template.editCharacter.events({
 	'blur .ability': function(e) {
 		e.preventDefault();
-		var mod = calculateModifier($(e.target).val());
-		var ability = $(e.target).attr('name');
 
-		// find the relevant saving throw
-		var matched = $('.saving-throws [name=' + ability + ']');
+		// define starting variables
+		var abilityScore = $(e.target).val();
+		var modifier = calculateModifier(abilityScore);
+		var scoreIndex = $(e.target).data('score-index');
 
-		if(mod > 0) {
-			mod = "+" + mod;
+		if(modifier > 0) {
+			modifier = '+' + modifier;
 		}
 
-		// set modifier
-		$(e.target).next().html(mod);
-		// set saving throw modifier
-		$(matched).text(mod);
+		if( abilityScores.length < 6 || abilityScores[scoreIndex] != abilityScore ) {
+			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);	
+		} else {
+			console.log('loop will run');
+			$('.base-modifier').each(function(scoreIndex, obj) {
+				var getMod = $(this).text();
+		     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
+		    });	
+		}
+
+		// put ability score in array
+		if(abilityScore != '') {
+			abilityScores[scoreIndex] = abilityScore;
+			abilityModifiers[scoreIndex] = modifier;
+		}
+
+		if(abilityScores.length < 6) {
+			console.log('disable proficiency checkboxes');
+		} else {
+			$('.gen-proficiency, .save-proficiency').prop("disabled", false);
+		}
+
+		// set ability score modifier
+		$(e.target).next().html(modifier);
+	},
+
+	// BUG: instead of adding the appropriate ability modifier, it adds the last one (cha)
+	'blur [name=proficiency]': function(e) {
+		e.preventDefault();
+		proficiencyBonus = $(e.target).val();
+
+
+		if ( abilityScores.length < 6 ) {
+			console.log('not all ability scores are filled out. do not apply proficiency bonuses yet.');
+		} else {
+			$('.base-modifier').each(function(scoreIndex, obj) {
+				var getMod = $(this).text();
+		     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
+		    });	
+		}	
+	},
+
+	'blur .weapon input': function(e) {
+		var weaponNumber = parseInt( $(e.target).closest('.weapon').data('weapon-number') );
+		var weaponIndex = parseInt( $(e.target).data('weapon-index') );
+
+		if(weapons.length - 1 < weaponNumber) {
+			weapons[weaponNumber] = [];
+		}
+		weapons[weaponNumber][weaponIndex] = $(e.target).val();
+
+		console.log(weapons);
+	},
+
+	'blur .trait input, blur .trait textarea': function(e) {
+		var traitNumber = traitCount - 1;
+		var traitIndex = parseInt( $(e.target).data('trait-index') );
+
+		if(traits.length - 1 < traitNumber) {
+			traits[traitNumber] = [];
+		}
+
+		traits[traitNumber][traitIndex] = $(e.target).val();
+
+		console.log(traits);
+	},
+
+	'click .save-proficiency, click .gen-proficiency': function(e) {
+		var modifier = $(e.target).parent().prev().text();
+		var isChecked = $(e.target).is(':checked');
+
+		var thisProficiency = $(e.target).parent().prev().prev().text();
+		thisProficiency = cleanProficiency(thisProficiency);
+		
+		if( isChecked ) {
+			// checked after click
+			modifier = parseInt(modifier) + parseInt(proficiencyBonus);
+			// add to proficiencies array
+			proficiencies.push(thisProficiency);
+		} else {
+			modifier = parseInt(modifier) - parseInt(proficiencyBonus);
+			// remove from proficiencies array
+			var profIndex = proficiencies.indexOf(thisProficiency);
+			proficiencies.splice(profIndex, 1);
+		}
+
+		console.log(proficiencies);
+		
+		if(modifier > 0) {
+			modifier = "+" + modifier;
+		}
+
+		// if the ability score modifier ISN'T zero, apply proficiencies
+		if($(e.target).parent().prev().text().length != 0) {
+			$(e.target).parent().prev().text(modifier);
+		}
+
+		// if you're clicking perception, update passive perception score
+		// TODO: This code block is reused. Make it a function later??
+		if( $(e.target).data('add-proficiency-to') === 'perception') {
+	    	var addPerception = parseInt($('.perception-prof').text());
+	    	$('input[name=passive-percep]').val(10 + addPerception);
+	    }
+	},
+
+	'click .add-feat-trait': function(e) {
+		traitCount = traitCount + 1;
+		console.log(traitCount);
+		var newTrait = $("#charTrait").clone();
+		
+		newTrait.children().find('input, textarea').each(function(){
+		   $(this).val('');
+		});
+
+		newTrait.removeAttr('id');
+		newTrait.data('trait-count', traitCount);
+
+		$(newTrait).appendTo('#traits');
+
+		if(traitCount > 2) {
+			$('.add-feat-trait').css('margin-top', '50px');
+		} else {
+			$('.add-feat-trait').css('margin-top', '10px');
+		}
 	},
 
 	'submit form': function(e) {
+
 		e.preventDefault();
 
 		var currentCharacterId = this._id;
 
 		var characterProperties = {
-	  		name: $(e.target).find('[name=charname]').val(),
+	  		// overview
+			name: $(e.target).find('[name=charname]').val(),
 			class: $(e.target).find('[name=class]').val(),
 			level: $(e.target).find('[name=level]').val(),
 			background: $(e.target).find('[name=background]').val(),
 			race: $(e.target).find('[name=race]').val(),
 			alignment: $(e.target).find('[name=alignment]').val(),
+
+			// bullshit
+			ac: $(e.target).find('[name=ac]').val(),
+			initiative: $(e.target).find('[name=initiative]').val(),
+			speed: $(e.target).find('[name=speed]').val(),
+			hitPoints: $(e.target).find('[name=hitpoints]').val(),
+			hitDice: $(e.target).find('[name=hitdice]').val(),
+	
+			
+			// equipment
+			weapons: weapons,
+			equipment: $(e.target).find('[name=equipment]').val(),
+
+			// features and traits
+			traits: traits,	
 			
 			proficiency: proficiencyBonus,
-
-			strAbility: $(e.target).find('[name=str]').val(),
-			strMod: $(e.target).find('#strMod').html(),
-			strSave: $(e.target).find('#strSave').html(),
-
-			dexAbility: $(e.target).find('[name=dex]').val(),
-			dexMod: $(e.target).find('#dexMod').html(),
-			dexSave: $(e.target).find('#dexSave').html(),
-
-			conAbility: $(e.target).find('[name=con]').val(),
-			conMod: $(e.target).find('#conMod').html(),
-			conSave: $(e.target).find('#conSave').html(),
-
-			intAbility: $(e.target).find('[name=int]').val(),
-			intMod: $(e.target).find('#intMod').html(),
-			intSave: $(e.target).find('#intSave').html(),
-
-			wisAbility: $(e.target).find('[name=wis]').val(),
-			wisMod: $(e.target).find('#wisMod').html(),
-			wisSave: $(e.target).find('#wisSave').html(),
-
-			chaAbility: $(e.target).find('[name=cha]').val(),
-			chaMod: $(e.target).find('#chaMod').html(),
-			chaSave: $(e.target).find('#chaSave').html()
+		 	passivePerception: $('input[name=passive-percep]').val(),
+			abilityScores: abilityScores,
+			abilityModifiers: abilityModifiers
 		}
 
 		Characters.update(currentCharacterId, {$set: characterProperties}, function(error) {

@@ -1,0 +1,123 @@
+<template name="displayCharacter">
+	<hr class="spacer60">
+	<hr class="spacer60">
+
+	<!-- TODO: if you own this character, show an edit button -->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h3>{{name}}</h3>
+				<p>{{name}} is a Level {{level}} {{race}} {{class}}. Background is {{background}}. Alignment is {{alignment}}.</p>
+			</div>
+
+			<div class="col-md-6">
+				<hr class="spacer60">
+
+				<p>Proficiency Bonus: {{proficiency}}<br>
+				Passive Perception: {{passivePerception}}<br></p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<strong>Equipment:</strong>
+				<div style="white-space: pre-wrap;">{{equipment}}</div>
+
+				<hr class="spacer20">
+
+				<strong>Weapons:</strong><br>
+				{{#each weapons}}
+					Name: {{name}}<br>
+					Attack Bonus: {{atkbonus}}<br>
+					Weapon Damage: {{damage}}<br><br>
+				{{/each}}
+
+				<hr class="spacer20">
+
+				<strong>Features:</strong><br>
+
+				{{#each traits}}
+					<strong>{{name}}</strong><br>
+					Description: {{description}}
+					<hr class="spacer20">
+				{{/each}}
+			</div>
+
+			<div class="col-md-6">
+				<strong>Bullshit</strong>
+				<div class="row">
+					<div class="col-md-6">
+						AC: {{ac}}<br>
+						Initiative: {{initiative}}<br>
+						Speed: {{speed}}<br>
+					</div>
+					<div class="col-md-6">
+						Hit Points: {{hitPoints}}<br>
+						Hit Dice: {{hitDice}}
+					</div>
+				</div>
+
+				<hr class="spacer30">
+
+				<strong>Ability Scores</strong>
+				<div class="row">
+					<div class="col-md-6">
+						Strength: {{abilityScores.[0]}} &nbsp;({{abilityModifiers.[0]}})<br>
+						Dexterity: {{abilityScores.[1]}} &nbsp;({{abilityModifiers.[1]}})<br>
+						Constitution: {{abilityScores.[2]}} &nbsp;({{abilityModifiers.[2]}})<br>
+					</div>
+					<div class="col-md-6">
+						Wisdom: {{abilityScores.[3]}} &nbsp;({{abilityModifiers.[3]}})<br>
+						Intelligence: {{abilityScores.[4]}} &nbsp;({{abilityModifiers.[4]}})<br>
+						Charisma: {{abilityScores.[5]}} &nbsp;({{abilityModifiers.[5]}})<br>
+					</div>
+				</div>
+
+				<hr class="spacer30">
+
+				<strong>Saving Throws</strong>
+				<div class="row">
+					<div class="col-md-6">
+						Strength: {{abilityScores.[0]}} &nbsp;({{abilityModifiers.[0]}})<br>
+						Dexterity: {{abilityScores.[1]}} &nbsp;({{abilityModifiers.[1]}})<br>
+						Constitution: {{abilityScores.[2]}} &nbsp;({{abilityModifiers.[2]}})<br>
+					</div>
+					<div class="col-md-6">
+						Wisdom: {{abilityScores.[3]}} &nbsp;({{abilityModifiers.[3]}})<br>
+						Intelligence: {{abilityScores.[4]}} &nbsp;({{abilityModifiers.[4]}})<br>
+						Charisma: {{abilityScores.[5]}} &nbsp;({{abilityModifiers.[5]}})<br>
+					</div>
+				</div>
+
+				<hr class="spacer30">
+
+				<strong>Skills</strong>
+				<div class="row">
+					<div class="col-md-6">
+						Acrobatics (DEX)<br>
+						Animal Handling (WIS)<br>
+						Arcana (INT)<br>
+						Athletics (STR)<br>
+						Deception (CHA)<br>
+						History (INT)<br>
+						Insight (WIS)<br>
+						Intimidation (CHA)<br>
+						Investigation (INT)
+					</div>
+					<div class="col-md-6">
+						Medicine (WIS)<br>
+						Nature (INT)<br>
+						Perception (WIS)<br>
+						Performance (CHA)<br>
+						Persuasion (CHA)<br>
+						Religion (INT)<br>
+						Sleight of Hand (DEX)<br>
+						Stealth (DEX)<br>
+						Survival (WIS)
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
