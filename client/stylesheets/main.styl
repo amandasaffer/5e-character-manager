@@ -1,5 +1,8 @@
 /* CSS declarations go here */
-@import url('http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic');
+@import url('http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic|Merriweather:400,400italic,700,700italic,900,900italic');
+
+lato = "Lato", sans-serif
+merri = "Merriweather", serif
 
 body
 	font-size 16px
@@ -20,6 +23,11 @@ nav.navbar
 	
 	.navbar-collapse
 		padding-top 10px
+		
+	ul
+		font-family lato
+		font-size 16px
+		line-height 1
 	
 	a.navbar-brand
 		font-weight 700
@@ -28,7 +36,48 @@ nav.navbar
 			opacity .5
 			font-weight 900
 			
+#main-hero
+	height 400px
+	margin-top 70px
+	background url('/images/ToDKeyArt1.jpg')
+	background-size cover
+	background-position 50% 40%
+	padding-top 130px
+	margin-bottom 40px
+	
+	h1
+		color white
+		opacity .9
+		line-height 1.2
+		text-transform uppercase
+		font-weight 900
+		margin 0 0 10px 0
+		letter-spacing 1px
+		font-size 50px
 
+#page-head
+	height 120px
+	margin-top 70px
+	background url('/images/ToDKeyArt1.jpg')
+	background-size cover
+	background-position 50% 40%
+	margin-bottom 40px
+	padding-top 20px
+	
+	h3
+		color white
+		opacity .9
+		line-height 1.2
+		font-family lato
+		color white
+		text-transform uppercase
+		font-size 32px
+		font-weight 700
+
+h1, h2, h3, h4, h5, h6
+	font-family lato
+	letter-spacing 1px
+	text-transform uppercase
 
 h2
 	font-family "Lato", sans-serif
@@ -38,13 +87,30 @@ h2
 	opacity .8
 	margin 0 0 10px 0
 	display block
+
+h4
+	font-size 16px
+	font-weight 700
 	
 p
 	margin 0 0 30px
-	line-height 1.65
+	line-height 1.75
+	font-family merri
+	font-size 14px
 
 	&.clean
 		margin 0 0 10px
+
+.btn
+	font-family lato
+	letter-spacing 1px
+	text-transform uppercase
+	padding 9px 15px
+
+ul
+	font-size 14px
+	font-family merri
+	line-height 1.75
 
 ul.group-list
 	margin 0 0 30px
@@ -65,7 +131,7 @@ ul.group-list
 
 form.create-character
 	label
-		font-family "Lato", sans-serif
+		font-family lato
 		font-size 14px
 		margin 0 0 7px
 	input[type=text]
@@ -75,10 +141,10 @@ form.create-character
 		padding-top 8px
 		box-shadow none
 		border none
-		font-family "Lato", sans-serif
+		font-family lato
 	
 	h5
-		font-family "Lato", sans-serif
+		font-family lato
 		font-size 26px
 		text-transform uppercase
 		font-weight 900
@@ -113,7 +179,7 @@ form.create-character
 		border-radius 5px
 		
 		span.add
-			font-family "Lato", sans-serif
+			font-family lato
 			font-size 12px
 			text-transform uppercase
 			letter-spacing 1px

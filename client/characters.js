@@ -263,7 +263,6 @@ Template.createCharacter.events({
 			speed: $(e.target).find('[name=speed]').val(),
 			hitPoints: $(e.target).find('[name=hitpoints]').val(),
 			hitDice: $(e.target).find('[name=hitdice]').val(),
-	
 			
 			// equipment
 			weapons: weapons,
@@ -275,8 +274,10 @@ Template.createCharacter.events({
 			proficiency: proficiencyBonus,
 		 	passivePerception: $('input[name=passive-percep]').val(),
 			abilityScores: abilityScores,
-			abilityModifiers: abilityModifiers
+			abilityModifiers: abilityModifiers,
 
+			// TODO: saving throws are included but need to parse them
+			proficiencies: proficiencies
 		}
 
 		Meteor.call('addCharacter', character, function(error, id) {
@@ -291,6 +292,9 @@ Template.createCharacter.events({
 
 Template.editCharacter.rendered = function(e) {
 	var test = this.ac;
+
+	// TODO??
+	// traitCount = 
 
 	console.log(test);
 };

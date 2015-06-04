@@ -1,11 +1,17 @@
 <template name="characters">
-	<hr class="spacer60">
-	<hr class="spacer60">
+	<div id="page-head">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<h3>Character Sheets</h3>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<h3>Character Sheets</h3>
 				<ul class="group-list">
 				    {{#each mycharacters}}
 				      <li><a href="{{pathFor 'editCharacter'}}">{{name}}</a></li>
