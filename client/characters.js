@@ -326,7 +326,7 @@ Template.editCharacter.helpers({
 // Template.editCharacter.trait_with_index = function() {
 //     var traits = Template.editCharacter.traits();
 
-//     for(var i = 0; i=traits.length; i++) {
+//     for(var i = 0; i<=traits.length; i++) {
 //         traits[i].index = i;
 //     }
 

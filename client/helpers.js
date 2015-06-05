@@ -3,12 +3,23 @@ UI.registerHelper('selected', function(key, value) {
 });
 
 UI.registerHelper('isProficient', function(base, modifier, key, value) {
-	console.log(key);
-	console.log(value);
-	console.log(modifier);
-	console.log(base);
-	return 0;
+	var proficiencyScore = base;
 
 	// if value is at any index in key, 
 	// then add modifier to base and return that number
+	for(i=0; i<=key.length; i++) {
+		if(key[i] == value) {
+			proficiencyScore = base + modifier;
+			if(proficiencyScore > 0) {
+				proficiencyScore = "+" + proficiencyScore + "*";
+			}
+
+			if(proficiencyScore < 0) {
+				proficiencyScore = "-" + proficiencyScore + "*";
+			}
+
+			break;
+		}
+	}
+	return proficiencyScore;
 });
