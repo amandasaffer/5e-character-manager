@@ -63,58 +63,60 @@
 				<strong>Ability Scores</strong>
 				<div class="row">
 					<div class="col-md-6">
-						Strength: {{abilityScores.[0]}} &nbsp;({{abilityModifiers.[0]}})<br>
-						Dexterity: {{abilityScores.[1]}} &nbsp;({{abilityModifiers.[1]}})<br>
-						Constitution: {{abilityScores.[2]}} &nbsp;({{abilityModifiers.[2]}})<br>
+						Strength: {{abilityScores.[0]}} &nbsp; ({{abilityModifiers.[0]}})<br>
+						Dexterity: {{abilityScores.[1]}} &nbsp; ({{abilityModifiers.[1]}})<br>
+						Constitution: {{abilityScores.[2]}} &nbsp; ({{abilityModifiers.[2]}})<br>
 					</div>
 					<div class="col-md-6">
-						Wisdom: {{abilityScores.[3]}} &nbsp;({{abilityModifiers.[3]}})<br>
-						Intelligence: {{abilityScores.[4]}} &nbsp;({{abilityModifiers.[4]}})<br>
-						Charisma: {{abilityScores.[5]}} &nbsp;({{abilityModifiers.[5]}})<br>
-					</div>
-				</div>
-
-				<hr class="spacer30">
-
-				<strong>Saving Throws</strong>
-				<div class="row">
-					<div class="col-md-6">
-						Strength: {{abilityScores.[0]}} &nbsp;({{abilityModifiers.[0]}})<br>
-						Dexterity: {{abilityScores.[1]}} &nbsp;({{abilityModifiers.[1]}})<br>
-						Constitution: {{abilityScores.[2]}} &nbsp;({{abilityModifiers.[2]}})<br>
-					</div>
-					<div class="col-md-6">
-						Wisdom: {{abilityScores.[3]}} &nbsp;({{abilityModifiers.[3]}})<br>
-						Intelligence: {{abilityScores.[4]}} &nbsp;({{abilityModifiers.[4]}})<br>
-						Charisma: {{abilityScores.[5]}} &nbsp;({{abilityModifiers.[5]}})<br>
+						Wisdom: {{abilityScores.[3]}} &nbsp; ({{abilityModifiers.[3]}})<br>
+						Intelligence: {{abilityScores.[4]}} &nbsp; ({{abilityModifiers.[4]}})<br>
+						Charisma: {{abilityScores.[5]}} &nbsp; ({{abilityModifiers.[5]}})<br>
 					</div>
 				</div>
 
 				<hr class="spacer30">
 
-				<strong>Skills</strong>
-				<div class="row">
-					<div class="col-md-6">
-						Acrobatics (DEX)<br>
-						Animal Handling (WIS)<br>
-						Arcana (INT)<br>
-						Athletics (STR)<br>
-						Deception (CHA)<br>
-						History (INT)<br>
-						Insight (WIS)<br>
-						Intimidation (CHA)<br>
-						Investigation (INT)
+				<div id="proficiency-spy">
+					<strong>Saving Throws</strong>
+					<div class="row">
+						<div class="col-md-6">
+							<span class="strength display-mod">Strength: {{isProficient abilityModifiers.[0] proficiency proficiencies "Strength"}}</span><br>
+							<span class="dexterity display-mod">Dexterity: {{isProficient abilityModifiers.[1] proficiency proficiencies "Dexterity"}}</span><br>
+							<span class="constitution display-mod">Constitution: {{isProficient abilityModifiers.[2] proficiency proficiencies "Constitution"}}</span>
+						</div>
+						<div class="col-md-6">
+							<span class="wisdom display-mod">Wisdom: {{isProficient abilityModifiers.[3] proficiency proficiencies "Wisdom"}}</span><br>
+							<span class="intelligence display-mod">Intelligence: {{isProficient abilityModifiers.[4] proficiency proficiencies "Intelligence"}}</span><br>
+							<span class="charisma display-mod">Charisma: {{isProficient abilityModifiers.[5] proficiency proficiencies "Charisma"}}</span>
+						</div>
 					</div>
-					<div class="col-md-6">
-						Medicine (WIS)<br>
-						Nature (INT)<br>
-						Perception (WIS)<br>
-						Performance (CHA)<br>
-						Persuasion (CHA)<br>
-						Religion (INT)<br>
-						Sleight of Hand (DEX)<br>
-						Stealth (DEX)<br>
-						Survival (WIS)
+
+					<hr class="spacer30">
+
+					<strong>Skills</strong>
+					<div class="row">
+						<div class="col-md-6">
+							Acrobatics (DEX)<br>
+							Animal Handling (WIS)<br>
+							Arcana (INT)<br>
+							Athletics (STR)<br>
+							Deception (CHA)<br>
+							History (INT)<br>
+							Insight (WIS)<br>
+							Intimidation (CHA)<br>
+							Investigation (INT)
+						</div>
+						<div class="col-md-6">
+							Medicine (WIS)<br>
+							Nature (INT)<br>
+							Perception (WIS)<br>
+							Performance (CHA)<br>
+							Persuasion (CHA)<br>
+							Religion (INT)<br>
+							Sleight of Hand (DEX)<br>
+							Stealth (DEX)<br>
+							Survival (WIS)
+						</div>
 					</div>
 				</div>
 

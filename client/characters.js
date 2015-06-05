@@ -290,11 +290,29 @@ Template.createCharacter.events({
 	}
 });
 
+Template.displayCharacter.rendered = function(e) {
+	var proficiencyMod = this.data.proficiency;
+	var proficiencies = this.data.proficiencies;
+
+	// loop through proficiencies array
+	// for each loop, compare array value to the display-mod text before the colon:
+	// if text matches, add proficiencyMod
+	// if text doesn't match, go to next loop iteration
+};
+
+// i don't need helpers because i can access data above in "rendered" function
+// Template.displayCharacter.helpers({
+// 	proficiencies: function() {
+// 		return this.proficiencies;
+// 	},
+
+// 	proficiencyMod: function() {
+// 		return this.proficiency;
+// 	}
+// });
+
 Template.editCharacter.rendered = function(e) {
 	var test = this.ac;
-
-	// TODO??
-	// traitCount = 
 
 	console.log(test);
 };
