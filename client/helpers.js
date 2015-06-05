@@ -11,11 +11,11 @@ UI.registerHelper('isProficient', function(base, modifier, key, value) {
 		if(key[i] == value) {
 			proficiencyScore = base + modifier;
 			if(proficiencyScore > 0) {
-				proficiencyScore = "+" + proficiencyScore + "*";
+				proficiencyScore = "+" + proficiencyScore + "**";
 			}
 
 			if(proficiencyScore < 0) {
-				proficiencyScore = "-" + proficiencyScore + "*";
+				proficiencyScore = "-" + proficiencyScore + "**";
 			}
 
 			break;
