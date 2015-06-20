@@ -756,38 +756,38 @@
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">STR</span>
 												<input type="text" data-score-index="0" class="form-control ability" tabindex=9 value="{{abilityScores.[0]}}">
-				  								<span class="base-modifier input-group-addon fixed thin"></span>
+				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[0]}}</span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">DEX</span>
 												<input type="text" data-score-index="1" class="form-control ability" placeholder="" value="{{abilityScores.[1]}}" tabindex=10>
-				  								<span class="base-modifier input-group-addon fixed thin"></span>
+				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[1]}}</span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">CON</span>
 												<input type="text" data-score-index="2" class="form-control ability" placeholder="" value="{{abilityScores.[2]}}" tabindex=11>
-				  								<span class="base-modifier input-group-addon fixed thin"></span>
+				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[2]}}</span>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">INT</span>
 												<input type="text" data-score-index="3" class="form-control ability" placeholder="" value="{{abilityScores.[3]}}" tabindex=12>
-				  								<span class="base-modifier input-group-addon fixed thin"></span>
+				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[3]}}</span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">WIS</span>
 												<input type="text" data-score-index="4" class="form-control ability" placeholder="" value="{{abilityScores.[4]}}" tabindex=13>
-				  								<span class="base-modifier input-group-addon fixed thin"></span>
+				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[4]}}</span>
 											</div>
 
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">CHA</span>
 												<input type="text" data-score-index="5" class="form-control ability" placeholder="" value="{{abilityScores.[5]}}" tabindex=14>
-				  								<span class="base-modifier input-group-addon fixed thin"></span>
+				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[5]}}</span>
 											</div>
 										</div>
 									</div>	
@@ -801,50 +801,50 @@
 										<div class="col-sm-6 col-md-6">
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Strength</span>
-												<span data-score-index="0" class="input-group-addon fixed"></span>
+												<span data-score-index="0" class="input-group-addon fixed">{{isProficient abilityModifiers.[0] proficiency proficiencies "Strength"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Strength"}} class="save-proficiency">
 												</span>
 											</div>
 
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Dexterity</span>
-												<span data-score-index="1" class="input-group-addon fixed"></span>
+												<span data-score-index="1" class="input-group-addon fixed">{{isProficient abilityModifiers.[1] proficiency proficiencies "Dexterity"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Dexterity"}} class="save-proficiency">
 												</span>
 											</div>
 
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Constitution</span>
-												<span data-score-index="2" class="input-group-addon fixed"></span>
+												<span data-score-index="2" class="input-group-addon fixed">{{isProficient abilityModifiers.[2] proficiency proficiencies "Constitution"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Constitution"}} class="save-proficiency">
 												</span>
 											</div>	
 										</div>
 										<div class="col-sm-6 col-md-6">
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Intelligence</span>
-												<span data-score-index="3" class="input-group-addon fixed"></span>
+												<span data-score-index="3" class="input-group-addon fixed">{{isProficient abilityModifiers.[4] proficiency proficiencies "Intelligence"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Intelligence"}} class="save-proficiency">
 												</span>
 											</div>
 
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Wisdom</span>
-												<span data-score-index="4" class="input-group-addon fixed"></span>
+												<span data-score-index="4" class="input-group-addon fixed">{{isProficient abilityModifiers.[3] proficiency proficiencies "Wisdom"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Wisdom"}} class="save-proficiency">
 												</span>
 											</div>
 
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Charisma</span>
-												<span data-score-index="5" class="input-group-addon fixed"></span>
+												<span data-score-index="5" class="input-group-addon fixed">{{isProficient abilityModifiers.[5] proficiency proficiencies "Charisma"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" class="save-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Charisma"}} class="save-proficiency">
 												</span>
 											</div>
 										</div>
@@ -859,132 +859,132 @@
 										<div class="col-sm-6 col-md-6">
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Acrobatics (DEX)</span>
-												<span data-score-index="1" class="input-group-addon fixed acrobatics-prof"></span>
+												<span data-score-index="1" class="input-group-addon fixed acrobatics-prof">{{isProficient abilityModifiers.[1] proficiency proficiencies "Acrobatics"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="acrobatics" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Acrobatics"}} data-add-proficiency-to="acrobatics" class="gen-proficiency">
 												</span>
 											</div>
 
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Animal Handling (WIS)</span>
-												<span data-score-index="4" class="input-group-addon fixed animalhandling-prof"></span>
+												<span data-score-index="4" class="input-group-addon fixed animalhandling-prof">{{isProficient abilityModifiers.[3] proficiency proficiencies "Animal Handling"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="animal-handling" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Animal Handling"}} data-add-proficiency-to="animal-handling" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Arcana (INT)</span>
-												<span data-score-index="3" class="input-group-addon fixed arcana-prof"></span>
+												<span data-score-index="3" class="input-group-addon fixed arcana-prof">{{isProficient abilityModifiers.[4] proficiency proficiencies "Arcana"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="arcana" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Arcana"}} data-add-proficiency-to="arcana" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Athletics (STR)</span>
-												<span data-score-index="0" class="input-group-addon fixed athletics-prof"></span>
+												<span data-score-index="0" class="input-group-addon fixed athletics-prof">{{isProficient abilityModifiers.[0] proficiency proficiencies "Athletics"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="athletics" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Athletics"}} data-add-proficiency-to="athletics" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Deception (CHA)</span>
-												<span data-score-index="5" class="input-group-addon fixed deception-prof"></span>
+												<span data-score-index="5" class="input-group-addon fixed deception-prof">{{isProficient abilityModifiers.[5] proficiency proficiencies "Deception"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="deception" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Deception"}} data-add-proficiency-to="deception" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">History (INT)</span>
-												<span data-score-index="3" class="input-group-addon fixed history-prof"></span>
+												<span data-score-index="3" class="input-group-addon fixed history-prof">{{isProficient abilityModifiers.[4] proficiency proficiencies "History"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="history" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "History"}} data-add-proficiency-to="history" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Insight (WIS)</span>
-												<span data-score-index="4" class="input-group-addon fixed insight-prof"></span>
+												<span data-score-index="4" class="input-group-addon fixed insight-prof">{{isProficient abilityModifiers.[3] proficiency proficiencies "Insight"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="insight" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Insight"}} data-add-proficiency-to="insight" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Intimidation (CHA)</span>
-												<span data-score-index="5" class="input-group-addon fixed intimidation-prof"></span>
+												<span data-score-index="5" class="input-group-addon fixed intimidation-prof">{{isProficient abilityModifiers.[5] proficiency proficiencies "Intimidation"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="intimidation" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Intimidation"}} data-add-proficiency-to="intimidation" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Investigation (INT)</span>
-												<span data-score-index="3" class="input-group-addon fixed investigation-prof"></span>
+												<span data-score-index="3" class="input-group-addon fixed investigation-prof">{{isProficient abilityModifiers.[4] proficiency proficiencies "Investigation"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="investigation" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Investigation"}} data-add-proficiency-to="investigation" class="gen-proficiency">
 												</span>
 											</div>
 										</div> 
 										<div class="col-md-6">
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Medicine (WIS)</span>
-												<span data-score-index="4" class="input-group-addon fixed medicine-prof"></span>
+												<span data-score-index="4" class="input-group-addon fixed medicine-prof">{{isProficient abilityModifiers.[3] proficiency proficiencies "Medicine"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="medicine" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Medicine"}} data-add-proficiency-to="medicine" class="gen-proficiency">
 												</span>
 											</div>
 
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Nature (INT)</span>
-												<span data-score-index="3" class="input-group-addon fixed nature-prof"></span>
+												<span data-score-index="3" class="input-group-addon fixed nature-prof">{{isProficient abilityModifiers.[4] proficiency proficiencies "Nature"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="nature" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Nature"}} data-add-proficiency-to="nature" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Perception (WIS)</span>
-												<span data-score-index="4" class="input-group-addon fixed perception-prof"></span>
+												<span data-score-index="4" class="input-group-addon fixed perception-prof">{{isProficient abilityModifiers.[3] proficiency proficiencies "Perception"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="perception" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Perception"}} data-add-proficiency-to="perception" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Performance (CHA)</span>
-												<span data-score-index="5" class="input-group-addon fixed performance-prof"></span>
+												<span data-score-index="5" class="input-group-addon fixed performance-prof">{{isProficient abilityModifiers.[5] proficiency proficiencies "Performance"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="performance" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Performance"}} data-add-proficiency-to="performance" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Persuasion (CHA)</span>
-												<span data-score-index="5" class="input-group-addon fixed persuasion-prof"></span>
+												<span data-score-index="5" class="input-group-addon fixed persuasion-prof">{{isProficient abilityModifiers.[5] proficiency proficiencies "Persuasion"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="persuasion" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Persuasion"}} data-add-proficiency-to="persuasion" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Religion (INT)</span>
-												<span data-score-index="3" class="input-group-addon fixed religion-prof"></span>
+												<span data-score-index="3" class="input-group-addon fixed religion-prof">{{isProficient abilityModifiers.[4] proficiency proficiencies "Religion"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="religion" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Religion"}} data-add-proficiency-to="religion" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Sleight of Hand (DEX)</span>
-												<span data-score-index="1" class="input-group-addon fixed soh-prof"></span>
+												<span data-score-index="1" class="input-group-addon fixed soh-prof">{{isProficient abilityModifiers.[1] proficiency proficiencies "Sleight of Hand"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="soh" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Sleight of Hand"}} data-add-proficiency-to="soh" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Stealth (DEX)</span>
-												<span data-score-index="1" class="input-group-addon fixed stealth-prof"></span>
+												<span data-score-index="1" class="input-group-addon fixed stealth-prof">{{isProficient abilityModifiers.[1] proficiency proficiencies "Stealth"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="stealth" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Stealth"}} data-add-proficiency-to="stealth" class="gen-proficiency">
 												</span>
 											</div>
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Survival (WIS)</span>
-												<span data-score-index="4" class="input-group-addon fixed survival-prof"></span>
+												<span data-score-index="4" class="input-group-addon fixed survival-prof">{{isProficient abilityModifiers.[3] proficiency proficiencies "Survival"}}</span>
 				  								<span class="input-group-addon fixed thin">
-													<input type="checkbox" data-add-proficiency-to="stealth" class="gen-proficiency">
+													<input type="checkbox" {{checkProficiency proficiencies "Survival"}} data-add-proficiency-to="stealth" class="gen-proficiency">
 												</span>
 											</div>
 										</div>

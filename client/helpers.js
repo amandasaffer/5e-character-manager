@@ -2,6 +2,14 @@ UI.registerHelper('selected', function(key, value) {
   return key == value? {selected:'selected'}: '';
 });
 
+UI.registerHelper('checkProficiency', function(key, value) {
+	for(i=0; i<key.length; i++) {
+		if(key[i] == value) {
+			return 'checked';
+		}
+	}
+});
+
 UI.registerHelper('isProficient', function(base, modifier, key, value) {
 	var proficiencyScore = base;
 	var modifier = parseInt(modifier);
@@ -13,11 +21,11 @@ UI.registerHelper('isProficient', function(base, modifier, key, value) {
 		if(key[i] == value) {
 			proficiencyScore = base + modifier;
 			if(proficiencyScore > 0) {
-				proficiencyScore = "+" + proficiencyScore + "***";
+				proficiencyScore = "+" + proficiencyScore /* + "***" */;
 			}
 
 			if(proficiencyScore < 0) {
-				proficiencyScore = "-" + proficiencyScore + "***";
+				proficiencyScore = "-" + proficiencyScore /* + "***" */;
 			}
 
 			break;
@@ -25,3 +33,5 @@ UI.registerHelper('isProficient', function(base, modifier, key, value) {
 	}
 	return proficiencyScore;
 });
+
+// {{isProficient abilityModifiers.[0] proficiency proficiencies "Strength"}}
