@@ -294,10 +294,6 @@ Template.displayCharacter.rendered = function(e) {
 	var proficiencyMod = this.data.proficiency;
 	var proficiencies = this.data.proficiencies;
 
-	// loop through proficiencies array
-	// for each loop, compare array value to the display-mod text before the colon:
-	// if text matches, add proficiencyMod
-	// if text doesn't match, go to next loop iteration
 };
 
 // i don't need helpers because i can access data above in "rendered" function
