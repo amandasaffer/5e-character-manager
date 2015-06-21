@@ -297,7 +297,7 @@ Template.displayCharacter.rendered = function(e) {
 };
 
 Template.editCharacter.rendered = function() {
-	proficiencyBonus = this.data.proficiencyBonus;
+	proficiencyBonus = this.data.proficiency;
 	abilityScores = this.data.abilityScores;
 	abilityModifiers = this.data.abilityModifiers;
 	proficiencies = this.data.proficiencies;
@@ -500,7 +500,9 @@ Template.editCharacter.events({
 			proficiency: proficiencyBonus,
 		 	passivePerception: $('input[name=passive-percep]').val(),
 			abilityScores: abilityScores,
-			abilityModifiers: abilityModifiers
+			abilityModifiers: abilityModifiers,
+
+			proficiencies: proficiencies
 		}
 
 		Characters.update(currentCharacterId, {$set: characterProperties}, function(error) {
