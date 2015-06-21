@@ -296,6 +296,16 @@ Template.displayCharacter.rendered = function(e) {
 
 };
 
+Template.editCharacter.rendered = function() {
+	proficiencyBonus = this.data.proficiencyBonus;
+	abilityScores = this.data.abilityScores;
+	abilityModifiers = this.data.abilityModifiers;
+	proficiencies = this.data.proficiencies;
+	weapons = this.data.weapons;
+	traits = this.data.traits;
+	traitCount = this.data.traits.length;
+};
+
 // i don't need helpers because i can access data above in "rendered" function
 // Template.displayCharacter.helpers({
 // 	proficiencies: function() {
@@ -307,36 +317,15 @@ Template.displayCharacter.rendered = function(e) {
 // 	}
 // });
 
-Template.editCharacter.rendered = function(e) {
-	var test = this.ac;
-
-	console.log(test);
-};
-
-Template.editCharacter.helpers({
-	test: function() {
-		return this.class;
-	}
-});
-
-// Template.editCharacter.trait_with_index = function() {
-//     var traits = Template.editCharacter.traits();
-
-//     for(var i = 0; i<=traits.length; i++) {
-//         traits[i].index = i;
-//     }
-
-//     return traits;
-// };
 
 Template.editCharacter.events({
 	'blur .ability': function(e) {
 		e.preventDefault();
 
 		// define starting variables
+		var scoreIndex = $(e.target).data('score-index');
 		var abilityScore = $(e.target).val();
 		var modifier = calculateModifier(abilityScore);
-		var scoreIndex = $(e.target).data('score-index');
 
 		if(modifier > 0) {
 			modifier = '+' + modifier;
@@ -373,7 +362,6 @@ Template.editCharacter.events({
 		e.preventDefault();
 		proficiencyBonus = $(e.target).val();
 
-
 		if ( abilityScores.length < 6 ) {
 			console.log('not all ability scores are filled out. do not apply proficiency bonuses yet.');
 		} else {
@@ -397,14 +385,25 @@ Template.editCharacter.events({
 	},
 
 	'blur .trait input, blur .trait textarea': function(e) {
+		// get the trait number (first or second)
 		var traitNumber = traitCount - 1;
-		var traitIndex = parseInt( $(e.target).data('trait-index') );
 
+		// get the value name and data associated
+		var traitIndex = parseInt( $(e.target).data('trait-index') );
+		var theData = $(e.target).val();
+
+		// if object doesn't exist, initialize it
 		if(traits.length - 1 < traitNumber) {
-			traits[traitNumber] = [];
+			traits[traitNumber] = {};
 		}
 
-		traits[traitNumber][traitIndex] = $(e.target).val();
+		// if blurring name
+		if (traitIndex === 0) {
+			traits[traitNumber].name = theData;
+		// if blurring description
+		} else {
+			traits[traitNumber].description = theData;
+		}
 
 		console.log(traits);
 	},
