@@ -515,7 +515,7 @@ Template.editCharacter.events({
 		});
 	},
 
-	'click .delete': function(e) {
+	'click .delete-character': function(e) {
 		e.preventDefault();
 
 		if (confirm("Delete this character?")) {

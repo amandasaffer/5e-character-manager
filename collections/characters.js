@@ -9,12 +9,12 @@ Characters.allow({
   },
 
   update: function(userId, doc) {
-  	// let collection owner modify
+  	// let owner modify
     return doc.userId === userId;
   },
 
   remove: function(userId, doc) {
-  	// let collection owner remove
+  	// let owner remove
     return doc.userId === userId;
   }
 });
