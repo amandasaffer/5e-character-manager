@@ -15,7 +15,7 @@ body
 
 nav.navbar
 	height 70px
-	font-family "Lato", sans-serif
+	font-family lato
 
 	.navbar-header
 		height 70px
@@ -37,23 +37,76 @@ nav.navbar
 			font-weight 900
 			
 #main-hero
-	height 400px
+	height 91.4vh
 	margin-top 70px
 	background url('/images/ToDKeyArt1.jpg')
 	background-size cover
 	background-position 50% 40%
-	padding-top 130px
-	margin-bottom 40px
+	// padding-top 130px
+	// margin-bottom 40px
+	text-align center
 	
 	h1
 		color white
-		opacity .9
+		opacity .95
 		line-height 1.2
 		text-transform uppercase
 		font-weight 900
-		margin 0 0 10px 0
+		margin 0 0 30px 0
 		letter-spacing 1px
-		font-size 50px
+		font-size 66px
+	span
+		font-family lato
+		text-transform uppercase
+		margin 0 18px 0
+		color #fff
+		opacity .45
+		font-size 12px
+		font-weight 400
+		letter-spacing 1px
+	
+	.btn
+		font-size 15px
+		font-weight 400
+		padding 15px 33px 14px
+		letter-spacing 2px
+		border-radius 39px
+		
+		i
+			opacity .4
+			margin-right 2px
+		
+		&:active
+				position relative
+				top 1px
+		
+		&.signup
+			background lighten(#E35720, 5%)
+			border 1px solid #E35720
+			box-shadow 0px 1px 1px #53381D
+			
+			&:hover
+				background lighten(#E35720, 15%)
+				border 1px solid lighten(#E35720, 10%)
+		
+		&.login
+			background darken(#333, 5%)
+			border 1px solid darken(#333, 7%)
+			// box-shadow 0px 1px 2px #111
+			color #eee
+			
+			&:hover
+				background #333
+				border 1px solid #333
+	
+	.screen
+		height 100%
+		width 100%
+		padding-top 27vh
+		background rgba(25, 25, 25, .34)
+
+		
+		
 
 #page-head
 	height 120px

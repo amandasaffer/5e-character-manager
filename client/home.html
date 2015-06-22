@@ -1,30 +1,14 @@
 <template name="home">
 	<div id="main-hero">
+		<div class="screen">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8">
-					<h1>Begin your adventure</h1>
-					<a href="{{pathFor 'createCharacter'}}" class="btn btn-primary">Create Your Character</a>
+				<div class="col-md-12 col-lg-10 col-lg-offset-1">
+					<h1>Begin your adventure.</h1>
+					<a href="#" class="btn btn-primary signup"><i class="fa fa-user"></i> Create Account</a> <span>or</span> <a href="#" class="btn btn-primary login">Log In</a>
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-				<h3>{{greeting}}</h3>
-				<p>Welcome to the brand new Dungeons &amp; Dragons party manager. From here, you can great a group and manage character sheets, portraits, spell lists, and more. Enjoy your stay and please <a href="#">report any bugs</a> you see crawling around.</p>
-
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
-			</div>
-			<div class="col-md-4">
-				<h4 style="margin-top: 10px;">Release Notes</h4>
-				<p>Version 0.0.2: Edit profile page and group pages.<br>
-				Version 0.0.1: Get the static site, login functionality, and roles working.</p>
-			</div>
 		</div>
 	</div>
 </template>
