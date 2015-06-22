@@ -16,6 +16,18 @@ body
 nav.navbar
 	height 70px
 	font-family lato
+	
+	&.home-page
+		background transparent
+		border none
+		
+		a.navbar-brand
+			color white
+			opacity .8
+		
+		.navbar-nav
+			display none
+
 
 	.navbar-header
 		height 70px
@@ -32,13 +44,14 @@ nav.navbar
 	a.navbar-brand
 		font-weight 700
 		font-size 24px
+		
 		strong
 			opacity .5
 			font-weight 900
 			
 #main-hero
-	height 91.4vh
-	margin-top 70px
+	height 100vh
+	// margin-top 70px
 	background url('/images/ToDKeyArt1.jpg')
 	background-size cover
 	background-position 50% 40%
@@ -102,10 +115,18 @@ nav.navbar
 	.screen
 		height 100%
 		width 100%
-		padding-top 27vh
-		background rgba(25, 25, 25, .34)
-
+		padding-top 35vh
+		background rgba(25, 25, 25, .37)
+	
+	.scroll-down
+		position absolute
+		bottom 30px
+		left 0
+		right 0
+		opacity .7
 		
+		i
+			color white
 		
 
 #page-head
