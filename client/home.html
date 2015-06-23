@@ -1,18 +1,66 @@
 <template name="home">
 	<div id="main-hero">
 		<div class="screen">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-lg-10 col-lg-offset-1">
-					<h1>Begin your adventure.</h1>
-					<a href="#" class="btn btn-primary signup"><i class="fa fa-user"></i> Create Account</a> <span>or</span> <a href="#" class="btn btn-primary login">Log In</a>
-				</div>
-			</div>
+			{{#if default}}
+				{{> intro}}
+			{{/if}}
+
+			{{#if notMember}}
+				{{> createAccount}}
+			{{/if}}
+
+			{{#if alreadyMember}}
+				{{> loginForm}}
+			{{/if}}
 
 			<!-- <div class="scroll-down">
 				<i class="fa fa-angle-down fa-4x"></i>
 			</div> -->
 		</div>
+	</div>
+</template>
+
+<template name="intro">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg-10 col-lg-offset-1">
+				<h1>Begin your adventure.</h1>
+				<a href="#" class="btn btn-primary signup"><i class="fa fa-user"></i> Create Account</a> <span>or</span> <a href="#" class="btn btn-primary login">Log In</a>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="createAccount">
+	<div class="container create-acc">
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-4">
+				<span class="go-back"><i class="fa fa-arrow-left"></i> Back</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-lg-4 col-lg-offset-4">
+				<form id="create-new-account">
+				  <div class="form-group">
+				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+				  </div>
+				  <div class="form-group">
+				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				  </div>
+				  <button type="submit" class="btn btn-default">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="loginForm">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg-10 col-lg-offset-1">
+				<h1>Log In</h1>
+				<a href="#" class="btn btn-primary signup"><i class="fa fa-user"></i> Create Account</a> <span>or</span> <a href="#" class="btn btn-primary login">Log In</a>
+			</div>
 		</div>
 	</div>
 </template>

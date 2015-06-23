@@ -51,12 +51,9 @@ nav.navbar
 			
 #main-hero
 	height 100vh
-	// margin-top 70px
 	background url('/images/ToDKeyArt1.jpg')
 	background-size cover
 	background-position 50% 40%
-	// padding-top 130px
-	// margin-bottom 40px
 	text-align center
 	
 	h1
@@ -112,10 +109,24 @@ nav.navbar
 				background #333
 				border 1px solid #333
 	
+	.create-acc, .login
+		text-align left
+		
+		span
+			margin-left 0
+			padding-left 0
+			cursor pointer
+			
+			&:hover
+				opacity .7
+		
+		#create-new-account
+			margin-top 10px
+	
 	.screen
 		height 100%
 		width 100%
-		padding-top 35vh
+		padding-top 38vh
 		background rgba(25, 25, 25, .37)
 	
 	.scroll-down
