@@ -6,3 +6,9 @@ Template._loginButtonsLoggedInDropdown.events({
         Router.go('profileEdit');
     }
 });
+
+Template.header.events({
+	'click .reset-home': function(e) {
+		Session.set('homeStatus', 'default');
+	}
+});

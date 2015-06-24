@@ -27,6 +27,7 @@ nav.navbar
 		
 		.navbar-nav
 			display none
+			// TODO: DISPLAY ACCOUNT INFO IF LOGGED IN
 
 
 	.navbar-header
@@ -109,24 +110,63 @@ nav.navbar
 				background #333
 				border 1px solid #333
 	
-	.create-acc, .login
+	.welcome
+		padding-top 38vh
+		
+	.create-acc, .login-form
 		text-align left
+		padding-top 35vh
 		
 		span
 			margin-left 0
 			padding-left 0
 			cursor pointer
+			display inline-block
+			margin-bottom 10px
 			
 			&:hover
 				opacity .7
 		
 		#create-new-account
-			margin-top 10px
+			margin-top 5px
+			
+			input[type=email], input[type=password]
+				background rgba(0,0,0,0.35)
+				padding 24px 25px 23px
+				font-size 16px
+				border-radius 25px
+				border none
+				color #fff
+				margin-bottom 20px
+				font-family lato
+				font-weight 300
+				
+			input::-webkit-input-placeholder
+				color #ddd
+				border none
+				box-shadow none
+				text-shadow none
+				opacity .67
+			
+			button[type=submit]
+				padding 14px 25px
+				font-size 14px
+				border-radius 25px
+				background #c55124
+				border none
+				display block
+				width 100%
+				color #fff
+				
+				&:hover
+					background darken(#c55124, 5%)
+				
+				&:focus
+					outline 0
 	
 	.screen
 		height 100%
 		width 100%
-		padding-top 38vh
 		background rgba(25, 25, 25, .37)
 	
 	.scroll-down
