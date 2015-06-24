@@ -75,6 +75,11 @@ nav.navbar
 		font-size 12px
 		font-weight 400
 		letter-spacing 1px
+		
+		i
+			opacity .5
+			margin-left 3px
+			margin-right 2px
 	
 	.btn
 		font-size 15px
@@ -117,6 +122,11 @@ nav.navbar
 		text-align left
 		padding-top 35vh
 		
+		h3
+			color white
+			text-align center
+			margin-bottom 10px
+		
 		span
 			margin-left 0
 			padding-left 0
@@ -127,10 +137,11 @@ nav.navbar
 			&:hover
 				opacity .7
 		
-		#create-new-account
+		#create-new-account, #login-form
 			margin-top 5px
+			margin-bottom 10px
 			
-			input[type=email], input[type=password]
+			input[type=text], input[type=password]
 				background rgba(0,0,0,0.35)
 				padding 24px 25px 23px
 				font-size 16px
@@ -148,18 +159,39 @@ nav.navbar
 				text-shadow none
 				opacity .67
 			
+			
+			.checkbox
+				margin-top 0
+				margin-left 5px
+				
+				// everything over 1200px (large screens)
+				@media handheld, screen and (min-width: 1200px)
+					margin-left 30px
+			
+			label
+				font-family lato
+				color #fff
+				
+				span
+					opacity .9
+					font-size 14px
+					font-weight 300
+					display block
+					text-transform none
+					margin 0 20px 0 4px
+			
 			button[type=submit]
 				padding 14px 25px
 				font-size 14px
 				border-radius 25px
-				background #c55124
+				background lighten(#c55124, 5%)
 				border none
 				display block
 				width 100%
 				color #fff
 				
 				&:hover
-					background darken(#c55124, 5%)
+					background #c55124
 				
 				&:focus
 					outline 0

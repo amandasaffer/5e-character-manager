@@ -1,7 +1,19 @@
 Template.home.rendered = function(e) {
-	// TODO: DISPLAY ACCOUNT INFO IF LOGGED IN
 	$('.navbar').addClass('home-page');
 	$('.navbar-brand').addClass('reset-home');
+	Session.set('homeStatus', 'default');
+	Session.setDefault('homeStatus', 'default');
+};
+
+// TODO: look up when to use this vs rendered
+// Template.home.onCreated = function(e) {
+// 	$('.navbar').removeClass('home-page');
+// 	Session.setDefault('homeStatus', 'default');
+// };
+
+Template.home.onDestroyed = function(e) {
+	// TODO: destroyed doesn't work when redirecting away from template (after login)
+	$('.navbar').removeClass('home-page');
 	Session.setDefault('homeStatus', 'default');
 };
 
@@ -36,20 +48,18 @@ Template.createAccount.events({
 		Session.set('homeStatus', 'default');
 	},
 
-	// TODO: NOT WORKING
 	'submit #create-new-account' : function(e, t) {
       e.preventDefault();
-      var email = t.find('#account-email').value
+      var user = t.find('#account-user').value
         , password = t.find('#account-password').value;
 
         // Trim and validate the input
 
-      Accounts.createUser({email: email, password : password}, function(err){
+      Accounts.createUser({username: user, password : password}, function(err){
           if (err) {
-            // Inform the user that account creation failed
+            alert('error');
           } else {
-            // Success. Account has been created and the user
-            // has logged in successfully. 
+            Router.go('characters');
           }
 
         });
@@ -58,27 +68,30 @@ Template.createAccount.events({
     }
 });
 
-// TODO: NOT WORKING
 Template.loginForm.events({
+	'click .go-back': function(e) {
+		Session.set('homeStatus', 'default');
+	},
+
 	'submit #login-form' : function(e, t){
 		e.preventDefault();
 		
 		// retrieve the input field values
-		var email = t.find('#login-email').value
+		var user = t.find('#login-user').value
 		, password = t.find('#login-password').value;
 
 		// Trim and validate your fields here.... 
 
 		// If validation passes, supply the appropriate fields to the
 		// Meteor.loginWithPassword() function.
-		Meteor.loginWithPassword(email, password, function(err){
-			if (err)
-			  // The user might not have been found, or their passwword
-			  // could be incorrect. Inform the user that their
-			  // login attempt has failed. 
-			else
+		Meteor.loginWithPassword(user, password, function(err){
+			if (err) {
+			  alert('error!');
+			}
+			else {
 			  // The user has been logged in.
-			});
+			}
+		});
 		return false; 
 	}
 })

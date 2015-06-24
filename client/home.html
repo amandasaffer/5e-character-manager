@@ -38,21 +38,31 @@
 	<div class="container create-acc">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
-				<span class="go-back"><i class="fa fa-arrow-left"></i> Back</span>
+				<form id="create-new-account">
+				  <div class="form-group">
+				    <input type="text" class="form-control" id="account-user" placeholder="Username or Email">
+				  </div>
+				  <div class="form-group">
+				    <input type="password" class="form-control" id="account-password" placeholder="Password">
+				  </div>
+				  <div class="form-group">
+				  	<div class="checkbox">
+					    <label>
+					      <input type="checkbox"> <span>I'm a Game Master</span>
+					    </label>
+					    <label>
+					      <input type="checkbox"> <span>I'm a Player</span>
+					    </label>
+					  </div>
+				  </div>l
+
+				  <button type="submit" class="btn btn-default"><i class="fa fa-user"></i> Create Account</button>
+				</form>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
-				<form id="create-new-account">
-				  <div class="form-group">
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email Address">
-				  </div>
-				  <div class="form-group">
-				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-				  </div>
-				  <!-- TODO: ADD IN DM / PLAYER CHOICE HERE -->
-				  <button type="submit" class="btn btn-default"><i class="fa fa-user"></i> Create Account</button>
-				</form>
+				<span class="go-back"><i class="fa fa-arrow-left"></i> Go Back</span>
 			</div>
 		</div>
 	</div>
@@ -62,9 +72,21 @@
 <template name="loginForm">
 	<div class="container login-form">
 		<div class="row">
-			<div class="col-md-12 col-lg-10 col-lg-offset-1">
-				<h1>Log In</h1>
-				<a href="#" class="btn btn-primary signup"><i class="fa fa-user"></i> Create Account</a> <span>or</span> <a href="#" class="btn btn-primary login">Log In</a>
+			<div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+				<form id="login-form">
+				  <div class="form-group">
+				    <input type="text" class="form-control" id="login-user" placeholder="Username or Email">
+				  </div>
+				  <div class="form-group">
+				    <input type="password" class="form-control" id="login-password" placeholder="Password">
+				  </div>
+				  <button type="submit" class="btn btn-default"><i class="fa fa-user"></i> Log In</button>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+				<span class="go-back"><i class="fa fa-arrow-left"></i> Go Back</span>
 			</div>
 		</div>
 	</div>
