@@ -16,12 +16,13 @@
 		<!-- TODO: show account info when logged in -->
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="{{pathFor 'groups'}}">Groups</a></li>
-				<li><a href="{{pathFor 'characters'}}">Characters</a></li>
-		    	{{> loginButtons }}
-		    </ul>
-
+			<!-- {{#if currentUser}} -->
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{{pathFor 'groups'}}">Groups</a></li>
+					<li><a href="{{pathFor 'characters'}}">Characters</a></li>
+			    	{{> loginButtons }}
+			    </ul>
+		    <!-- {{/if}} -->
 	    </div><!-- /.navbar-collapse -->
 
 	  </div>
