@@ -11,10 +11,10 @@ Template.home.rendered = function(e) {
 // 	Session.setDefault('homeStatus', 'default');
 // };
 
-Template.home.onDestroyed = function(e) {
-	// TODO: destroyed doesn't work when redirecting away from template (after login)
+Template.home.destroyed = function(e) {
 	$('.navbar').removeClass('home-page');
-	Session.setDefault('homeStatus', 'default');
+	$('.navbar-brand').removeClass('reset-home');
+	Session.set('homeStatus', 'default');
 };
 
 Template.home.helpers({
