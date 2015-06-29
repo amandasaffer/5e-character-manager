@@ -30,7 +30,7 @@ applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreI
 	abilityScoreModifier = parseInt(abilityScoreModifier);
 	var pureModifier = abilityScoreModifier;
 	proficiencyBonus = parseInt(proficiencyBonus);
-	
+
 
 	// for unchecked elements, use base ability score modifier
 	abilityScoreModifier = addPositiveMod(abilityScoreModifier);
@@ -38,7 +38,7 @@ applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreI
 	var matched = $('.saving-throws [data-score-index=' + scoreIndex + '], .general-proficiencies [data-score-index=' + scoreIndex + ']');
 	$(matched).text(abilityScoreModifier);
 
-	
+
 	// for checked elements, apply proficiency bonus as well
 	var combinedModifier = pureModifier + proficiencyBonus;
 	combinedModifier = addPositiveMod(combinedModifier);
@@ -53,8 +53,8 @@ applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreI
     if( $('.perception-prof').text().length > 0 ) {
     	var addPerception = parseInt($('.perception-prof').text());
     	$('input[name=passive-percep]').val(10 + addPerception);
-    }	
-	
+    }
+
 	return;
 };
 
@@ -68,6 +68,12 @@ Template.characters.events({
 Template.characters.helpers({
 	mycharacters: function() {
 		return Characters.find({userId: Meteor.user()._id});
+	}
+});
+
+Template.editCharacter.helpers({
+	class: function() {
+		return this.class;
 	}
 });
 
@@ -100,13 +106,13 @@ Template.createCharacter.events({
 		}
 
 		if( abilityScores.length < 6 || abilityScores[scoreIndex] != abilityScore ) {
-			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);	
+			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);
 		} else {
 			console.log('loop will run');
 			$('.base-modifier').each(function(scoreIndex, obj) {
 				var getMod = $(this).text();
 		     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
-		    });	
+		    });
 		}
 
 		// put ability score in array
@@ -125,7 +131,6 @@ Template.createCharacter.events({
 		$(e.target).next().html(modifier);
 	},
 
-	// BUG: instead of adding the appropriate ability modifier, it adds the last one (cha)
 	'blur [name=proficiency]': function(e) {
 		e.preventDefault();
 		proficiencyBonus = $(e.target).val();
@@ -137,8 +142,8 @@ Template.createCharacter.events({
 			$('.base-modifier').each(function(scoreIndex, obj) {
 				var getMod = $(this).text();
 		     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
-		    });	
-		}	
+		    });
+		}
 	},
 
 	'blur .weapon input': function(e) {
@@ -191,31 +196,26 @@ Template.createCharacter.events({
 
 		var thisProficiency = $(e.target).parent().prev().prev().text();
 		thisProficiency = cleanProficiency(thisProficiency);
-		
+
 		if( isChecked ) {
-			// checked after click
 			modifier = parseInt(modifier) + parseInt(proficiencyBonus);
-			// add to proficiencies array
 			proficiencies.push(thisProficiency);
 		} else {
 			modifier = parseInt(modifier) - parseInt(proficiencyBonus);
-			// remove from proficiencies array
 			var profIndex = proficiencies.indexOf(thisProficiency);
 			proficiencies.splice(profIndex, 1);
 		}
 
 		console.log(proficiencies);
-		
+
 		if(modifier > 0) {
 			modifier = "+" + modifier;
 		}
-
 		// if the ability score modifier ISN'T zero, apply proficiencies
 		if($(e.target).parent().prev().text().length != 0) {
 			$(e.target).parent().prev().text(modifier);
 		}
 
-		// if you're clicking perception, update passive perception score
 		// TODO: This code block is reused. Make it a function later??
 		if( $(e.target).data('add-proficiency-to') === 'perception') {
 	    	var addPerception = parseInt($('.perception-prof').text());
@@ -227,15 +227,13 @@ Template.createCharacter.events({
 		traitCount = traitCount + 1;
 		console.log(traitCount);
 		var newTrait = $("#charTrait").clone();
-		
+
 		newTrait.children().find('input, textarea').each(function(){
 		   $(this).val('');
 		});
 
 		newTrait.removeAttr('id');
-		// newTrait.addClass('trait' + traitCount);
 		newTrait.data('trait-count', traitCount);
-
 		$(newTrait).appendTo('#traits');
 
 		if(traitCount > 2) {
@@ -249,33 +247,24 @@ Template.createCharacter.events({
 		e.preventDefault();
 
 		var character = {
-			// overview
 			name: $(e.target).find('[name=charname]').val(),
 			class: $(e.target).find('[name=class]').val(),
 			level: $(e.target).find('[name=level]').val(),
 			background: $(e.target).find('[name=background]').val(),
 			race: $(e.target).find('[name=race]').val(),
 			alignment: $(e.target).find('[name=alignment]').val(),
-
-			// bullshit
 			ac: $(e.target).find('[name=ac]').val(),
 			initiative: $(e.target).find('[name=initiative]').val(),
 			speed: $(e.target).find('[name=speed]').val(),
 			hitPoints: $(e.target).find('[name=hitpoints]').val(),
 			hitDice: $(e.target).find('[name=hitdice]').val(),
-			
-			// equipment
 			weapons: weapons,
 			equipment: $(e.target).find('[name=equipment]').val(),
-
-			// features and traits
-			traits: traits,	
-			
+			traits: traits,
 			proficiency: proficiencyBonus,
 		 	passivePerception: $('input[name=passive-percep]').val(),
 			abilityScores: abilityScores,
 			abilityModifiers: abilityModifiers,
-
 			// TODO: saving throws are included but need to parse them
 			proficiencies: proficiencies
 		}
@@ -284,7 +273,6 @@ Template.createCharacter.events({
 			if (error) {
 				return alert(error.reason);
 			}
-
 	      Router.go('displayCharacter', {_id: id});
 	    });
 	}
@@ -332,13 +320,13 @@ Template.editCharacter.events({
 		}
 
 		if( abilityScores.length < 6 || abilityScores[scoreIndex] != abilityScore ) {
-			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);	
+			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);
 		} else {
 			console.log('loop will run');
 			$('.base-modifier').each(function(scoreIndex, obj) {
 				var getMod = $(this).text();
 		     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
-		    });	
+		    });
 		}
 
 		// put ability score in array
@@ -368,8 +356,8 @@ Template.editCharacter.events({
 			$('.base-modifier').each(function(scoreIndex, obj) {
 				var getMod = $(this).text();
 		     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
-		    });	
-		}	
+		    });
+		}
 	},
 
 	'blur .weapon input': function(e) {
@@ -414,7 +402,7 @@ Template.editCharacter.events({
 
 		var thisProficiency = $(e.target).parent().prev().prev().text();
 		thisProficiency = cleanProficiency(thisProficiency);
-		
+
 		if( isChecked ) {
 			// checked after click
 			modifier = parseInt(modifier) + parseInt(proficiencyBonus);
@@ -428,7 +416,7 @@ Template.editCharacter.events({
 		}
 
 		console.log(proficiencies);
-		
+
 		if(modifier > 0) {
 			modifier = "+" + modifier;
 		}
@@ -450,7 +438,7 @@ Template.editCharacter.events({
 		traitCount = traitCount + 1;
 		console.log(traitCount);
 		var newTrait = $("#charTrait").clone();
-		
+
 		newTrait.children().find('input, textarea').each(function(){
 		   $(this).val('');
 		});
@@ -488,15 +476,15 @@ Template.editCharacter.events({
 			speed: $(e.target).find('[name=speed]').val(),
 			hitPoints: $(e.target).find('[name=hitpoints]').val(),
 			hitDice: $(e.target).find('[name=hitdice]').val(),
-	
-			
+
+
 			// equipment
 			weapons: weapons,
 			equipment: $(e.target).find('[name=equipment]').val(),
 
 			// features and traits
-			traits: traits,	
-			
+			traits: traits,
+
 			proficiency: proficiencyBonus,
 		 	passivePerception: $('input[name=passive-percep]').val(),
 			abilityScores: abilityScores,

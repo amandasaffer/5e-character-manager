@@ -13,6 +13,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<ul class="group-list">
+						<!-- TODO: Rename to userCharacters and add view link -->
 				    {{#each mycharacters}}
 				      <li><a href="{{pathFor 'editCharacter'}}">{{name}}</a></li>
 				    {{/each}}
@@ -23,8 +24,9 @@
 	</div>
 </template>
 
-
+<!-- TODO: Be smarter about reusing code! REFACTOR ASAP! -->
 <template name="createCharacter">
+	<!-- TODO: Get rid of hr usage throughout the app -->
 	<hr class="spacer60">
 	<hr class="spacer60">
 
@@ -55,18 +57,9 @@
 								<div class="col-sm-4">
 									<label>Class</label>
 									<select name="class" class="form-control" tabindex=2>
-									  <option>Barbarian</option>
-									  <option>Bard</option>
-									  <option>Cleric</option>
-									  <option>Druid</option>
-									  <option>Fighter</option>
-									  <option>Monk</option>
-									  <option>Paladin</option>
-									  <option>Ranger</option>
-									  <option>Rogue</option>
-									  <option>Sorcerer</option>
-									  <option>Warlock</option>
-									  <option>Wizard</option>
+										{{#each standardized 'classes'}}
+										<option>{{this}}</option>
+										{{/each}}
 									</select>
 								</div>
 
@@ -80,51 +73,27 @@
 								<div class="col-sm-4">
 									<label>Background</label>
 									<select name="background" class="form-control" tabindex=4>
-									  <option>Acolyte</option>
-									  <option>Charlatan</option>
-									  <option>Criminal</option>
-									  <option>Entertainer</option>
-									  <option>Folk Hero</option>
-									  <option>Guild Artisan</option>
-									  <option>Hermit</option>
-									  <option>Noble</option>
-									  <option>Outlander</option>
-									  <option>Sage</option>
-									  <option>Sailor</option>
-									  <option>Soldier</option>
-									  <option>Urchin</option>
+										{{#each standardized 'backgrounds'}}
+										<option>{{this}}</option>
+										{{/each}}
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Race</label>
-
 									<select name="race" class="form-control" tabindex=5>
-									  <option>Dwarf</option>
-									  <option>Elf</option>
-									  <option>Halfling</option>
-									  <option>Human</option>
-									  <option>Dragonborn</option>
-									  <option>Gnome</option>
-									  <option>Half-Elf</option>
-									  <option>Half-Orc</option>
-									  <option>Tiefling</option>
+										{{#each standardized 'races'}}
+										<option>{{this}}</option>
+										{{/each}}
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Alignment</label>
-
 									<select name="alignment" class="form-control" tabindex=6>
-									  <option>Lawful Good</option>
-									  <option>Neutral Good</option>
-									  <option>Chaotic Good</option>
-									  <option>Lawful Neutral</option>
-									  <option>(True) Neutral</option>
-									  <option>Chaotic Neutral</option>
-									  <option>Lawful Evil</option>
-									  <option>Neutral Evil</option>
-									  <option>Chaotic Evil</option>
+										{{#each standardized 'alignments'}}
+										<option>{{this}}</option>
+										{{/each}}
 									</select>
 								</div>
 							</div>
@@ -285,7 +254,7 @@
 				  								<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 										</div>
-									</div>	
+									</div>
 								</div>
 							</div>
 
@@ -316,7 +285,7 @@
 				  								<span class="input-group-addon fixed thin">
 													<input type="checkbox" class="save-proficiency">
 												</span>
-											</div>	
+											</div>
 										</div>
 										<div class="col-sm-6 col-md-6">
 											<div class="input-group input-group-sm">
@@ -416,7 +385,7 @@
 													<input type="checkbox" data-add-proficiency-to="investigation" class="gen-proficiency">
 												</span>
 											</div>
-										</div> 
+										</div>
 										<div class="col-md-6">
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Medicine (WIS)</span>
@@ -573,6 +542,10 @@
 								<div class="col-sm-4">
 									<label>Class</label>
 									<select name="class" class="form-control" tabindex=2>
+										<!-- TODO: data context on this is broken, make it work!! -->
+										<!-- {{#each standardized 'classes'}}
+										<option {{selectedTwo class this}}>{{this}}</option>
+										{{/each}} -->
 									  <option {{selected class "Barbarian"}}>Barbarian</option>
 									  <option {{selected class "Bard"}}>Bard</option>
 									  <option {{selected class "Cleric"}}>Cleric</option>
@@ -790,7 +763,7 @@
 				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[5]}}</span>
 											</div>
 										</div>
-									</div>	
+									</div>
 								</div>
 							</div>
 
@@ -821,7 +794,7 @@
 				  								<span class="input-group-addon fixed thin">
 													<input type="checkbox" {{checkProficiency proficiencies "Constitution"}} class="save-proficiency">
 												</span>
-											</div>	
+											</div>
 										</div>
 										<div class="col-sm-6 col-md-6">
 											<div class="input-group input-group-sm">
@@ -921,7 +894,7 @@
 													<input type="checkbox" {{checkProficiency proficiencies "Investigation"}} data-add-proficiency-to="investigation" class="gen-proficiency">
 												</span>
 											</div>
-										</div> 
+										</div>
 										<div class="col-md-6">
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">Medicine (WIS)</span>
@@ -1039,7 +1012,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-12">
-							<button type="submit" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp; Update</button> &nbsp; 
+							<button type="submit" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp; Update</button> &nbsp;
 							<button class="btn btn-danger delete-character"><i class="fa fa-close"></i>&nbsp; Delete</button>
 						</div>
 					</div>
