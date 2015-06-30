@@ -42,6 +42,8 @@ UI.registerHelper('standardized', function(key) {
     return standardCharacter.races;
   } else if (key === 'alignments') {
     return standardCharacter.alignments;
+  } else if (key === 'abilityScores') {
+    return standardCharacter.abilityScores;
   } else if (key === 'saveProficiencies') {
     return standardCharacter.saveProficiencies;
   } else if (key === 'skillProficiencies') {

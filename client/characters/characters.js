@@ -74,6 +74,13 @@ Template.characters.helpers({
 Template.editCharacter.helpers({
 	class: function() {
 		return this.class;
+	},
+	// TODO: Get helper functions working
+	getAbilityScore: function(index) {
+		return this.abilityScores[index];
+	},
+	getAbilityModifier: function(index) {
+		return this.abilityModifiers[index];
 	}
 });
 
@@ -294,17 +301,6 @@ Template.editCharacter.rendered = function() {
 	traitCount = this.data.traits.length;
 };
 
-// i don't need helpers because i can access data above in "rendered" function
-// Template.displayCharacter.helpers({
-// 	proficiencies: function() {
-// 		return this.proficiencies;
-// 	},
-
-// 	proficiencyMod: function() {
-// 		return this.proficiency;
-// 	}
-// });
-
 
 Template.editCharacter.events({
 	'blur .ability': function(e) {
@@ -345,7 +341,7 @@ Template.editCharacter.events({
 		$(e.target).next().html(modifier);
 	},
 
-	// BUG: instead of adding the appropriate ability modifier, it adds the last one (cha)
+	// TODO: blurring this doesn't update passive perception if proficient. look into reactive-var.
 	'blur [name=proficiency]': function(e) {
 		e.preventDefault();
 		proficiencyBonus = $(e.target).val();
@@ -427,9 +423,9 @@ Template.editCharacter.events({
 		}
 
 		// if you're clicking perception, update passive perception score
-		// TODO: This code block is reused. Make it a function later??
-		if( $(e.target).data('add-proficiency-to') === 'perception') {
-	    	var addPerception = parseInt($('.perception-prof').text());
+		// TODO: make this code block a function and re-use in create template
+		if( $(e.target).data('add-proficiency-to') === 'Perception') {
+	    	var addPerception = parseInt( $(e.target).parent().prev().text() );
 	    	$('input[name=passive-percep]').val(10 + addPerception);
 	    }
 	},
