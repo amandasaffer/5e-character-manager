@@ -344,6 +344,11 @@ Template.editCharacter.events({
     // 	$('input[name=passive-percep]').val(10 + addPerception);
     // }
 
+		// this is setting the data, not retrieving the value
+		if ( $('.gen-proficiency').data('add-proficiency-to', 'Perception').checked ) {
+			console.log('it\'s checked');
+		}
+
 		if ( abilityScores.length < 6 ) {
 			console.log('not all ability scores are filled out. do not apply proficiency bonuses yet.');
 		} else {
