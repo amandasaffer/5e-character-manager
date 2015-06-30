@@ -10,8 +10,9 @@ UI.registerHelper('checkProficiency', function(key, value) {
 	}
 });
 
-UI.registerHelper('isProficient', function(base, modifier, key, value) {
-	var proficiencyScore = base;
+UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
+	var base = base[index];
+  var proficiencyScore = base;
 	var modifier = parseInt(modifier);
 	var base = parseInt(base);
 
@@ -28,6 +29,7 @@ UI.registerHelper('isProficient', function(base, modifier, key, value) {
 			break;
 		}
 	}
+
 	return proficiencyScore;
 });
 
@@ -40,5 +42,9 @@ UI.registerHelper('standardized', function(key) {
     return standardCharacter.races;
   } else if (key === 'alignments') {
     return standardCharacter.alignments;
+  } else if (key === 'saveProficiencies') {
+    return standardCharacter.saveProficiencies;
+  } else if (key === 'skillProficiencies') {
+    return standardCharacter.skillProficiencies;
   }
 });
