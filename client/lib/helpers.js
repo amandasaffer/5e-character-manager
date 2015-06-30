@@ -2,11 +2,6 @@ UI.registerHelper('selected', function(key, value) {
   return key == value? {selected:'selected'}: '';
 });
 
-UI.registerHelper('selectedTwo', function(key, value) {
-  console.log(key + ' ' + value);
-  return key == value? {selected:'selected'}: '';
-});
-
 UI.registerHelper('checkProficiency', function(key, value) {
 	for(i=0; i<key.length; i++) {
 		if(key[i] == value) {

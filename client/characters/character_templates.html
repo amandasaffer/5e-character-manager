@@ -542,22 +542,9 @@
 								<div class="col-sm-4">
 									<label>Class</label>
 									<select name="class" class="form-control" tabindex=2>
-										<!-- TODO: data context on this is broken, make it work!! -->
-										<!-- {{#each standardized 'classes'}}
-										<option {{selectedTwo .. class this}}>{{this}}</option>
-										{{/each}} -->
-									  <option {{selected class "Barbarian"}}>Barbarian</option>
-									  <option {{selected class "Bard"}}>Bard</option>
-									  <option {{selected class "Cleric"}}>Cleric</option>
-									  <option {{selected class "Druid"}}>Druid</option>
-									  <option {{selected class "Fighter"}}>Fighter</option>
-									  <option {{selected class "Monk"}}>Monk</option>
-									  <option {{selected class "Paladin"}}>Paladin</option>
-									  <option {{selected class "Ranger"}}>Ranger</option>
-									  <option {{selected class "Rogue"}}>Rogue</option>
-									  <option {{selected class "Sorcerer"}}>Sorcerer</option>
-									  <option {{selected class "Warlock"}}>Warlock</option>
-									  <option {{selected class "Wizard"}}>Wizard</option>
+										{{#each standardized 'classes'}}
+										<option {{selected ../class this}}>{{this}}</option>
+										{{/each}}
 									</select>
 								</div>
 
@@ -571,51 +558,27 @@
 								<div class="col-sm-4">
 									<label>Background</label>
 									<select name="background" class="form-control" tabindex=4>
-									  <option {{selected background "Acolyte"}}>Acolyte</option>
-									  <option {{selected background "Charlatan"}}>Charlatan</option>
-									  <option {{selected background "Criminal"}}>Criminal</option>
-									  <option {{selected background "Entertainer"}}>Entertainer</option>
-									  <option {{selected background "Folk Hero"}}>Folk Hero</option>
-									  <option {{selected background "Guild Artisan"}}>Guild Artisan</option>
-									  <option {{selected background "Hermit"}}>Hermit</option>
-									  <option {{selected background "Noble"}}>Noble</option>
-									  <option {{selected background "Outlander"}}>Outlander</option>
-									  <option {{selected background "Sage"}}>Sage</option>
-									  <option {{selected background "Sailor"}}>Sailor</option>
-									  <option {{selected background "Soldier"}}>Soldier</option>
-									  <option {{selected background "Urchin"}}>Urchin</option>
+										{{#each standardized 'backgrounds'}}
+										<option {{selected ../background this}}>{{this}}</option>
+										{{/each}}
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Race</label>
-
 									<select name="race" class="form-control" tabindex=5>
-									  <option {{selected race "Dwarf"}}>Dwarf</option>
-									  <option {{selected race "Elf"}}>Elf</option>
-									  <option {{selected race "Halfling"}}>Halfling</option>
-									  <option {{selected race "Human"}}>Human</option>
-									  <option {{selected race "Dragonborn"}}>Dragonborn</option>
-									  <option {{selected race "Gnome"}}>Gnome</option>
-									  <option {{selected race "Half-Elf"}}>Half-Elf</option>
-									  <option {{selected race "Half-Orc"}}>Half-Orc</option>
-									  <option {{selected race "Tiefling"}}>Tiefling</option>
+										{{#each standardized 'races'}}
+										<option {{selected ../race this}}>{{this}}</option>
+										{{/each}}
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Alignment</label>
-
 									<select name="alignment" class="form-control" tabindex=6>
-									  <option {{selected alignment "Lawful Good"}}>Lawful Good</option>
-									  <option {{selected alignment "Neutral Good"}}>Neutral Good</option>
-									  <option {{selected alignment "Chaotic Good"}}>Chaotic Good</option>
-									  <option {{selected alignment "Lawful Neutral"}}>Lawful Neutral</option>
-									  <option {{selected alignment "(True) Neutral"}}>(True) Neutral</option>
-									  <option {{selected alignment "Chaotic Neutral"}}>Chaotic Neutral</option>
-									  <option {{selected alignment "Lawful Evil"}}>Lawful Evil</option>
-									  <option {{selected alignment "Neutral Evil"}}>Neutral Evil</option>
-									  <option  {{selected alignment "Chaotic Evil"}}>Chaotic Evil</option>
+										{{#each standardized 'alignments'}}
+										<option {{selected ../alignment this}}>{{this}}</option>
+										{{/each}}
 									</select>
 								</div>
 							</div>
