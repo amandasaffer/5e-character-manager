@@ -602,19 +602,19 @@
 
 								<div class="col-sm-4">
 									<label>Speed</label>
-									<input type="text" name="speed" class="form-control" placeholder="" tabindex=17 value="{{speed}}">
+									<input type="text" name="speed" class="form-control" tabindex=17 value="{{speed}}">
 								</div>
 							</div>
 
 							<div class="row" style="margin-top: 20px;">
 								<div class="col-sm-4">
 									<label>Hit Points</label>
-									<input type="text" name="hitpoints" class="form-control" placeholder="" tabindex=18 value="{{hitPoints}}">
+									<input type="text" name="hitpoints" class="form-control" tabindex=18 value="{{hitPoints}}">
 								</div>
 
 								<div class="col-sm-4">
 									<label>Hit Dice</label>
-									<input type="text" name="hitdice" class="form-control" placeholder="" tabindex=19 value="{{hitDice}}">
+									<input type="text" name="hitdice" class="form-control" tabindex=19 value="{{hitDice}}">
 								</div>
 							</div>
 
@@ -677,6 +677,7 @@
 									<span class="instruction">Enter your proficiency bonus first to ensure all bonuses are calculated correctly.</span>
 								</div>
 								<div class="col-sm-6">
+									<!-- TODO: This doesn't update if proficiency score is changed. is broken -->
 									<label for="">Passive Perception</label>
 									<input type="text" name="passive-percep" class="form-control" tabindex=8 value="{{passivePerception}}">
 
@@ -689,6 +690,16 @@
 									<label for="">Ability Scores</label>
 									<div class="row">
 										<div class="col-md-6">
+
+											<!-- TODO: Get helper functions working -->
+											<!-- {{#each standardized 'abilityScores'}}
+											<div class="input-group input-group-sm" style="width: 100%;">
+												<span class="input-group-addon fixed fat">{{abbrev}}</span>
+												<input type="text" data-score-index="0" class="form-control ability" value="{{getAbilityScore index}}">
+				  								<span class="base-modifier input-group-addon fixed thin">{{getAbilityModifier index}}</span>
+											</div>
+											{{/each}} -->
+
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">STR</span>
 												<input type="text" data-score-index="0" class="form-control ability" tabindex=9 value="{{abilityScores.[0]}}">
@@ -752,7 +763,6 @@
 							<div class="row" style="margin-top: 25px;">
 								<div class="col-sm-12 general-proficiencies">
 									<label for="">Skill Proficiencies</label>
-
 									<div class="row">
 										{{#each standardized 'skillProficiencies'}}
 										<div class="col-sm-6 col-md-6">
@@ -768,6 +778,7 @@
 									</div>
 								</div>
 							</div>
+
 						</div>
 					</div>
 
