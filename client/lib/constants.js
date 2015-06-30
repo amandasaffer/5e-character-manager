@@ -53,21 +53,21 @@ standardCharacter = {
     'Chaotic Evil'
   ],
   abilityScores: [
-    'Strength',
-    'Dexterity',
-    'Constitution',
-    'Intelligence',
-    'Wisdom',
-    'Charisma'
+    { name: 'Strength', abbrev: 'STR', index: 0 },
+    { name: 'Dexterity', abbrev: 'DEX', index: 1 },
+    { name: 'Constitution', abbrev: 'CON', index: 2 },
+    { name: 'Intelligence', abbrev: 'INT', index: 3 },
+    { name: 'Wisdom', abbrev: 'WIS', index: 4 },
+    { name: 'Charisma', abbrev: 'CHA', index: 5 }
   ],
   // TODO: fix hacky index keys
   saveProficiencies: [
-    { name: 'Strength', index: 0 },
-    { name: 'Dexterity', index: 1 },
-    { name: 'Constitution', index: 2 },
-    { name: 'Intelligence', index: 3 },
-    { name: 'Wisdom', index: 4 },
-    { name: 'Charisma', index: 5 }
+    { name: 'Strength', abbrev: 'STR', index: 0 },
+    { name: 'Dexterity', abbrev: 'DEX', index: 1 },
+    { name: 'Constitution', abbrev: 'CON', index: 2 },
+    { name: 'Intelligence', abbrev: 'INT', index: 3 },
+    { name: 'Wisdom', abbrev: 'WIS', index: 4 },
+    { name: 'Charisma', abbrev: 'CHA', index: 5 }
   ],
   skillProficiencies: [
     { name: "Acrobatics", attribute: "DEX", index: 1 },
