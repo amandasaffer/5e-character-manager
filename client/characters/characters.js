@@ -7,7 +7,6 @@ var addPositiveMod = function(num) {
 	if(num > 0) {
 		num = '+' + num;
 	}
-
 	return num;
 }
 
@@ -31,13 +30,11 @@ applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreI
 	var pureModifier = abilityScoreModifier;
 	proficiencyBonus = parseInt(proficiencyBonus);
 
-
 	// for unchecked elements, use base ability score modifier
 	abilityScoreModifier = addPositiveMod(abilityScoreModifier);
 
 	var matched = $('.saving-throws [data-score-index=' + scoreIndex + '], .general-proficiencies [data-score-index=' + scoreIndex + ']');
 	$(matched).text(abilityScoreModifier);
-
 
 	// for checked elements, apply proficiency bonus as well
 	var combinedModifier = pureModifier + proficiencyBonus;
@@ -54,7 +51,6 @@ applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreI
     	var addPerception = parseInt($('.perception-prof').text());
     	$('input[name=passive-percep]').val(10 + addPerception);
     }
-
 	return;
 };
 
@@ -92,8 +88,6 @@ Template.createCharacter.rendered = function() {
 	proficiencies = [];
 	weapons = [];
 	traits = [];
-
-	// initialize trait count as one
 	traitCount = 1;
 
 	$('.gen-proficiency, .save-proficiency').prop("disabled", true);
@@ -102,8 +96,6 @@ Template.createCharacter.rendered = function() {
 Template.createCharacter.events({
 	'blur .ability': function(e) {
 		e.preventDefault();
-
-		// define starting variables
 		var abilityScore = $(e.target).val();
 		var modifier = calculateModifier(abilityScore);
 		var scoreIndex = $(e.target).data('score-index');
@@ -128,6 +120,7 @@ Template.createCharacter.events({
 			abilityModifiers[scoreIndex] = modifier;
 		}
 
+		// enable proficiency checkboxes if all ability scores are filled out
 		if(abilityScores.length < 6) {
 			console.log('disable proficiency checkboxes');
 		} else {
@@ -346,6 +339,11 @@ Template.editCharacter.events({
 		e.preventDefault();
 		proficiencyBonus = $(e.target).val();
 
+		// if( perception .gen-proficiency isChecked ) {
+    // 	var addPerception = parseInt( $('[name=???]').text() );
+    // 	$('input[name=passive-percep]').val(10 + addPerception);
+    // }
+
 		if ( abilityScores.length < 6 ) {
 			console.log('not all ability scores are filled out. do not apply proficiency bonuses yet.');
 		} else {
@@ -425,9 +423,9 @@ Template.editCharacter.events({
 		// if you're clicking perception, update passive perception score
 		// TODO: make this code block a function and re-use in create template
 		if( $(e.target).data('add-proficiency-to') === 'Perception') {
-	    	var addPerception = parseInt( $(e.target).parent().prev().text() );
-	    	$('input[name=passive-percep]').val(10 + addPerception);
-	    }
+    	var addPerception = parseInt( $(e.target).parent().prev().text() );
+    	$('input[name=passive-percep]').val(10 + addPerception);
+    }
 	},
 
 	'click .add-feat-trait': function(e) {
