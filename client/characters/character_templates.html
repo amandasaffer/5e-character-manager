@@ -626,6 +626,7 @@
 								</div>
 
 								<!-- TODO: Refactor with spacebars' smart attributes -->
+								<!-- TODO: Implement add / delete buttons  -->
 								{{#each weapons}}
 								<div class="weapon" data-weapon-number="0">
 									<div class="col-sm-4">
@@ -687,54 +688,15 @@
 								<div class="col-sm-12 ability-scores">
 									<label for="">Ability Scores</label>
 									<div class="row">
+										{{#each standardized 'abilityScores'}}
 										<div class="col-md-6">
-
-											<!-- TODO: Get helper functions working -->
-											<!-- {{#each standardized 'abilityScores'}}
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">{{abbrev}}</span>
-												<input type="text" data-score-index="0" class="form-control ability" value="{{getAbilityScore index}}">
-				  								<span class="base-modifier input-group-addon fixed thin">{{getAbilityModifier index}}</span>
-											</div>
-											{{/each}} -->
-
-											<div class="input-group input-group-sm" style="width: 100%;">
-												<span class="input-group-addon fixed fat">STR</span>
-												<input type="text" data-score-index="0" class="form-control ability" tabindex=9 value="{{abilityScores.[0]}}">
-				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[0]}}</span>
-											</div>
-
-											<div class="input-group input-group-sm" style="width: 100%;">
-												<span class="input-group-addon fixed fat">DEX</span>
-												<input type="text" data-score-index="1" class="form-control ability" placeholder="" value="{{abilityScores.[1]}}" tabindex=10>
-				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[1]}}</span>
-											</div>
-
-											<div class="input-group input-group-sm" style="width: 100%;">
-												<span class="input-group-addon fixed fat">CON</span>
-												<input type="text" data-score-index="2" class="form-control ability" placeholder="" value="{{abilityScores.[2]}}" tabindex=11>
-				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[2]}}</span>
+												<input type="text" data-score-index="0" class="form-control ability" value="{{getAbilityScore ../abilityScores index}}">
+				  								<span class="base-modifier input-group-addon fixed thin">{{getAbilityModifier ../abilityModifiers index}}</span>
 											</div>
 										</div>
-										<div class="col-md-6">
-											<div class="input-group input-group-sm" style="width: 100%;">
-												<span class="input-group-addon fixed fat">INT</span>
-												<input type="text" data-score-index="3" class="form-control ability" placeholder="" value="{{abilityScores.[3]}}" tabindex=12>
-				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[3]}}</span>
-											</div>
-
-											<div class="input-group input-group-sm" style="width: 100%;">
-												<span class="input-group-addon fixed fat">WIS</span>
-												<input type="text" data-score-index="4" class="form-control ability" placeholder="" value="{{abilityScores.[4]}}" tabindex=13>
-				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[4]}}</span>
-											</div>
-
-											<div class="input-group input-group-sm" style="width: 100%;">
-												<span class="input-group-addon fixed fat">CHA</span>
-												<input type="text" data-score-index="5" class="form-control ability" placeholder="" value="{{abilityScores.[5]}}" tabindex=14>
-				  								<span class="base-modifier input-group-addon fixed thin">{{abilityModifiers.[5]}}</span>
-											</div>
-										</div>
+										{{/each}}
 									</div>
 								</div>
 							</div>
@@ -790,10 +752,10 @@
 						</div>
 					</div>
 
-					<div class="form-group"  style="margin-top: 0; padding-top; 0;">
-
+					<div class="form-group" style="margin-top: 0; padding-top; 0;">
 						<div id="traits">
 							{{#each traits}}
+							<!-- TODO: Implement delete button  -->
 								<div class="col-sm-6 col-md-4 trait" data-trait-count="" id="charTrait">
 									<div class="row">
 										<div class="col-sm-12">
@@ -823,6 +785,8 @@
 						</div>
 					</div>
 
+					<hr class="spacer10">
+
 					<div class="form-group">
 						<div class="col-sm-12">
 							<button type="submit" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp; Update</button> &nbsp;
@@ -830,7 +794,7 @@
 						</div>
 					</div>
 
-					<hr class="spacer30">
+					<hr class="spacer50">
 				</form>
 			</div>
 		</div>
