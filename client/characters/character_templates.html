@@ -27,14 +27,10 @@
 <!-- TODO: Be smarter about reusing code! REFACTOR ASAP! -->
 <!-- TODO: combine create & edit templates and reuse code blocks as needed -->
 <template name="createCharacter">
-	<!-- TODO: Get rid of hr usage throughout the app -->
-	<hr class="spacer60">
-	<hr class="spacer60">
-
-	<div class="container">
+	<div class="container" style="margin-top: 130px;">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Character Creation</h2>
+				<h2>Create Character</h2>
 			</div>
 		</div>
 
@@ -43,12 +39,7 @@
 				<form class="form-horizontal create-character" role="form">
 					<div class="form-group" style="margin-bottom: 60px;">
 						<div class="col-sm-12 col-md-6">
-							<div class="row">
-								<div class="col-sm-12">
-									<h5>Overview</h5>
-								</div>
-							</div>
-
+							<h5>Overview</h5>
 							<div class="row">
 								<div class="col-sm-5">
 									<label>Name</label>
@@ -58,9 +49,7 @@
 								<div class="col-sm-4">
 									<label>Class</label>
 									<select name="class" class="form-control" tabindex=2>
-										{{#each standardized 'classes'}}
-										<option>{{this}}</option>
-										{{/each}}
+										{{#each standardized 'classes'}} <option>{{this}}</option> {{/each}}
 									</select>
 								</div>
 
@@ -74,73 +63,62 @@
 								<div class="col-sm-4">
 									<label>Background</label>
 									<select name="background" class="form-control" tabindex=4>
-										{{#each standardized 'backgrounds'}}
-										<option>{{this}}</option>
-										{{/each}}
+										{{#each standardized 'backgrounds'}} <option>{{this}}</option> {{/each}}
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Race</label>
 									<select name="race" class="form-control" tabindex=5>
-										{{#each standardized 'races'}}
-										<option>{{this}}</option>
-										{{/each}}
+										{{#each standardized 'races'}} <option>{{this}}</option> {{/each}}
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Alignment</label>
 									<select name="alignment" class="form-control" tabindex=6>
-										{{#each standardized 'alignments'}}
-										<option>{{this}}</option>
-										{{/each}}
+										{{#each standardized 'alignments'}} <option>{{this}}</option> {{/each}}
 									</select>
 								</div>
 							</div>
 
 							<div class="fullwidthline" style="margin: 50px 0 40px;"></div>
 
-							<div class="row" style="margin-top: 40px;">
-								<div class="col-sm-12">
-									<h5>Physical</h5>
-								</div>
-
+							<h5>Physical</h5>
+							<div class="row">
 								<div class="col-sm-4">
 									<label>Armor Class</label>
-									<input type="text" name="ac" class="form-control" placeholder="" tabindex=15>
+									<input type="text" name="ac" class="form-control" placeholder="" tabindex=9>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Initiative</label>
-									<input type="text" name="initiative" class="form-control" placeholder="+0" tabindex=16>
+									<input type="text" name="initiative" class="form-control" placeholder="+0" tabindex=10>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Speed</label>
-									<input type="text" name="speed" class="form-control" placeholder="" tabindex=17>
+									<input type="text" name="speed" class="form-control" placeholder="" tabindex=11>
 								</div>
 							</div>
 
 							<div class="row" style="margin-top: 20px;">
 								<div class="col-sm-4">
 									<label>Hit Points</label>
-									<input type="text" name="hitpoints" class="form-control" placeholder="" tabindex=18>
+									<input type="text" name="hitpoints" class="form-control" placeholder="" tabindex=12>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Hit Dice</label>
-									<input type="text" name="hitdice" class="form-control" placeholder="" tabindex=19>
+									<input type="text" name="hitdice" class="form-control" placeholder="" tabindex=13>
 								</div>
 							</div>
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
 
+							<h5>Weapons</h5>
 							<div class="row">
-								<div class="col-md-12">
-									<h5>Weapons</h5>
-								</div>
-
+								<!-- TODO: REFACTOR to show one weapon slot and ADD button -->
 								<div class="weapon" data-weapon-number="0">
 									<div class="col-sm-4">
 										<label>Name</label>
@@ -176,15 +154,10 @@
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
 
-							<div class="row">
-								<div class="col-md-12">
-									<h5>Equipment, etc.</h5>
-								</div>
-							</div>
-
+							<h5>Equipment, etc.</h5>
 							<div class="row">
 								<div class="col-sm-12">
-									<label for="">Equipment</label>
+									<label>Equipment</label>
 									<textarea class="form-control" name="equipment" rows="6" style="resize: vertical;"></textarea>
 								</div>
 							</div>
@@ -200,29 +173,27 @@
 							</div>
 							<div class="row">
 								<div class="col-sm-6">
-									<label for="">Proficiency Bonus</label>
+									<label>Proficiency Bonus</label>
 									<input type="text" name="proficiency" class="form-control" tabindex=7>
-
-									<span class="instruction">Enter your proficiency bonus first to ensure all bonuses are calculated correctly.</span>
+									<span class="instruction">Enter your proficiency bonus first to ensure bonuses are calculated correctly.</span>
 								</div>
 								<div class="col-sm-6">
-									<label for="">Passive Perception</label>
+									<label>Passive Perception</label>
 									<input type="text" name="passive-percep" class="form-control" value="10" tabindex=8>
-
-									<span class="instruction">Passive perception is calculated by 10 + Perception Modifier.</span>
+									<span class="instruction">10 + Perception Modifier.</span>
 								</div>
 							</div>
 
 							<div class="row" style="margin-top: 25px;">
 								<div class="col-sm-12 ability-scores">
-									<label for="">Ability Scores</label>
+									<label>Ability Scores</label>
 									<div class="row">
 										{{#each standardized 'abilityScores'}}
 										<div class="col-md-6">
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">{{abbrev}}</span>
-												<input type="text" data-score-index="0" class="form-control ability">
-				  								<span class="base-modifier input-group-addon fixed thin"></span>
+												<input type="text" data-score-index="{{index}}" class="form-control ability">
+				  							<span class="base-modifier input-group-addon fixed thin"></span>
 											</div>
 										</div>
 										{{/each}}
@@ -232,7 +203,7 @@
 
 							<div class="row" style="margin-top: 25px;">
 								<div class="col-sm-12 saving-throws">
-									<label for="">Saving Throws</label>
+									<label>Saving Throws</label>
 									<div class="row">
 										{{#each standardized 'saveProficiencies'}}
 										<div class="col-sm-6 col-md-6">
@@ -251,7 +222,7 @@
 
 							<div class="row" style="margin-top: 25px;">
 								<div class="col-sm-12 general-proficiencies">
-									<label for="">Skill Proficiencies</label>
+									<label>Skill Proficiencies</label>
 									<div class="row">
 										{{#each standardized 'skillProficiencies'}}
 										<div class="col-sm-6 col-md-6">
@@ -270,15 +241,9 @@
 						</div>
 					</div>
 
-					<div class="fullwidthline"></div>
-					<hr class="spacer30">
+					<div class="fullwidthline" style="margin-bottom: 30px;"></div>
 
-					<div class="row" style="margin-bottom: 0; padding-bottom; 0;">
-						<div class="col-sm-12" style="margin-bottom: 0; padding-bottom; 0;">
-							<h5>Features &amp; Traits</h5>
-							<input type="hidden" name="count" value="1" />
-						</div>
-					</div>
+					<h5>Features &amp; Traits</h5>
 
 					<div class="form-group"  style="margin-top: 0; padding-top; 0;">
 						<div id="traits">
@@ -308,9 +273,7 @@
 						</div>
 					</div>
 
-					<hr class="spacer30">
-
-					<div class="form-group">
+					<div class="form-group" style="margin-top: 30px;">
 						<div class="col-sm-12">
 							<button type="submit" class="btn btn-primary">Create Character</button>
 						</div>
@@ -323,27 +286,17 @@
 
 <!-- TODO: fix tab indexes -->
 <template name="editCharacter">
-	<hr class="spacer60">
-	<hr class="spacer60">
+	<div class="container" style="margin-top: 130px;">
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h2>Edit Character</h2>
-			</div>
-		</div>
+		<h2>Edit Character</h2>
 
 		<div class="row">
 			<div class="col-md-12">
 				<form class="form-horizontal create-character" role="form">
 					<div class="form-group" style="margin-bottom: 60px;">
 						<div class="col-sm-12 col-md-6">
-							<div class="row">
-								<div class="col-sm-12">
-									<h5>Overview</h5>
-								</div>
-							</div>
 
+							<h5>Overview</h5>
 							<div class="row">
 								<div class="col-sm-5">
 									<label>Name</label>
@@ -353,9 +306,7 @@
 								<div class="col-sm-4">
 									<label>Class</label>
 									<select name="class" class="form-control" tabindex=2>
-										{{#each standardized 'classes'}}
-										<option {{selected ../class this}}>{{this}}</option>
-										{{/each}}
+										{{#each standardized 'classes'}} <option {{selected ../class this}}>{{this}}</option> {{/each}}
 									</select>
 								</div>
 
@@ -369,46 +320,37 @@
 								<div class="col-sm-4">
 									<label>Background</label>
 									<select name="background" class="form-control" tabindex=4>
-										{{#each standardized 'backgrounds'}}
-										<option {{selected ../background this}}>{{this}}</option>
-										{{/each}}
+										{{#each standardized 'backgrounds'}} <option {{selected ../background this}}>{{this}}</option> {{/each}}
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Race</label>
 									<select name="race" class="form-control" tabindex=5>
-										{{#each standardized 'races'}}
-										<option {{selected ../race this}}>{{this}}</option>
-										{{/each}}
+										{{#each standardized 'races'}} <option {{selected ../race this}}>{{this}}</option> {{/each}}
 									</select>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Alignment</label>
 									<select name="alignment" class="form-control" tabindex=6>
-										{{#each standardized 'alignments'}}
-										<option {{selected ../alignment this}}>{{this}}</option>
-										{{/each}}
+										{{#each standardized 'alignments'}} <option {{selected ../alignment this}}>{{this}}</option> {{/each}}
 									</select>
 								</div>
 							</div>
 
 							<div class="fullwidthline" style="margin: 50px 0 40px;"></div>
 
-							<div class="row" style="margin-top: 40px;">
-								<div class="col-sm-12">
-									<h5>Physical</h5>
-								</div>
-
+							<h5>Physical</h5>
+							<div class="row">
 								<div class="col-sm-4">
 									<label>Armor Class</label>
-									<input type="text" name="ac" class="form-control" placeholder="" tabindex=15 value="{{ac}}">
+									<input type="text" name="ac" class="form-control" tabindex=15 value="{{ac}}">
 								</div>
 
 								<div class="col-sm-4">
 									<label>Initiative</label>
-									<input type="text" name="initiative" class="form-control" placeholder="+0" tabindex=16 value="{{initiative}}">
+									<input type="text" name="initiative" class="form-control" tabindex=16 value="{{initiative}}">
 								</div>
 
 								<div class="col-sm-4">
@@ -431,12 +373,9 @@
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
 
+							<h5>Weapons</h5>
 							<div class="row">
-								<div class="col-md-12">
-									<h5>Weapons</h5>
-								</div>
-
-								<!-- TODO: Refactor with spacebars' smart attributes, or at very least clean up hacky index stuff -->
+								<!-- TODO: smart attributes OR clean up hacky index stuff -->
 								<!-- TODO: Implement add / delete buttons  -->
 								{{#each weapons}}
 								<div class="weapon" data-weapon-number="0">
@@ -459,15 +398,11 @@
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
 
-							<div class="row">
-								<div class="col-md-12">
-									<h5>Equipment, etc.</h5>
-								</div>
-							</div>
 
+							<h5>Equipment, etc.</h5>
 							<div class="row">
 								<div class="col-sm-12">
-									<label for="">Equipment</label>
+									<label>Equipment</label>
 									<textarea class="form-control" name="equipment" rows="6" style="resize: vertical;" value="{{equipment}}"></textarea>
 								</div>
 							</div>
@@ -476,34 +411,30 @@
 						<hr class="spacer60 visible-sm visible-xs">
 
 						<div class="col-sm-12 col-md-6 general-proficiencies" style="padding-left: 50px;">
-							<div class="row">
-								<div class="col-sm-12">
-									<h5>Skills &amp; Proficiencies</h5>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<label for="">Proficiency Bonus</label>
-									<input type="text" name="proficiency" class="form-control" tabindex=7 value="{{proficiency}}">
+							<h5>Skills &amp; Proficiencies</h5>
 
-									<span class="instruction">Enter your proficiency bonus first to ensure all bonuses are calculated correctly.</span>
-								</div>
+							<div class="row">
 								<div class="col-sm-6">
-									<label for="">Passive Perception</label>
+									<label>Proficiency Bonus</label>
+									<input type="text" name="proficiency" class="form-control" tabindex=7 value="{{proficiency}}">
+								</div>
+
+								<div class="col-sm-6">
+									<label>Passive Perception</label>
 									<input type="text" name="passive-percep" class="form-control" tabindex=8 value="{{passivePerception}}">
-									<span class="instruction">Passive perception is calculated by 10 + Perception Modifier.</span>
+									<span class="instruction">10 + Perception Modifier.</span>
 								</div>
 							</div>
 
 							<div class="row" style="margin-top: 25px;">
 								<div class="col-sm-12 ability-scores">
-									<label for="">Ability Scores</label>
+									<label>Ability Scores</label>
 									<div class="row">
 										{{#each standardized 'abilityScores'}}
 										<div class="col-md-6">
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">{{abbrev}}</span>
-												<input type="text" data-score-index="0" class="form-control ability" value="{{getArrayValue ../abilityScores index}}">
+												<input type="text" data-score-index="{{index}}" class="form-control ability" value="{{getArrayValue ../abilityScores index}}">
 				  								<span class="base-modifier input-group-addon fixed thin">{{getArrayValue ../abilityModifiers index}}</span>
 											</div>
 										</div>
@@ -514,7 +445,7 @@
 
 							<div class="row" style="margin-top: 25px;">
 								<div class="col-sm-12 saving-throws">
-									<label for="">Saving Throws</label>
+									<label>Saving Throws</label>
 									<div class="row">
 										{{#each standardized 'saveProficiencies'}}
 										<div class="col-sm-6 col-md-6">
@@ -533,7 +464,7 @@
 
 							<div class="row" style="margin-top: 25px;">
 								<div class="col-sm-12 general-proficiencies">
-									<label for="">Skill Proficiencies</label>
+									<label>Skill Proficiencies</label>
 									<div class="row">
 										{{#each standardized 'skillProficiencies'}}
 										<div class="col-sm-6 col-md-6">
@@ -556,12 +487,7 @@
 					<div class="fullwidthline"></div>
 					<hr class="spacer30">
 
-					<div class="row" style="margin-bottom: 0; padding-bottom; 0;">
-						<div class="col-sm-12" style="margin-bottom: 0; padding-bottom; 0;">
-							<h5>Features &amp; Traits</h5>
-							<input type="hidden" name="count" value="1" />
-						</div>
-					</div>
+					<h5>Features &amp; Traits</h5>
 
 					<div class="form-group" style="margin-top: 0; padding-top; 0;">
 						<div id="traits">
@@ -577,9 +503,7 @@
 										</div>
 									</div>
 
-									<hr class="spacer20">
-
-									<div class="row">
+									<div class="row" style="margin-top: 20px;">
 										<div class="col-sm-12">
 											<textarea class="form-control trait-description" rows="5" style="resize: vertical;" data-trait-index="1" value="{{description}}"></textarea>
 										</div>
@@ -596,9 +520,7 @@
 						</div>
 					</div>
 
-					<hr class="spacer10">
-
-					<div class="form-group">
+					<div class="form-group" style="margin-top: 50px;">
 						<div class="col-sm-12">
 							<button type="submit" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp; Update</button> &nbsp;
 							<button class="btn btn-danger delete-character"><i class="fa fa-close"></i>&nbsp; Delete</button>

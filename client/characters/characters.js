@@ -215,7 +215,6 @@ Template.createCharacter.events({
 
 	'click .add-feat-trait': function(e) {
 		traitCount = traitCount + 1;
-		console.log(traitCount);
 		var newTrait = $("#charTrait").clone();
 
 		newTrait.children().find('input, textarea').each(function(){
@@ -302,7 +301,7 @@ Template.editCharacter.events({
 			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);
 		} else {
 			$('.base-modifier').each(function(scoreIndex, obj) {
-			var getMod = $(this).text();
+				var getMod = $(this).text();
 	     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
 	    });
 		}
