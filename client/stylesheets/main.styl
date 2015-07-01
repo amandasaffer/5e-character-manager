@@ -16,15 +16,15 @@ body
 nav.navbar
 	height 70px
 	font-family lato
-	
+
 	&.home-page
 		background transparent
 		border none
-		
+
 		a.navbar-brand
 			color white
 			opacity .8
-		
+
 		.navbar-nav
 			display none
 			// TODO: DISPLAY ACCOUNT INFO IF LOGGED IN
@@ -33,30 +33,30 @@ nav.navbar
 	.navbar-header
 		height 70px
 		padding-top 10px
-	
+
 	.navbar-collapse
 		padding-top 10px
-		
+
 	ul
 		font-family lato
 		font-size 16px
 		line-height 1
-	
+
 	a.navbar-brand
 		font-weight 700
 		font-size 24px
-		
+
 		strong
 			opacity .5
 			font-weight 900
-			
+
 #main-hero
 	height 100vh
 	background url('/images/ToDKeyArt1.jpg')
 	background-size cover
 	background-position 50% 40%
 	text-align center
-	
+
 	h1
 		color white
 		opacity .95
@@ -75,72 +75,72 @@ nav.navbar
 		font-size 12px
 		font-weight 400
 		letter-spacing 1px
-		
+
 		i
 			opacity .5
 			margin-left 3px
 			margin-right 2px
-	
+
 	.btn
 		font-size 15px
 		font-weight 400
 		padding 15px 33px 14px
 		letter-spacing 2px
 		border-radius 39px
-		
+
 		i
 			opacity .4
 			margin-right 2px
-		
+
 		&:active
 				position relative
 				top 1px
-		
+
 		&.signup
 			background lighten(#E35720, 5%)
 			border 1px solid #E35720
 			box-shadow 0px 1px 1px #53381D
-			
+
 			&:hover
 				background lighten(#E35720, 15%)
 				border 1px solid lighten(#E35720, 10%)
-		
+
 		&.login
 			background darken(#333, 5%)
 			border 1px solid darken(#333, 7%)
 			// box-shadow 0px 1px 2px #111
 			color #eee
-			
+
 			&:hover
 				background #333
 				border 1px solid #333
-	
+
 	.welcome
 		padding-top 38vh
-		
+
 	.create-acc, .login-form
 		text-align left
 		padding-top 35vh
-		
+
 		h3
 			color white
 			text-align center
 			margin-bottom 10px
-		
+
 		span
 			margin-left 0
 			padding-left 0
 			cursor pointer
 			display inline-block
 			margin-bottom 10px
-			
+
 			&:hover
 				opacity .7
-		
+
 		#create-new-account, #login-form
 			margin-top 5px
 			margin-bottom 10px
-			
+
 			input[type=text], input[type=password]
 				background rgba(0,0,0,0.35)
 				padding 24px 25px 23px
@@ -151,28 +151,28 @@ nav.navbar
 				margin-bottom 20px
 				font-family lato
 				font-weight 300
-				
+
 			input::-webkit-input-placeholder
 				color #ddd
 				border none
 				box-shadow none
 				text-shadow none
 				opacity .67
-			
-			
+
+
 			.checkbox
 				margin-top 0
 				margin-left 5px
-				
+
 				// everything over 1200px (large screens)
 				@media handheld, screen and (min-width: 1200px)
 					margin-left 30px
 					margin-bottom 0
-			
+
 			label
 				font-family lato
 				color #fff
-				
+
 				span
 					opacity .9
 					font-size 14px
@@ -180,7 +180,7 @@ nav.navbar
 					display block
 					text-transform none
 					margin 0 20px 0 4px
-			
+
 			button[type=submit]
 				padding 14px 25px
 				font-size 14px
@@ -190,28 +190,28 @@ nav.navbar
 				display block
 				width 100%
 				color #fff
-				
+
 				&:hover
 					background #c55124
-				
+
 				&:focus
 					outline 0
-	
+
 	.screen
 		height 100%
 		width 100%
 		background rgba(25, 25, 25, .15)
-	
+
 	.scroll-down
 		position absolute
 		bottom 30px
 		left 0
 		right 0
 		opacity .7
-		
+
 		i
 			color white
-		
+
 
 #page-head
 	height 120px
@@ -221,7 +221,7 @@ nav.navbar
 	background-position 50% 40%
 	margin-bottom 40px
 	padding-top 20px
-	
+
 	h3
 		color white
 		opacity .9
@@ -236,7 +236,7 @@ h1, h2, h3, h4, h5, h6
 	font-family lato
 	letter-spacing 1px
 	text-transform uppercase
-	
+
 	&.inline
 		display inline-block
 
@@ -252,7 +252,7 @@ h2
 h4
 	font-size 16px
 	font-weight 700
-	
+
 p
 	margin 0 0 30px
 	line-height 1.75
@@ -272,7 +272,7 @@ span
 	letter-spacing 1px
 	text-transform uppercase
 	padding 9px 15px
-	
+
 	&.btn-inline-basic
 		background none
 		display inline-block
@@ -281,7 +281,7 @@ span
 		position relative
 		bottom 7px
 		font-size 13px
-		
+
 
 ul
 	font-size 14px
@@ -318,7 +318,7 @@ form.create-character
 		box-shadow none
 		border none
 		font-family lato
-	
+
 	h5
 		font-family lato
 		font-size 26px
@@ -337,23 +337,23 @@ form.create-character
 			// border-color darken(#ddd, 25%)
 			border none
 			color darken(#ddd, 60%)
-	
+
 	.add-feat-trait
 		cursor pointer
-		margin-top 10px
-	
+		margin-top 50px
+
 	.trait
 		margin-top 50px
-		
+
 		&:nth-child(1), &:nth-child(2), &:nth-child(3)
 			margin-top 10px
-		
+
 	.add-box
 		background #ccc
 		text-align center
 		padding 55px 40px
 		border-radius 5px
-		
+
 		span.add
 			font-family lato
 			font-size 12px
@@ -363,7 +363,7 @@ form.create-character
 			margin-top 8px
 			font-weight 700
 			opacity .7
-		
+
 		&:hover
 			background #bbb
 
@@ -383,14 +383,14 @@ form.create-character
 						width 35px
 					&.fat
 						width 65px
-		
+
 		.general-proficiencies
 			.input-group
 				span.fixed
 					&.prof-name
 						width 180px
 						text-align left
-		
+
 		span.instruction
 			display block
 			font-size 11px
