@@ -10,6 +10,14 @@ UI.registerHelper('checkProficiency', function(key, value) {
 	}
 });
 
+UI.registerHelper('getAbilityScore', function(abilityScores, index) {
+  return abilityScores[index];
+});
+
+UI.registerHelper('getAbilityModifier', function(abilityModifiers, index) {
+  return abilityModifiers[index];
+});
+
 UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
 	var base = base[index];
   var proficiencyScore = base;
