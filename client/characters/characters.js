@@ -10,6 +10,7 @@ var addPositiveMod = function(num) {
 	return num;
 }
 
+
 var cleanProficiency = function(text) {
 	text = text.replace('(STR)','');
 	text = text.replace('(DEX)','');
@@ -98,11 +99,10 @@ Template.createCharacter.events({
 		if( abilityScores.length < 6 || abilityScores[scoreIndex] != abilityScore ) {
 			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);
 		} else {
-			console.log('loop will run');
 			$('.base-modifier').each(function(scoreIndex, obj) {
 				var getMod = $(this).text();
-		     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
-		    });
+	     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
+	    });
 		}
 
 		// put ability score in array
@@ -125,7 +125,6 @@ Template.createCharacter.events({
 	'blur [name=proficiency]': function(e) {
 		e.preventDefault();
 		proficiencyBonus = $(e.target).val();
-
 
 		if ( abilityScores.length < 6 ) {
 			console.log('not all ability scores are filled out. do not apply proficiency bonuses yet.');

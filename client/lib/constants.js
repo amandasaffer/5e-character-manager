@@ -1,5 +1,4 @@
 // global object that allows app to reference all the standard classes, backgrounds, races, and alignments
-// TODO: Hook this up to a global helper [done - helpers.js] and ALL existing character templates
 standardCharacter = {
   classes: [
     'Barbarian',
