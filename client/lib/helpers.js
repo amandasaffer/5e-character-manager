@@ -10,12 +10,8 @@ UI.registerHelper('checkProficiency', function(key, value) {
 	}
 });
 
-UI.registerHelper('getAbilityScore', function(abilityScores, index) {
-  return abilityScores[index];
-});
-
-UI.registerHelper('getAbilityModifier', function(abilityModifiers, index) {
-  return abilityModifiers[index];
+UI.registerHelper('getArrayValue', function(array, index) {
+  return array[index];
 });
 
 UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
@@ -24,11 +20,11 @@ UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
 	var modifier = parseInt(modifier);
 	var base = parseInt(base);
 
-	// if value is at any index in key, then add modifier to base and return that number
 	for(i=0; i<key.length; i++) {
 		if(key[i] == value) {
 			proficiencyScore = base + modifier;
-      // TODO: Figure out how to access DOM to show user which stats they are proficient in
+      // TODO: Figure out how to access DOM from this helper
+      // idea: just look at proficiencies array in the template and addClass based on those values
 			if(proficiencyScore > 0) {
 				proficiencyScore = "+" + proficiencyScore /* + "***" */;
 			} else if(proficiencyScore < 0) {
@@ -37,7 +33,6 @@ UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
 			break;
 		}
 	}
-
 	return proficiencyScore;
 });
 

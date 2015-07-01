@@ -53,7 +53,6 @@ applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreI
 	return;
 };
 
-
 Template.characters.events({
 	'click #create-character': function(e) {
 		Router.go('createCharacter');
@@ -61,7 +60,7 @@ Template.characters.events({
 });
 
 Template.characters.helpers({
-	mycharacters: function() {
+	characters: function() {
 		return Characters.find({userId: Meteor.user()._id});
 	}
 });
