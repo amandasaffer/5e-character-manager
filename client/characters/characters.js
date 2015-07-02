@@ -10,7 +10,6 @@ var addPositiveMod = function(num) {
 	return num;
 }
 
-
 var cleanProficiency = function(text) {
 	text = text.replace('(STR)','');
 	text = text.replace('(DEX)','');
@@ -26,6 +25,7 @@ var cleanProficiency = function(text) {
 	return text;
 }
 
+// TODO: check if this is still used by anything
 applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreIndex) {
 	abilityScoreModifier = parseInt(abilityScoreModifier);
 	var pureModifier = abilityScoreModifier;
@@ -198,7 +198,7 @@ Template.manageCharacter.events({
 		Characters.update(currentCharacterId, {$set: obj});
 	},
 
-	// TODO: refactor
+	// TODO: refactor, we can streamline this
 	'click .save-proficiency, click .gen-proficiency': function(e) {
 		var modifier = $(e.target).parent().prev().text();
 		var isChecked = $(e.target).is(':checked');
@@ -296,36 +296,6 @@ Template.characters.helpers({
 		return Characters.find({userId: Meteor.user()._id, name: {"$exists": true }});
 	}
 });
-
-Template.editCharacter.helpers({
-	class: function() {
-		return this.class;
-	}
-});
-
-Template.createCharacter.rendered = function() {
-	var profValue = $('[name=proficiency]').val('+2');
-	proficiencyBonus = 2;
-	abilityScores = [];
-	abilityModifiers = [];
-	proficiencies = [];
-	weapons = [];
-	traits = [];
-	traitCount = 1;
-
-	$('.gen-proficiency, .save-proficiency').prop("disabled", true);
-};
-
-Template.editCharacter.rendered = function() {
-	proficiencyBonus = this.data.proficiency;
-	abilityScores = this.data.abilityScores;
-	abilityModifiers = this.data.abilityModifiers;
-	proficiencies = this.data.proficiencies;
-	weapons = this.data.weapons;
-	traits = this.data.traits;
-	traitCount = this.data.traits.length;
-};
-
 
 Template.displayCharacter.rendered = function(e) {
 	var proficiencyMod = this.data.proficiency;
