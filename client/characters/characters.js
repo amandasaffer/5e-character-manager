@@ -55,37 +55,60 @@ applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreI
 };
 
 Template.characters.events({
-	'click #create-character': function(e) {
-		Router.go('createCharacter');
+	'click #add-character': function(e) {
+		$('#myModal').modal('toggle');
+	},
+	'submit #create-character': function(e) {
+		e.preventDefault();
+
+		var character = {
+			// TODO: update
+			name: $(e.target).find('[name=charname]').val(),
+			class: '',
+			level: 1,
+			background: '',
+			race: '',
+			alignment: '',
+			ac: '',
+			initiative: '',
+			speed: '',
+			hitPoints: '',
+			hitDice: '',
+			weapons: [{}],
+			equipment: '',
+			traits: [{}],
+			proficiency: '+2',
+		 	passivePerception: '10',
+			// TODO: fix initialization of this. it's messy
+			abilityScores: ['0', '0', '0', '0', '0', '0'],
+			abilityModifiers: [],
+			proficiencies: []
+		}
+
+		Meteor.call('addCharacter', character, function(error, id) {
+			if (error) {
+				return alert(error.reason);
+			}
+			$('#myModal').modal('toggle');
+	  });
 	}
 });
 
-Template.characters.helpers({
-	characters: function() {
-		return Characters.find({userId: Meteor.user()._id});
+Template.manageCharacter.rendered = function() {
+	proficiencyBonus = this.data.proficiency;
+	abilityScores = this.data.abilityScores;
+	abilityModifiers = this.data.abilityModifiers;
+	proficiencies = this.data.proficiencies;
+	weapons = this.data.weapons;
+	traits = this.data.traits;
+	currentCharacterId = this.data._id;
+
+	if(abilityScores.length < 6) {
+		$('.gen-proficiency, .save-proficiency').prop('disabled', true);
 	}
-});
-
-Template.editCharacter.helpers({
-	class: function() {
-		return this.class;
-	}
-});
-
-Template.createCharacter.rendered = function() {
-	var profValue = $('[name=proficiency]').val('+2');
-	proficiencyBonus = 2;
-	abilityScores = [];
-	abilityModifiers = [];
-	proficiencies = [];
-	weapons = [];
-	traits = [];
-	traitCount = 1;
-
-	$('.gen-proficiency, .save-proficiency').prop("disabled", true);
 };
 
-Template.createCharacter.events({
+Template.manageCharacter.events({
 	'blur .ability': function(e) {
 		e.preventDefault();
 		var abilityScore = $(e.target).val();
@@ -94,15 +117,6 @@ Template.createCharacter.events({
 
 		if(modifier > 0) {
 			modifier = '+' + modifier;
-		}
-
-		if( abilityScores.length < 6 || abilityScores[scoreIndex] != abilityScore ) {
-			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);
-		} else {
-			$('.base-modifier').each(function(scoreIndex, obj) {
-				var getMod = $(this).text();
-	     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
-	    });
 		}
 
 		// put ability score in array
@@ -118,8 +132,10 @@ Template.createCharacter.events({
 			$('.gen-proficiency, .save-proficiency').prop("disabled", false);
 		}
 
-		// set ability score modifier
-		$(e.target).next().html(modifier);
+		var obj = {};
+		obj["abilityScores." + scoreIndex] = abilityScore;
+		obj["abilityModifiers." + scoreIndex] = modifier;
+		Characters.update(currentCharacterId, {$set: obj});
 	},
 
 	'blur [name=proficiency]': function(e) {
@@ -134,8 +150,12 @@ Template.createCharacter.events({
 		     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
 		    });
 		}
+
+		var obj = { proficiency: proficiencyBonus }; // working!!
+		Characters.update(this._id, {$set: obj});
 	},
 
+	// TODO: BROKEN. refactor. look at .ability for tips
 	'blur .weapon input': function(e) {
 		// get the weapon number (first or second)
 		var weaponNumber = parseInt( $(e.target).closest('.weapon').data('weapon-number') );
@@ -158,28 +178,27 @@ Template.createCharacter.events({
 		}
 	},
 
-	'blur .trait input, blur .trait textarea': function(e) {
-		// get the trait number (first or second)
-		var traitNumber = traitCount - 1;
+	'blur .trait-name': function(e) {
+		var traitName = $(e.target).val();
+		var num = $(e.target).closest('.trait').index();
+		traits[num].name = traitName;
 
-		// get the value name and data associated
-		var traitIndex = parseInt( $(e.target).data('trait-index') );
-		var theData = $(e.target).val();
-
-		// if object doesn't exist, initialize it
-		if(traits.length - 1 < traitNumber) {
-			traits[traitNumber] = {};
-		}
-
-		if (traitIndex === 0) {
-			traits[traitNumber].name = $(e.target).val();
-		} else {
-			traits[traitNumber].description = $(e.target).val();
-		}
-
-		console.log(traits);
+		var obj = {};
+		obj["traits." + num + ".name"] = traitName;
+		Characters.update(currentCharacterId, {$set: obj});
 	},
 
+	'blur .trait-description': function(e) {
+		var description = $(e.target).val();
+		var num = $(e.target).closest('.trait').index();
+		traits[num].description = description;
+
+		var obj = {};
+		obj["traits." + num + ".description"] = description;
+		Characters.update(currentCharacterId, {$set: obj});
+	},
+
+	// TODO: refactor
 	'click .save-proficiency, click .gen-proficiency': function(e) {
 		var modifier = $(e.target).parent().prev().text();
 		var isChecked = $(e.target).is(':checked');
@@ -195,8 +214,6 @@ Template.createCharacter.events({
 			var profIndex = proficiencies.indexOf(thisProficiency);
 			proficiencies.splice(profIndex, 1);
 		}
-
-		console.log(proficiencies);
 
 		if(modifier > 0) {
 			modifier = "+" + modifier;
@@ -214,219 +231,17 @@ Template.createCharacter.events({
 	},
 
 	'click .add-feat-trait': function(e) {
-		traitCount = traitCount + 1;
-		var newTrait = $("#charTrait").clone();
-
-		newTrait.children().find('input, textarea').each(function(){
-		   $(this).val('');
-		});
-
-		newTrait.removeAttr('id');
-		newTrait.data('trait-count', traitCount);
-		$(newTrait).appendTo('#traits');
-
-		if(traitCount > 2) {
-			$('.add-feat-trait').css('margin-top', '50px');
-		} else {
-			$('.add-feat-trait').css('margin-top', '10px');
-		}
+		traits.push({});
+		var obj = { traits: traits };
+		Characters.update(currentCharacterId, {$set: obj});
 	},
 
-	'submit form': function(e) {
-		e.preventDefault();
-
-		var character = {
-			name: $(e.target).find('[name=charname]').val(),
-			class: $(e.target).find('[name=class]').val(),
-			level: $(e.target).find('[name=level]').val(),
-			background: $(e.target).find('[name=background]').val(),
-			race: $(e.target).find('[name=race]').val(),
-			alignment: $(e.target).find('[name=alignment]').val(),
-			ac: $(e.target).find('[name=ac]').val(),
-			initiative: $(e.target).find('[name=initiative]').val(),
-			speed: $(e.target).find('[name=speed]').val(),
-			hitPoints: $(e.target).find('[name=hitpoints]').val(),
-			hitDice: $(e.target).find('[name=hitdice]').val(),
-			weapons: weapons,
-			equipment: $(e.target).find('[name=equipment]').val(),
-			traits: traits,
-			proficiency: proficiencyBonus,
-		 	passivePerception: $('input[name=passive-percep]').val(),
-			abilityScores: abilityScores,
-			abilityModifiers: abilityModifiers,
-			// TODO: saving throws are included but need to parse them
-			proficiencies: proficiencies
-		}
-
-		Meteor.call('addCharacter', character, function(error, id) {
-			if (error) {
-				return alert(error.reason);
-			}
-	      Router.go('displayCharacter', {_id: id});
-	    });
-	}
-});
-
-Template.displayCharacter.rendered = function(e) {
-	var proficiencyMod = this.data.proficiency;
-	var proficiencies = this.data.proficiencies;
-
-};
-
-Template.editCharacter.rendered = function() {
-	proficiencyBonus = this.data.proficiency;
-	abilityScores = this.data.abilityScores;
-	abilityModifiers = this.data.abilityModifiers;
-	proficiencies = this.data.proficiencies;
-	weapons = this.data.weapons;
-	traits = this.data.traits;
-	traitCount = this.data.traits.length;
-};
-
-
-Template.editCharacter.events({
-	'blur .ability': function(e) {
-		e.preventDefault();
-
-		// define starting variables
-		var scoreIndex = $(e.target).data('score-index');
-		var abilityScore = $(e.target).val();
-		var modifier = calculateModifier(abilityScore);
-
-		if(modifier > 0) {
-			modifier = '+' + modifier;
-		}
-
-		if( abilityScores.length < 6 || abilityScores[scoreIndex] != abilityScore ) {
-			applyProficiencyScores(modifier, proficiencyBonus, scoreIndex);
-		} else {
-			$('.base-modifier').each(function(scoreIndex, obj) {
-				var getMod = $(this).text();
-	     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
-	    });
-		}
-
-		// put ability score in array
-		if(abilityScore != '') {
-			abilityScores[scoreIndex] = abilityScore;
-			abilityModifiers[scoreIndex] = modifier;
-		}
-
-		if(abilityScores.length < 6) {
-			console.log('disable proficiency checkboxes');
-		} else {
-			$('.gen-proficiency, .save-proficiency').prop("disabled", false);
-		}
-
-		// set ability score modifier
-		$(e.target).next().html(modifier);
-
-	},
-
-	'blur [name=proficiency]': function(e) {
-		e.preventDefault();
-		proficiencyBonus = $(e.target).val();
-
-
-		if ( abilityScores.length < 6 ) {
-			console.log('not all ability scores are filled out. do not apply proficiency bonuses yet.');
-		} else {
-			// update proficiency modifiers
-			$('.base-modifier').each(function(scoreIndex, obj) {
-				var getMod = $(this).text();
-	     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
-	    });
-
-			// update passive perception if it applies
-			for(i=0; i<proficiencies.length; i++) {
-				if(proficiencies[i] === 'Perception') {
-					var addPerception = parseInt($('[data-add-proficiency-to="Perception"]').parent().prev().text());
-					$('input[name=passive-percep]').val(10 + addPerception);
-					break;
-				}
-			}
-		}
-	},
-
-	'blur .weapon input': function(e) {
-		var weaponNumber = parseInt( $(e.target).closest('.weapon').data('weapon-number') );
-		var weaponIndex = parseInt( $(e.target).data('weapon-index') );
-		if(weapons.length - 1 < weaponNumber) {
-			weapons[weaponNumber] = [];
-		}
-		weapons[weaponNumber][weaponIndex] = $(e.target).val();
-	},
-
-	'blur .trait input, blur .trait textarea': function(e) {
-		var traitNumber = traitCount - 1;
-		var traitIndex = parseInt( $(e.target).data('trait-index') );
-		var theData = $(e.target).val();
-
-		// if object doesn't exist, initialize it
-		if(traits.length - 1 < traitNumber) {
-			traits[traitNumber] = {};
-		}
-
-		if (traitIndex === 0) {
-			traits[traitNumber].name = theData;
-		} else {
-			traits[traitNumber].description = theData;
-		}
-	},
-
-	'click .save-proficiency, click .gen-proficiency': function(e) {
-		var modifier = $(e.target).parent().prev().text();
-		var isChecked = $(e.target).is(':checked');
-
-		var thisProficiency = $(e.target).parent().prev().prev().text();
-		thisProficiency = cleanProficiency(thisProficiency);
-
-		if( isChecked ) {
-			// checked after click
-			modifier = parseInt(modifier) + parseInt(proficiencyBonus);
-			proficiencies.push(thisProficiency);
-		} else {
-			modifier = parseInt(modifier) - parseInt(proficiencyBonus);
-			var profIndex = proficiencies.indexOf(thisProficiency);
-			proficiencies.splice(profIndex, 1);
-		}
-
-		if(modifier > 0) {
-			modifier = "+" + modifier;
-		}
-
-		// if the ability score modifier ISN'T zero, apply proficiencies
-		if($(e.target).parent().prev().text().length != 0) {
-			$(e.target).parent().prev().text(modifier);
-		}
-
-		// TODO: make this code block a function and re-use in create template
-		if( $(e.target).data('add-proficiency-to') === 'Perception') {
-    	var addPerception = parseInt( $(e.target).parent().prev().text() );
-    	$('input[name=passive-percep]').val(10 + addPerception);
-    }
-	},
-
-	'click .add-feat-trait': function(e) {
-		traitCount = traitCount + 1;
-		var newTrait = $("#charTrait").clone();
-
-		newTrait.children().find('input, textarea').each(function(){
-		   $(this).val('');
-		});
-
-		newTrait.removeAttr('id');
-		newTrait.data('trait-count', traitCount);
-
-		$(newTrait).appendTo('#traits');
-
-		// TODO: determine if this is needed for the edit template
-		// if(traitCount > 3) {
-		// 	$('.add-feat-trait').css('margin-top', '50px');
-		// } else {
-		// 	$('.add-feat-trait').css('margin-top', '10px');
-		// }
-	},
+	// TODO: implement this
+	// 'click .add-weapon': function(e) {
+	// 	weapons.push({});
+	// 	var obj = { weapons: weapons };
+	// 	Characters.update(currentCharacterId, {$set: obj});
+	// },
 
 	'submit form': function(e) {
 		e.preventDefault();
@@ -474,3 +289,45 @@ Template.editCharacter.events({
 		}
 	}
 });
+
+Template.characters.helpers({
+	characters: function() {
+		// only characters with a name field go in this list
+		return Characters.find({userId: Meteor.user()._id, name: {"$exists": true }});
+	}
+});
+
+Template.editCharacter.helpers({
+	class: function() {
+		return this.class;
+	}
+});
+
+Template.createCharacter.rendered = function() {
+	var profValue = $('[name=proficiency]').val('+2');
+	proficiencyBonus = 2;
+	abilityScores = [];
+	abilityModifiers = [];
+	proficiencies = [];
+	weapons = [];
+	traits = [];
+	traitCount = 1;
+
+	$('.gen-proficiency, .save-proficiency').prop("disabled", true);
+};
+
+Template.editCharacter.rendered = function() {
+	proficiencyBonus = this.data.proficiency;
+	abilityScores = this.data.abilityScores;
+	abilityModifiers = this.data.abilityModifiers;
+	proficiencies = this.data.proficiencies;
+	weapons = this.data.weapons;
+	traits = this.data.traits;
+	traitCount = this.data.traits.length;
+};
+
+
+Template.displayCharacter.rendered = function(e) {
+	var proficiencyMod = this.data.proficiency;
+	var proficiencies = this.data.proficiencies;
+};
