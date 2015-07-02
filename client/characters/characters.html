@@ -1,0 +1,37 @@
+<template name="characters">
+	<div id="page-head">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<h3>Character Sheets</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<ul class="group-list">
+						<!-- TODO: Rename to userCharacters and add view link -->
+				    {{#each characters}}
+				      <li><a href="{{pathFor 'manageCharacter'}}">{{name}}</a></li>
+				    {{/each}}
+				</ul>
+				<button id="add-character" class="btn btn-primary"><i class="fa fa-plus"></i> Add Character Sheet</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="padding: 30px;">
+      <form id="create-character" role="form">
+				<label>Name</label>
+				<input type="text" name="charname" class="form-control" tabindex=1>
+				<button class="btn btn-primary"><i class="fa fa-plus"></i> Create Character</button>
+      </form>
+    </div>
+  </div>
+</div>
+</template>
