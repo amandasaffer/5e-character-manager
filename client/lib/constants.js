@@ -59,7 +59,6 @@ standardCharacter = {
     { name: 'Wisdom', abbrev: 'WIS', index: 4 },
     { name: 'Charisma', abbrev: 'CHA', index: 5 }
   ],
-  // TODO: fix hacky index keys
   saveProficiencies: [
     { name: 'Strength', abbrev: 'STR', index: 0 },
     { name: 'Dexterity', abbrev: 'DEX', index: 1 },
