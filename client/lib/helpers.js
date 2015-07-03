@@ -26,9 +26,9 @@ UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
       // TODO: Figure out how to access DOM from this helper
       // idea: just look at proficiencies array in the template and addClass based on those values
 			if(proficiencyScore > 0) {
-				proficiencyScore = "+" + proficiencyScore /* + "***" */;
+				proficiencyScore = "+" + proficiencyScore;
 			} else if(proficiencyScore < 0) {
-				proficiencyScore = "-" + proficiencyScore /* + "***" */;
+				proficiencyScore = "-" + proficiencyScore;
 			}
 			break;
 		}

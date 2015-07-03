@@ -21,19 +21,25 @@ var cleanProficiency = function(text) {
 	if(/\s+$/.test(text)) {
 		text = text.substr(0, text.length - 1);
 	}
-
 	return text;
+}
+
+var checkProficiency = function(array, value) {
+	for(i = 0; i < array.length; i++) {
+		if(array[i] == value) {
+			return true;
+		}
+	}
 }
 
 Template.characters.events({
 	'click #add-character': function(e) {
-		$('#myModal').modal('toggle');
+		$('#myModal').modal('toggle'); // TODO: rename this modal
 	},
 	'submit #create-character': function(e) {
 		e.preventDefault();
 
 		var character = {
-			// TODO: update
 			name: $(e.target).find('[name=charname]').val(),
 			class: '',
 			level: 1,
@@ -50,8 +56,7 @@ Template.characters.events({
 			traits: [{}],
 			proficiency: 2,
 		 	passivePerception: '10',
-			// TODO: fix initialization of this. it's messy
-			abilityScores: ['0', '0', '0', '0', '0', '0'],
+			abilityScores: ['0', '0', '0', '0', '0', '0'], // TODO: fix this messy init
 			abilityModifiers: [],
 			proficiencies: []
 		}
@@ -60,7 +65,7 @@ Template.characters.events({
 			if (error) {
 				return alert(error.reason);
 			}
-			$('#myModal').modal('toggle');
+			$('#myModal').modal('toggle'); // TODO: rename this modal
 	  });
 	}
 });
@@ -73,6 +78,7 @@ Template.manageCharacter.rendered = function() {
 	weapons = this.data.weapons;
 	traits = this.data.traits;
 	currentCharacterId = this.data._id;
+	passivePerception = this.data.passivePerception;
 
 	if(abilityScores.length < 6) {
 		$('.gen-proficiency, .save-proficiency').prop('disabled', true);
@@ -88,7 +94,9 @@ Template.manageCharacter.events({
 		var modifier = calculateModifier(abilityScore);
 		var scoreIndex = $(e.target).data('score-index');
 
-		if(modifier > 0) { modifier = '+' + modifier; }
+		if(modifier > 0) {
+			modifier = '+' + modifier;
+		}
 
 		if(abilityScore != '') { // put ability score in array
 			abilityScores[scoreIndex] = abilityScore;
@@ -112,11 +120,21 @@ Template.manageCharacter.events({
 		e.preventDefault();
 		proficiencyBonus = parseInt($(e.target).val());
 
-		var obj = { proficiency: proficiencyBonus }; // working!!
-		Characters.update(this._id, {$set: obj});
+		if ( checkProficiency(proficiencies, 'Perception') ) {
+			console.log('checked!');
+			var passive = 10 + parseInt(modifier); // TODO: BROKEN: need to get perception modifier
+			var obj = {
+				proficiency: proficiencyBonus,
+				passivePerception: passive
+			};
+    } else {
+			console.log('not checked!');
+			var obj = { proficiency: proficiencyBonus };
+		}
+
+		// Characters.update(currentCharacterId, {$set: obj});
 	},
 
-	// TODO: BROKEN. refactor. look at .ability for tips
 	'blur .weapon-input': function(e) {
 		var num = $(e.target).closest('.weapon').index('.weapon');
 		var weaponIndex = parseInt( $(e.target).data('weapon-index') );
@@ -192,16 +210,16 @@ Template.manageCharacter.events({
 		if(modifier > 0) {
 			modifier = "+" + modifier;
 		}
-		// if the ability score modifier ISN'T zero, apply proficiencies
-		if($(e.target).parent().prev().text().length != 0) {
+
+		if(modifier.length != 0) { // if mod isn't 0 apply proficiencies
 			$(e.target).parent().prev().text(modifier);
 		}
 
-		// TODO: This code block is reused. Make it a function later??
-		if( $(e.target).data('add-proficiency-to') === 'perception') {
-	    	var addPerception = parseInt($('.perception-prof').text());
-	    	$('input[name=passive-percep]').val(10 + addPerception);
-	    }
+		if( $(e.target).data('add-proficiency-to') === 'Perception') {
+			var passive = 10 + parseInt(modifier);
+			var obj = { passivePerception: passive }; // is there a better way to do this?
+			Characters.update(currentCharacterId, {$set: obj});
+    }
 	},
 
 	'click .add-feat-trait': function(e) {
