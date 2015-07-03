@@ -25,35 +25,6 @@ var cleanProficiency = function(text) {
 	return text;
 }
 
-// TODO: check if this is still used by anything
-applyProficiencyScores = function(abilityScoreModifier, proficiencyBonus, scoreIndex) {
-	abilityScoreModifier = parseInt(abilityScoreModifier);
-	var pureModifier = abilityScoreModifier;
-	proficiencyBonus = parseInt(proficiencyBonus);
-
-	// for unchecked elements, use base ability score modifier
-	abilityScoreModifier = addPositiveMod(abilityScoreModifier);
-	var matched = $('.saving-throws [data-score-index=' + scoreIndex + '], .general-proficiencies [data-score-index=' + scoreIndex + ']');
-	$(matched).text(abilityScoreModifier);
-
-	// for checked elements, apply proficiency bonus as well
-	var combinedModifier = pureModifier + proficiencyBonus;
-	combinedModifier = addPositiveMod(combinedModifier);
-
-  $('input.gen-proficiency:checked, input.save-proficiency:checked').each(function() {
-  	// only apply modifier during loop if ability (str, dex, etc.) matches the proficiency
-  	if ($(this).parent().prev().data('score-index') === scoreIndex) {
-  		$(this).parent().prev().text(combinedModifier);
-  	}
-  });
-
-  if( $('.perception-prof').text().length > 0 ) {
-  	var addPerception = parseInt($('.perception-prof').text());
-  	$('input[name=passive-percep]').val(10 + addPerception);
-  }
-	return;
-};
-
 Template.characters.events({
 	'click #add-character': function(e) {
 		$('#myModal').modal('toggle');
@@ -77,7 +48,7 @@ Template.characters.events({
 			weapons: [{}],
 			equipment: '',
 			traits: [{}],
-			proficiency: '+2',
+			proficiency: 2,
 		 	passivePerception: '10',
 			// TODO: fix initialization of this. it's messy
 			abilityScores: ['0', '0', '0', '0', '0', '0'],
@@ -106,6 +77,8 @@ Template.manageCharacter.rendered = function() {
 	if(abilityScores.length < 6) {
 		$('.gen-proficiency, .save-proficiency').prop('disabled', true);
 	}
+
+	console.log("character id " + currentCharacterId);
 };
 
 Template.manageCharacter.events({
@@ -115,20 +88,16 @@ Template.manageCharacter.events({
 		var modifier = calculateModifier(abilityScore);
 		var scoreIndex = $(e.target).data('score-index');
 
-		if(modifier > 0) {
-			modifier = '+' + modifier;
-		}
+		if(modifier > 0) { modifier = '+' + modifier; }
 
-		// put ability score in array
-		if(abilityScore != '') {
+		if(abilityScore != '') { // put ability score in array
 			abilityScores[scoreIndex] = abilityScore;
 			abilityModifiers[scoreIndex] = modifier;
 		}
 
-		// enable proficiency checkboxes if all ability scores are filled out
-		if(abilityScores.length < 6) {
+		if(abilityScores.length < 6) { // enable proficiencies
 			console.log('disable proficiency checkboxes');
-		} else {
+		} else { // otherwise no
 			$('.gen-proficiency, .save-proficiency').prop("disabled", false);
 		}
 
@@ -138,47 +107,52 @@ Template.manageCharacter.events({
 		Characters.update(currentCharacterId, {$set: obj});
 	},
 
+
 	'blur [name=proficiency]': function(e) {
 		e.preventDefault();
-		proficiencyBonus = $(e.target).val();
-
-		if ( abilityScores.length < 6 ) {
-			console.log('not all ability scores are filled out. do not apply proficiency bonuses yet.');
-		} else {
-			$('.base-modifier').each(function(scoreIndex, obj) {
-				var getMod = $(this).text();
-		     	applyProficiencyScores(getMod, proficiencyBonus, scoreIndex);
-		    });
-		}
+		proficiencyBonus = parseInt($(e.target).val());
 
 		var obj = { proficiency: proficiencyBonus }; // working!!
 		Characters.update(this._id, {$set: obj});
 	},
 
 	// TODO: BROKEN. refactor. look at .ability for tips
-	'blur .weapon input': function(e) {
-		// get the weapon number (first or second)
-		var weaponNumber = parseInt( $(e.target).closest('.weapon').data('weapon-number') );
-
-		// get the value name and data associated
+	'blur .weapon-input': function(e) {
+		var num = $(e.target).closest('.weapon').index('.weapon');
 		var weaponIndex = parseInt( $(e.target).data('weapon-index') );
-		var theData = $(e.target).val();
+		var data = $(e.target).val();
 
-		// if object doesn't exist, initialize it
-		if(weapons.length - 1 < weaponNumber) {
-			weapons[weaponNumber] = {};
-		}
-
+		var obj = {};
 		if (weaponIndex === 0) {
-			weapons[weaponNumber].name = $(e.target).val();
+			weapons[num].name = data;
+			obj["weapons." + num + ".name"] = data;
 		} else if (weaponIndex === 1) {
-			weapons[weaponNumber].atkbonus = $(e.target).val();
+			weapons[num].atkbonus = data;
+			obj["weapons." + num + ".atkbonus"] = data;
 		} else {
-			weapons[weaponNumber].damage = $(e.target).val();
+			weapons[num].damage = data;
+			obj["weapons." + num + ".damage"] = data;
 		}
+
+		Characters.update(currentCharacterId, {$set: obj});
 	},
 
-	'blur .trait-name': function(e) {
+	'click .add-weapon': function(e) {
+		e.preventDefault();
+		weapons.push({});
+		var obj = { weapons: weapons }; // is there a better way to do this?
+		Characters.update(currentCharacterId, {$set: obj});
+	},
+
+	'click .delete-weapon': function(e) {
+		e.preventDefault();
+		var num = $(e.target).closest('.weapon').index('.weapon');
+		weapons.splice(num, 1);
+		var obj = { weapons: weapons }; // is there a better way to do this?
+		Characters.update(currentCharacterId, {$set: obj});
+	},
+
+	'blur .trait-name': function(e) { // TODO: maybe combine this to be more like weapons?
 		var traitName = $(e.target).val();
 		var num = $(e.target).closest('.trait').index();
 		traits[num].name = traitName;
@@ -206,7 +180,7 @@ Template.manageCharacter.events({
 		var thisProficiency = $(e.target).parent().prev().prev().text();
 		thisProficiency = cleanProficiency(thisProficiency);
 
-		if( isChecked ) {
+		if(isChecked) {
 			modifier = parseInt(modifier) + parseInt(proficiencyBonus);
 			proficiencies.push(thisProficiency);
 		} else {
@@ -232,16 +206,9 @@ Template.manageCharacter.events({
 
 	'click .add-feat-trait': function(e) {
 		traits.push({});
-		var obj = { traits: traits };
+		var obj = { traits: traits }; // is there a better way to do this?
 		Characters.update(currentCharacterId, {$set: obj});
 	},
-
-	// TODO: implement this
-	// 'click .add-weapon': function(e) {
-	// 	weapons.push({});
-	// 	var obj = { weapons: weapons };
-	// 	Characters.update(currentCharacterId, {$set: obj});
-	// },
 
 	'submit form': function(e) {
 		e.preventDefault();

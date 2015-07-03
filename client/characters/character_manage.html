@@ -1,8 +1,9 @@
+<!-- https://www.discovermeteor.com/blog/spacebars-secrets-exploring-meteor-new-templating-engine/ -->
 <template name="characterTableWrapper">
   <table>
     <thead>
       <tr>
-        <td>Name</td>
+        <td>Character</td> <!-- will list name & short description (Level 3 Paladin) -->
         <td>Edit</td>
 				<td>View</td>
       </tr>
@@ -102,25 +103,31 @@
 
 							<h5>Weapons</h5>
 							<div class="row">
-								<!-- TODO: smart attributes OR clean up hacky index stuff -->
-								<!-- TODO: Implement add / delete buttons  -->
 								{{#each weapons}}
-								<div class="weapon" data-weapon-number="0">
+								<div class="weapon">
 									<div class="col-sm-4">
 										<label>Name</label>
-										<input type="text" name="weapon-name" class="form-control weapon-input" data-weapon-index="0" value="{{name}}">
+										<input type="text" class="weapon-input form-control" data-weapon-index="0" value="{{name}}">
 									</div>
 									<div class="col-sm-3">
 										<label>Atk Bonus</label>
-										<input type="text" name="atkbonus" class="form-control weapon-input" data-weapon-index="1" value="{{atkbonus}}">
+										<input type="text" class="weapon-input form-control" data-weapon-index="1" value="{{atkbonus}}">
 									</div>
 									<div class="col-sm-5">
 										<label>Damage</label>
-										<input type="text" name="weapon-damage" class="form-control weapon-input" data-weapon-index="2" value="{{damage}}">
+                    <div class="input-group delete-weapon">
+										  <input type="text" class="weapon-input form-control" data-weapon-index="2" value="{{damage}}">
+                      <span class="input-group-addon"><i class="fa fa-minus"></i></span>
+                    </div>
 									</div>
 								</div>
-								<hr class="spacer30">
+                <hr class="spacer20">
 								{{/each}}
+
+                <hr class="spacer20">
+                <div class="col-md-12">
+                  <button class="btn btn-success add-weapon">Add</button>
+                </div>
 							</div>
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
@@ -143,11 +150,12 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<label>Proficiency Bonus</label>
-									<input type="text" name="proficiency" class="form-control" tabindex=7 value="{{proficiency}}">
+									<input type="text" name="proficiency" class="form-control" tabindex=7 value="{{addMod proficiency}}">
 								</div>
 
 								<div class="col-sm-6">
 									<label>Passive Perception</label>
+                  <!-- TODO: broken -->
 									<input type="text" name="passive-percep" class="form-control" tabindex=8 value="{{passivePerception}}">
 									<span class="instruction">10 + Perception Modifier.</span>
 								</div>
@@ -218,7 +226,6 @@
 
 					<div class="form-group" style="margin-top: 0; padding-top; 0;">
 						<div id="traits">
-							<!-- TODO: make this a reusable content block -->
 							{{#each traits}}
 							<!-- TODO: Implement delete button  -->
 								<div class="col-sm-6 col-md-4 trait">

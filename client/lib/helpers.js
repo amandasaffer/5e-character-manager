@@ -36,6 +36,15 @@ UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
 	return proficiencyScore;
 });
 
+UI.registerHelper('addMod', function(num) {
+  if(num > 0) {
+    num = "+" + num;
+  } else if(num < 0) {
+    num = "-" + num;
+  }
+  return num;
+});
+
 UI.registerHelper('standardized', function(key) {
   if (key === 'classes') {
     return standardCharacter.classes;
