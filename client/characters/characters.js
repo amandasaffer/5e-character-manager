@@ -202,6 +202,14 @@ Template.manageCharacter.events({
 		Characters.update(currentCharacterId, {$set: obj});
 	},
 
+	'click .delete-trait': function(e) {
+		e.preventDefault();
+		var num = $(e.target).closest('.trait').index('.trait');
+		traits.splice(num, 1);
+		var obj = { traits: traits }; // need a better way. only splice the correct one?
+		Characters.update(currentCharacterId, {$set: obj});
+	},
+
 	'click .save-proficiency, click .gen-proficiency': function(e) {
 		var modifier = $(e.target).parent().prev().text();
 		var isChecked = $(e.target).is(':checked');
