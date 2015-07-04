@@ -58,7 +58,8 @@ Template.characters.events({
 		 	passivePerception: 10,
 			abilityScores: ['0', '0', '0', '0', '0', '0'], // TODO: fix this messy init
 			abilityModifiers: [],
-			proficiencies: []
+			proficiencies: [],
+			timestamp: new Date()
 		}
 
 		Meteor.call('addCharacter', character, function(error, id) {
@@ -114,7 +115,6 @@ Template.manageCharacter.events({
 					passive = passive + parseInt(proficiencyBonus);
 				}
 				passivePerception = 10 + passive;
-				console.log(passive);
 				obj["passivePerception"] = passivePerception;
 			}
 
@@ -144,7 +144,6 @@ Template.manageCharacter.events({
 		}
 
 		Characters.update(currentCharacterId, {$set: obj});
-		console.log(passivePerception);
 	},
 
 	'blur .weapon-input': function(e) {
@@ -240,7 +239,6 @@ Template.manageCharacter.events({
 		}
 
 		Characters.update(currentCharacterId, {$set: obj});
-		console.log(passivePerception);
 	},
 
 	'click .add-feat-trait': function(e) {
@@ -272,15 +270,15 @@ Template.manageCharacter.events({
 		 	passivePerception: $('input[name=passive-percep]').val(),
 			abilityScores: abilityScores,
 			abilityModifiers: abilityModifiers,
-			proficiencies: proficiencies
+			proficiencies: proficiencies,
+			timestamp: new Date()
 		}
 
 		Characters.update(currentCharacterId, {$set: characterProperties}, function(error) {
 	  		if (error) {
-	    		// display the error to the user
-	    		alert(error.reason);
+	    		alert(error.reason); // display error to user TODO: make errors more robust
 	  		} else {
-	    		Router.go('displayCharacter', {_id: currentCharacterId});
+	    		Router.go('characters', {_id: currentCharacterId});
 	  		}
 		});
 	},
@@ -299,7 +297,7 @@ Template.manageCharacter.events({
 Template.characters.helpers({
 	characters: function() {
 		// only characters with a name field go in this list
-		return Characters.find({userId: Meteor.user()._id, name: {"$exists": true }});
+		return Characters.find({userId: Meteor.user()._id, name: {"$exists": true }}, {sort: {timestamp : -1}});
 	}
 });
 

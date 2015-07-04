@@ -45,6 +45,10 @@ UI.registerHelper('addMod', function(num) {
   return num;
 });
 
+UI.registerHelper("formatDate", function(date) {
+  return moment(new Date(date)).format("M/DD/YY h:mmA");
+});
+
 UI.registerHelper('standardized', function(key) {
   if (key === 'classes') {
     return standardCharacter.classes;

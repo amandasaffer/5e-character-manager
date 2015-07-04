@@ -304,6 +304,54 @@ ul.group-list
 	input[type=password]
 		margin 0 0 10px
 
+#characters
+	border-spacing 10px
+	border-collapse collapse
+	width 100%
+	position relative
+
+	.btn-sm
+		padding 8px 15px
+		position absolute
+		top 0
+		right 0
+
+	thead
+		font-weight 800
+		font-size 12px
+		font-family lato
+		text-transform uppercase
+		letter-spacing 1px
+		tr
+			border none
+			width 100%
+		td
+			padding 0 0 60px 10px
+
+	tr
+		border-top 1px solid #bbbbbb
+
+	td
+		padding 20px 10px 15px
+		span.name
+			display block
+			font-size 16px
+			line-height 1.1
+		span.info, a
+			display block
+			font-weight 700
+			opacity .7
+			font-size 11px
+			font-family lato
+			text-transform uppercase
+			letter-spacing 1px
+			&.time
+				opacity 1
+		a
+			opacity 1
+
+		&:first-child
+			width 75%
 
 form.create-character
 	label

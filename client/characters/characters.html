@@ -10,10 +10,17 @@
 	</div>
 
 	<div class="container">
+		{{#characterTableWrapper}}
+	    {{#each characters}}
+	      {{> characterRow}}
+	    {{/each}}
+	  {{/characterTableWrapper}}
+	</div>
+
+	<!-- <div class="container">
 		<div class="row">
 			<div class="col-md-8">
 				<ul class="group-list">
-						<!-- TODO: Rename to userCharacters and add view link -->
 				    {{#each characters}}
 				      <li><a href="{{pathFor 'manageCharacter'}}">{{name}}</a></li>
 				    {{/each}}
@@ -21,7 +28,7 @@
 				<button id="add-character" class="btn btn-primary"><i class="fa fa-plus"></i> Add Character Sheet</button>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
@@ -34,4 +41,30 @@
     </div>
   </div>
 </div>
+</template>
+
+<template name="characterTableWrapper">
+  <table id="characters">
+    <thead>
+      <tr>
+        <td><!--Characters--></td>
+				<button class="btn btn-sm btn-success" id="add-character"><i class="fa fa-plus"></i>&nbsp; Add</button>
+      </tr>
+    </thead>
+    <tbody>
+      {{> UI.contentBlock}}
+    </tbody>
+  </table>
+</template>
+
+<template name="characterRow">
+	<tr>
+		<td>
+			<span class="name">{{name}}</span>
+			<span class="info">{{#if level}} Level {{level}} {{/if}} {{#if class}} {{class}} {{/if}}</span>
+		</td>
+		<td><span class="info time">{{formatDate timestamp}}</span></td>
+		<td><a href="{{pathFor 'manageCharacter'}}">Edit</a></td>
+		<td>{{#if class}} <a href="{{pathFor 'displayCharacter'}}">View</a> {{/if}}</td>
+	</tr>
 </template>
