@@ -24,7 +24,16 @@ var cleanProficiency = function(text) {
 	return text;
 }
 
+// TODO: combine functions
 var checkProficiency = function(array, value) {
+	for(i = 0; i < array.length; i++) {
+		if(array[i] == value) {
+			return true;
+		}
+	}
+}
+
+var inArray = function(array, value) {
 	for(i = 0; i < array.length; i++) {
 		if(array[i] == value) {
 			return true;
@@ -34,7 +43,7 @@ var checkProficiency = function(array, value) {
 
 Template.characters.events({
 	'click #add-character': function(e) {
-		$('#myModal').modal('toggle'); // TODO: rename this modal
+		$('#addChar').modal('toggle');
 	},
 	'click .delete-character': function(e) {
 		e.preventDefault();
@@ -65,7 +74,7 @@ Template.characters.events({
 			traits: [{}],
 			proficiency: 2,
 		 	passivePerception: 10,
-			abilityScores: ['0', '0', '0', '0', '0', '0'], // TODO: fix this messy init
+			abilityScores: [0, 0, 0, 0, 0, 0], // TODO: fix this messy init
 			abilityModifiers: [],
 			proficiencies: [],
 			timestamp: new Date()
@@ -75,7 +84,7 @@ Template.characters.events({
 			if (error) {
 				return alert(error.reason);
 			}
-			$('#myModal').modal('toggle'); // TODO: rename this modal
+			$('#addChar').modal('toggle');
 	  });
 	}
 });
@@ -90,7 +99,7 @@ Template.manageCharacter.rendered = function() {
 	currentCharacterId = this.data._id;
 	passivePerception = this.data.passivePerception;
 
-	if(abilityScores.length < 6) {
+	if( inArray(abilityScores, '0') || inArray(abilityScores, 0) ) {
 		$('.gen-proficiency, .save-proficiency').prop('disabled', true);
 	}
 
@@ -115,7 +124,7 @@ Template.manageCharacter.events({
 
 		var obj = {};
 		// TODO: length is always 6 now, need another qualifier for this :(
-		if(abilityScores.length < 6) { // enable proficiencies
+		if( inArray(abilityScores, '0') || inArray(abilityScores, 0) ) { // enable proficiencies
 			console.log('disable proficiency checkboxes');
 		} else { // otherwise no
 			if ( scoreIndex === 4 ) {
