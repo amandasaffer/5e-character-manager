@@ -265,6 +265,7 @@ Template.manageCharacter.events({
 		Characters.update(currentCharacterId, {$set: obj});
 	},
 
+	// TODO: ADD FORM VALIDATION.
 	'submit form': function(e) {
 		e.preventDefault();
 		var currentCharacterId = this._id;
@@ -294,7 +295,7 @@ Template.manageCharacter.events({
 
 		Characters.update(currentCharacterId, {$set: characterProperties}, function(error) {
 	  		if (error) {
-	    		alert(error.reason); // display error to user TODO: make errors more robust
+	    		alert(error.reason); // TODO: make errors more robust
 	  		} else {
 	    		Router.go('characters', {_id: currentCharacterId});
 	  		}
@@ -314,7 +315,6 @@ Template.manageCharacter.events({
 
 Template.characters.helpers({
 	characters: function() {
-		// only characters with a name field go in this list
 		return Characters.find({userId: Meteor.user()._id, name: {"$exists": true }}, {sort: {timestamp : -1}});
 	}
 });
