@@ -3,7 +3,7 @@ UI.registerHelper('selected', function(key, value) {
 });
 
 UI.registerHelper('checkProficiency', function(key, value) {
-	for(i=0; i<key.length; i++) {
+	for(i = 0; i < key.length; i++) {
 		if(key[i] == value) {
 			return 'checked';
 		}
@@ -20,7 +20,7 @@ UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
 	var modifier = parseInt(modifier);
 	var base = parseInt(base);
 
-	for(i=0; i<key.length; i++) {
+	for(i = 0; i < key.length; i++) {
 		if(key[i] == value) {
 			proficiencyScore = base + modifier;
       // TODO: Figure out how to access DOM from this helper

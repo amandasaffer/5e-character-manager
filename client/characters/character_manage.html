@@ -155,7 +155,6 @@
 
 								<div class="col-sm-6">
 									<label>Passive Perception</label>
-                  <!-- TODO: broken -->
 									<input type="text" name="passive-percep" class="form-control" tabindex=8 value="{{passivePerception}}">
 									<span class="instruction">10 + Perception Modifier.</span>
 								</div>
@@ -205,8 +204,8 @@
 										<div class="col-sm-6 col-md-6">
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">{{name}} ({{attribute}})</span>
-												<span data-score-index="{{index}}" class="input-group-addon prof-num fixed">{{isProficient ../abilityModifiers index ../proficiency ../proficiencies name}}</span>
-													<span class="input-group-addon fixed thin">
+												<span data-score-index="{{index}}" class="input-group-addon prof-num fixed {{name}}-prof">{{isProficient ../abilityModifiers index ../proficiency ../proficiencies name}}</span>
+												<span class="input-group-addon fixed thin">
 													<input type="checkbox" {{checkProficiency ../proficiencies name}} data-add-proficiency-to="{{name}}" class="gen-proficiency">
 												</span>
 											</div>

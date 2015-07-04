@@ -55,7 +55,7 @@ Template.characters.events({
 			equipment: '',
 			traits: [{}],
 			proficiency: 2,
-		 	passivePerception: '10',
+		 	passivePerception: 10,
 			abilityScores: ['0', '0', '0', '0', '0', '0'], // TODO: fix this messy init
 			abilityModifiers: [],
 			proficiencies: []
@@ -84,7 +84,7 @@ Template.manageCharacter.rendered = function() {
 		$('.gen-proficiency, .save-proficiency').prop('disabled', true);
 	}
 
-	console.log("character id " + currentCharacterId);
+	Session.set('perceptionMod', $('.Perception-prof').text());
 };
 
 Template.manageCharacter.events({
@@ -103,13 +103,17 @@ Template.manageCharacter.events({
 			abilityModifiers[scoreIndex] = modifier;
 		}
 
+		var obj = {};
+		// TODO: length is always 6 now, need another qualifier for this :(
 		if(abilityScores.length < 6) { // enable proficiencies
 			console.log('disable proficiency checkboxes');
 		} else { // otherwise no
+			var passive = parseInt(abilityModifiers[4]) + proficiencyBonus;
+			passivePerception = 10 + parseInt(passive);
+			obj["passivePerception"] = passivePerception;
 			$('.gen-proficiency, .save-proficiency').prop("disabled", false);
 		}
 
-		var obj = {};
 		obj["abilityScores." + scoreIndex] = abilityScore;
 		obj["abilityModifiers." + scoreIndex] = modifier;
 		Characters.update(currentCharacterId, {$set: obj});
@@ -118,21 +122,22 @@ Template.manageCharacter.events({
 
 	'blur [name=proficiency]': function(e) {
 		e.preventDefault();
-		proficiencyBonus = parseInt($(e.target).val());
+		proficiencyBonus = parseInt( $(e.target).val() );
 
-		if ( checkProficiency(proficiencies, 'Perception') ) {
-			console.log('checked!');
-			var passive = 10 + parseInt(modifier); // TODO: BROKEN: need to get perception modifier
+		if( checkProficiency(proficiencies, 'Perception') ) { // update passive perception
+			var passive = parseInt(abilityModifiers[4]) + proficiencyBonus;
+			Session.set('perceptionMod', passive);
+			passivePerception = 10 + passive;
 			var obj = {
-				proficiency: proficiencyBonus,
-				passivePerception: passive
+				passivePerception: passivePerception,
+				proficiency: proficiencyBonus
 			};
     } else {
-			console.log('not checked!');
 			var obj = { proficiency: proficiencyBonus };
 		}
 
-		// Characters.update(currentCharacterId, {$set: obj});
+		Characters.update(currentCharacterId, {$set: obj});
+		console.log(passivePerception);
 	},
 
 	'blur .weapon-input': function(e) {
@@ -190,20 +195,17 @@ Template.manageCharacter.events({
 		Characters.update(currentCharacterId, {$set: obj});
 	},
 
-	// TODO: refactor, we can streamline this
 	'click .save-proficiency, click .gen-proficiency': function(e) {
 		var modifier = $(e.target).parent().prev().text();
 		var isChecked = $(e.target).is(':checked');
-
-		var thisProficiency = $(e.target).parent().prev().prev().text();
-		thisProficiency = cleanProficiency(thisProficiency);
+		var prof = cleanProficiency( $(e.target).parent().prev().prev().text() );
 
 		if(isChecked) {
 			modifier = parseInt(modifier) + parseInt(proficiencyBonus);
-			proficiencies.push(thisProficiency);
+			proficiencies.push(prof);
 		} else {
 			modifier = parseInt(modifier) - parseInt(proficiencyBonus);
-			var profIndex = proficiencies.indexOf(thisProficiency);
+			var profIndex = proficiencies.indexOf(prof);
 			proficiencies.splice(profIndex, 1);
 		}
 
@@ -211,15 +213,19 @@ Template.manageCharacter.events({
 			modifier = "+" + modifier;
 		}
 
-		if(modifier.length != 0) { // if mod isn't 0 apply proficiencies
-			$(e.target).parent().prev().text(modifier);
+		if( $(e.target).data('add-proficiency-to') === 'Perception') { // update passive perception
+			Session.set('perceptionMod', $('.Perception-prof').text());
+			passivePerception = 10 + parseInt(modifier);
+			var obj = {
+				passivePerception: passivePerception,
+				proficiencies: proficiencies
+			};
+    } else {
+			var obj = { proficiencies: proficiencies };
 		}
 
-		if( $(e.target).data('add-proficiency-to') === 'Perception') {
-			var passive = 10 + parseInt(modifier);
-			var obj = { passivePerception: passive }; // is there a better way to do this?
-			Characters.update(currentCharacterId, {$set: obj});
-    }
+		Characters.update(currentCharacterId, {$set: obj});
+		console.log(passivePerception);
 	},
 
 	'click .add-feat-trait': function(e) {
