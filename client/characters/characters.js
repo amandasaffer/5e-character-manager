@@ -108,9 +108,16 @@ Template.manageCharacter.events({
 		if(abilityScores.length < 6) { // enable proficiencies
 			console.log('disable proficiency checkboxes');
 		} else { // otherwise no
-			var passive = parseInt(abilityModifiers[4]) + proficiencyBonus;
-			passivePerception = 10 + parseInt(passive);
-			obj["passivePerception"] = passivePerception;
+			if ( scoreIndex === 4 ) {
+				var passive = parseInt(abilityModifiers[4]);
+				if( checkProficiency(proficiencies, 'Perception') ) {
+					passive = passive + parseInt(proficiencyBonus);
+				}
+				passivePerception = 10 + passive;
+				console.log(passive);
+				obj["passivePerception"] = passivePerception;
+			}
+
 			$('.gen-proficiency, .save-proficiency').prop("disabled", false);
 		}
 
