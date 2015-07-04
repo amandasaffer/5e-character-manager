@@ -319,7 +319,7 @@ Template.characters.helpers({
 	}
 });
 
-Template.displayCharacter.rendered = function(e) {
-	var proficiencyMod = this.data.proficiency;
-	var proficiencies = this.data.proficiencies;
-};
+// Template.displayCharacter.rendered = function(e) {
+// 	var proficiencyMod = this.data.proficiency;
+// 	var proficiencies = this.data.proficiencies;
+// };
