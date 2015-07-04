@@ -36,6 +36,15 @@ Template.characters.events({
 	'click #add-character': function(e) {
 		$('#myModal').modal('toggle'); // TODO: rename this modal
 	},
+	'click .delete-character': function(e) {
+		e.preventDefault();
+
+		if (confirm("Delete this character?")) {
+	  		var currentCharacterId = this._id;
+	  		Characters.remove(currentCharacterId);
+	  		Router.go('characters');
+		}
+	},
 	'submit #create-character': function(e) {
 		e.preventDefault();
 

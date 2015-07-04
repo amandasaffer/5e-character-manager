@@ -329,13 +329,16 @@ ul.group-list
 			padding 0 0 60px 10px
 
 	tr
-		border-top 1px solid #bbbbbb
+		border-top 1px solid #ccc
+
+		&:nth-child(even)
+			background #ccc
 
 	td
 		padding 20px 10px 15px
 		span.name
 			display block
-			font-size 16px
+			font-size 15px
 			line-height 1.1
 		span.info, a
 			display block
@@ -351,7 +354,8 @@ ul.group-list
 			opacity 1
 
 		&:first-child
-			width 75%
+			width 73%
+			padding-left 20px
 
 form.create-character
 	label
