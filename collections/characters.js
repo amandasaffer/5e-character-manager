@@ -10,14 +10,24 @@ Characters.allow({
 
   update: function(userId, doc) {
   	// let owner modify
-    return doc.userId === userId;
+    return userId && doc.userId === userId;
   },
 
   remove: function(userId, doc) {
   	// let owner remove
-    return doc.userId === userId;
+    return userId && doc.userId === userId;
   }
 });
+
+// TODO: implement deny rules: https://www.discovermeteor.com/blog/allow-deny-a-security-primer/
+// Characters.deny({
+//   update: function(userId, doc, fields) {
+//   	// owner shouldn't be able to update certain fields
+//     if (_.contains(fields, "createdAt") || _.contains(fields, "userId")) {
+//       return true;
+//     }
+//   },
+// });
 
 Meteor.methods({
   addCharacter: function(characterAttributes) {
