@@ -219,6 +219,7 @@ Template.manageCharacter.events({
 		Characters.update(currentCharacterId, {$set: obj});
 	},
 
+	// TODO: add confirmation
 	'click .delete-trait': function(e) {
 		e.preventDefault();
 		var num = $(e.target).closest('.trait').index('.trait');
@@ -264,6 +265,8 @@ Template.manageCharacter.events({
 		var obj = { traits: traits }; // is there a better way to do this?
 		Characters.update(currentCharacterId, {$set: obj});
 	},
+
+	// TODO: add delete and confirmation for delete
 
 	// TODO: ADD FORM VALIDATION.
 	'submit form': function(e) {
