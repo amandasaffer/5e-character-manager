@@ -267,6 +267,8 @@ Template.manageCharacter.events({
 	},
 
 	// TODO: add delete and confirmation for delete
+	// 'click .delete-feat-trait': function(e) {
+	// },
 
 	// TODO: ADD FORM VALIDATION.
 	'submit form': function(e) {

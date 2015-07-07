@@ -3,8 +3,7 @@ Characters = new Meteor.Collection('characters');
 CharacterSchema = new SimpleSchema({
   name: {
     type: String,
-    label: "Name",
-    // max: 200
+    label: "Name"
   },
   class: {
     type: String,
@@ -68,14 +67,14 @@ CharacterSchema = new SimpleSchema({
   },
   proficiency: {
     type: Number,
-    label: "Proficiency"
+    label: "Proficiency Bonus"
   },
   passivePerception: {
     type: Number,
     label: "Passive Perception"
   },
   abilityScores: {
-    type: [Number],
+    type: [String],
     label: "Ability Scores",
     minCount: 1
   },
@@ -94,19 +93,21 @@ CharacterSchema = new SimpleSchema({
   }
 });
 
-// var whitelist = ['name', 'class', 'level', 'background', 'race', 'alignment', 'ac', 'initiative', 'speed', 'hitPoints', 'hitDice', 'weapons', 'equipment', 'traits', 'proficiency', 'passivePerception', 'abilityScores', 'abilityModifiers', 'proficiencies', 'timestamp'];
+var whitelist = _.filter(_.keys(CharacterSchema), function (property) {
+  return CharacterSchema[property].editable;
+});
 
 Characters.allow({
   insert: function(userId, doc) {
-  	// let logged in user insert
     if (userId) {
       return true;
     }
   },
 
   update: function(userId, doc) {
-  	// let owner modify & make sure that they can't insert random fields
-    return userId && doc.userId === userId;
+    if (userId && doc.userId === userId) {
+      return true;
+    }
   },
 
   remove: function(userId, doc) {
