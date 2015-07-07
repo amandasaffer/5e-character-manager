@@ -75,12 +75,12 @@ Template.loginForm.events({
 
 	'submit #login-form' : function(e, t){
 		e.preventDefault();
-		
+
 		// retrieve the input field values
 		var user = t.find('#login-user').value
 		, password = t.find('#login-password').value;
 
-		// Trim and validate your fields here.... 
+		// Trim and validate your fields here....
 
 		// If validation passes, supply the appropriate fields to the
 		// Meteor.loginWithPassword() function.
@@ -92,6 +92,6 @@ Template.loginForm.events({
 			  // The user has been logged in.
 			}
 		});
-		return false; 
+		return false;
 	}
 })

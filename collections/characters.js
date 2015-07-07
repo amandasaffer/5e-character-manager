@@ -1,5 +1,101 @@
 Characters = new Meteor.Collection('characters');
 
+CharacterSchema = new SimpleSchema({
+  name: {
+    type: String,
+    label: "Name",
+    // max: 200
+  },
+  class: {
+    type: String,
+    label: "Class"
+  },
+  level: {
+    type: Number,
+    label: "Level"
+  },
+  background: {
+    type: String,
+    label: "Background"
+  },
+  race: {
+    type: String,
+    label: "Race"
+  },
+  alignment: {
+    type: String,
+    label: "Alignment"
+  },
+  ac: {
+    type: String,
+    label: "Armor Class",
+    optional: true
+  },
+  initiative: {
+    type: String,
+    label: "Initiative",
+    optional: true
+  },
+  speed: {
+    type: String,
+    label: "Speed",
+    optional: true
+  },
+  hitPoints: {
+    type: String,
+    label: "Hit Points",
+    optional: true
+  },
+  hitDice: {
+    type: String,
+    label: "Hit Dice",
+    optional: true
+  },
+  weapons: {
+    type: [Object],
+    label: "Weapons",
+    optional: true
+  },
+  equipment: {
+    type: String,
+    label: "Equipment",
+    optional: true
+  },
+  traits: {
+    type: [Object],
+    label: "Traits",
+    optional: true
+  },
+  proficiency: {
+    type: Number,
+    label: "Proficiency"
+  },
+  passivePerception: {
+    type: Number,
+    label: "Passive Perception"
+  },
+  abilityScores: {
+    type: [Number],
+    label: "Ability Scores",
+    minCount: 1
+  },
+  abilityModifiers: {
+    type: [String],
+    label: "Ability Modifiers",
+    minCount: 1
+  },
+  proficiencies: {
+    type: [String],
+    label: "Proficiencies"
+  },
+  timestamp: {
+    type: Date,
+    label: "Timestamp"
+  }
+});
+
+// var whitelist = ['name', 'class', 'level', 'background', 'race', 'alignment', 'ac', 'initiative', 'speed', 'hitPoints', 'hitDice', 'weapons', 'equipment', 'traits', 'proficiency', 'passivePerception', 'abilityScores', 'abilityModifiers', 'proficiencies', 'timestamp'];
+
 Characters.allow({
   insert: function(userId, doc) {
   	// let logged in user insert
@@ -9,7 +105,7 @@ Characters.allow({
   },
 
   update: function(userId, doc) {
-  	// let owner modify
+  	// let owner modify & make sure that they can't insert random fields
     return userId && doc.userId === userId;
   },
 
@@ -19,15 +115,6 @@ Characters.allow({
   }
 });
 
-// TODO: implement deny rules: https://www.discovermeteor.com/blog/allow-deny-a-security-primer/
-// Characters.deny({
-//   update: function(userId, doc, fields) {
-//   	// owner shouldn't be able to update certain fields
-//     if (_.contains(fields, "createdAt") || _.contains(fields, "userId")) {
-//       return true;
-//     }
-//   },
-// });
 
 Meteor.methods({
   addCharacter: function(characterAttributes) {
