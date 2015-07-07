@@ -1,8 +1,8 @@
-UI.registerHelper('selected', function(key, value) {
+Template.registerHelper('selected', function(key, value) {
   return key == value? {selected:'selected'}: '';
 });
 
-UI.registerHelper('checkProficiency', function(key, value) {
+Template.registerHelper('checkProficiency', function(key, value) {
 	for(i = 0; i < key.length; i++) {
 		if(key[i] == value) {
 			return 'checked';
@@ -10,11 +10,11 @@ UI.registerHelper('checkProficiency', function(key, value) {
 	}
 });
 
-UI.registerHelper('getArrayValue', function(array, index) {
+Template.registerHelper('getArrayValue', function(array, index) {
   return array[index];
 });
 
-UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
+Template.registerHelper('isProficient', function(base, index, modifier, key, value) {
 	var base = base[index];
   var proficiencyScore = base;
 	var modifier = parseInt(modifier);
@@ -36,7 +36,7 @@ UI.registerHelper('isProficient', function(base, index, modifier, key, value) {
 	return proficiencyScore;
 });
 
-UI.registerHelper('addMod', function(num) {
+Template.registerHelper('addMod', function(num) {
   if(num > 0) {
     num = "+" + num;
   } else if(num < 0) {
@@ -45,11 +45,11 @@ UI.registerHelper('addMod', function(num) {
   return num;
 });
 
-UI.registerHelper("formatDate", function(date) {
+Template.registerHelper("formatDate", function(date) {
   return moment(new Date(date)).format("M/DD/YY h:mmA");
 });
 
-UI.registerHelper('standardized', function(key) {
+Template.registerHelper('standardized', function(key) {
   if (key === 'classes') {
     return standardCharacter.classes;
   } else if (key === 'backgrounds') {

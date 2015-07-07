@@ -1,13 +1,16 @@
 <template name="characters">
-	<div id="page-head">
+	<div id="page-head" class="hidden-xs">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-xs-12 col-sm-12 col-md-8">
 					<h3>Character Sheets</h3>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<hr class="spacer60 visible-xs">
+	<hr class="spacer40 visible-xs">
 
 	<div class="container">
 		{{#characterTableWrapper}}
@@ -18,10 +21,11 @@
 	</div>
 
 	<div id="addChar" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content" style="padding: 30px;">
-      <form id="create-character" class="form-inline" role="form">
-				<input type="text" name="charname" placeholder="Character Name" class="form-control" tabindex=1>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+			<h3>Create</h3>
+      <form id="create-character" role="form">
+				<input type="text" name="charname" placeholder="Name" class="form-control" tabindex=1>
 				<button class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
       </form>
     </div>
