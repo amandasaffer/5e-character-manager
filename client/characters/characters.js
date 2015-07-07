@@ -77,6 +77,7 @@ Template.characters.events({
 			abilityScores: [0, 0, 0, 0, 0, 0], // TODO: fix this messy init
 			abilityModifiers: [],
 			proficiencies: [],
+			// TODO: remove timestamp attribute because there is already an 'updated' in addCharacter method.
 			timestamp: new Date()
 		}
 
@@ -298,6 +299,7 @@ Template.manageCharacter.events({
 			timestamp: new Date()
 		}
 
+		// TODO:  convert to a meteor updateCharacter method
 		Characters.update(currentCharacterId, {$set: characterProperties}, function(error) {
 	  		if (error) {
 	    		alert(error.reason); // TODO: make errors more robust

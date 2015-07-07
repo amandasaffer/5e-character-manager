@@ -93,9 +93,13 @@ CharacterSchema = new SimpleSchema({
   }
 });
 
-var whitelist = _.filter(_.keys(CharacterSchema), function (property) {
-  return CharacterSchema[property].editable;
-});
+// var whitelist = _.filter(_.keys(CharacterSchema), function (property) {
+//   return CharacterSchema[property].editable;
+// });
+
+// TODO: implement like below using ongoworks security package
+// Characters.permit('insert').ifLoggedIn().apply();
+// Characters.permit('update').ifHasUserId(doc.userId or userId?).exceptProps(['userId', 'owner', 'updated']).apply();
 
 Characters.allow({
   insert: function(userId, doc) {
@@ -134,10 +138,18 @@ Meteor.methods({
     var character = _.extend(characterAttributes, {
       userId: user._id,
       owner: user.username,
-      updated: new Date().getTime()
+      updated: new Date()
     });
 
     var characterId = Characters.insert(character);
     return characterId;
-  }
+  },
+  // TODO: implement this meteor method
+  // updateCharacter: function(characterAttributes) {
+  //   var user = Meteor.user();
+  //
+  //   if (!user) {
+  //     throw new Meteor.Error(401, "You need to log in to create characters.");
+  //   }
+  // }
 });
