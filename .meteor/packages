@@ -15,4 +15,6 @@ accounts-google
 digilord:roles
 dburles:collection-helpers
 momentjs:moment
-aldeed:autoform
+peerlibrary:blaze-components
+aldeed:simple-schema
+templates:forms
