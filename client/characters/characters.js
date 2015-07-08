@@ -76,9 +76,7 @@ Template.characters.events({
 		 	passivePerception: 10,
 			abilityScores: [0, 0, 0, 0, 0, 0], // TODO: fix this messy init
 			abilityModifiers: [],
-			proficiencies: [],
-			// TODO: remove timestamp attribute because there is already an 'updated' in addCharacter method.
-			timestamp: new Date()
+			proficiencies: []
 		}
 
 		Meteor.call('addCharacter', character, function(error, id) {
@@ -295,18 +293,15 @@ Template.manageCharacter.events({
 		 	passivePerception: $('input[name=passive-percep]').val(),
 			abilityScores: abilityScores,
 			abilityModifiers: abilityModifiers,
-			proficiencies: proficiencies,
-			timestamp: new Date()
+			proficiencies: proficiencies
 		}
 
-		// TODO:  convert to a meteor updateCharacter method
-		Characters.update(currentCharacterId, {$set: characterProperties}, function(error) {
-	  		if (error) {
-	    		alert(error.reason); // TODO: make errors more robust
-	  		} else {
-	    		Router.go('characters', {_id: currentCharacterId});
-	  		}
-		});
+		Meteor.call('updateCharacter', currentCharacterId, characterProperties, function(error, id) {
+			if (error) {
+				return alert(error.reason);
+			}
+			Router.go('characters');
+	  });
 	},
 
 	'click .delete-character': function(e) {
