@@ -1,5 +1,6 @@
 Characters = new Meteor.Collection('characters');
 
+// TODO: move to server
 CharacterSchema = new SimpleSchema({
   name: {
     type: String,

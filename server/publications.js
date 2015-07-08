@@ -10,5 +10,5 @@ Meteor.publish('characters', function() {
 
 // publish all the current user's characters
 Meteor.publish('user-characters', function () {
-	return Characters.find({userId: this.userId}, {sort: {name: -1}}); 
+	return Characters.find({userId: this.userId}, {sort: {name: -1}});
 });
