@@ -5,3 +5,16 @@
 
     {{> yield}}
 </template>
+
+<template name="dashboard_layout">
+  <div class="container-fluid">
+		<!-- TODO: implement dashboard sidebar -->
+		<div class="col-md-1" style="height: 100vh; position: fixed; background: #333;">
+			<!-- blaze component may be useful here? research -->
+		</div>
+
+		<div class="col-md-11 col-md-offset-1">
+			{{> yield}}
+		</div>
+	</div>
+</template>
