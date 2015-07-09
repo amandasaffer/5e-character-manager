@@ -103,6 +103,7 @@ Template.manageCharacter.rendered = function() {
 	}
 
 	Session.set('perceptionMod', $('.Perception-prof').text());
+	var formStep = new ReactiveVar(1);
 };
 
 Template.manageCharacter.events({
@@ -264,10 +265,6 @@ Template.manageCharacter.events({
 		var obj = { traits: traits }; // is there a better way to do this?
 		Characters.update(currentCharacterId, {$set: obj});
 	},
-
-	// TODO: add delete and confirmation for delete
-	// 'click .delete-feat-trait': function(e) {
-	// },
 
 	// TODO: ADD FORM VALIDATION.
 	'submit form': function(e) {

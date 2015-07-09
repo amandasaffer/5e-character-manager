@@ -19,3 +19,4 @@ peerlibrary:blaze-components
 aldeed:simple-schema
 templates:forms
 ongoworks:security
+reactive-var
