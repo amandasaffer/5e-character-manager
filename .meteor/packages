@@ -15,8 +15,8 @@ accounts-google
 digilord:roles
 dburles:collection-helpers
 momentjs:moment
-peerlibrary:blaze-components
 aldeed:simple-schema
 templates:forms
 ongoworks:security
 reactive-var
+reactjs:react

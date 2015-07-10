@@ -1,4 +1,16 @@
-<template name="manageCharacter">
+<template name="charInput">
+  <label>{{label}}</label>
+  <input type="text" name={{name}} class="form-control" value="{{value}}">
+</template>
+
+<template name="charSelectOption">
+  <label>{{label}}</label>
+  <select name="class" class="form-control" tabindex=2>
+    {{#each standardized 'classes'}} <option {{selected ../class this}}>{{this}}</option> {{/each}}
+  </select>
+</template>
+
+<template name="manageCharacterForm">
 	<div class="container" style="margin-top: 40px;">
 		<div class="row">
 			<div class="col-md-12">
@@ -8,77 +20,29 @@
 
 							<h5>Overview</h5>
 							<div class="row">
-								<div class="col-sm-5">
-									<label>Name</label>
-									<input type="text" name="charname" class="form-control" value="{{name}}" tabindex=1>
-								</div>
-
-								<div class="col-sm-4">
-									<label>Class</label>
-									<select name="class" class="form-control" tabindex=2>
-										{{#each standardized 'classes'}} <option {{selected ../class this}}>{{this}}</option> {{/each}}
-									</select>
-								</div>
-
-								<div class="col-sm-3">
-									<label>Level</label>
-									<input type="text" name="level" class="form-control" placeholder="0" tabindex=3 value="{{level}}">
-								</div>
+								<div class="col-sm-5"> {{> charInput field='name'}} </div>
+								<div class="col-sm-4"> {{> charSelectOption field='class'}} </div>
+								<div class="col-sm-3"> {{> charSelectOption field='level'}} </div>
 							</div>
 
 							<div class="row" style="margin-top: 20px;">
-								<div class="col-sm-4">
-									<label>Background</label>
-									<select name="background" class="form-control" tabindex=4>
-										{{#each standardized 'backgrounds'}} <option {{selected ../background this}}>{{this}}</option> {{/each}}
-									</select>
-								</div>
-
-								<div class="col-sm-4">
-									<label>Race</label>
-									<select name="race" class="form-control" tabindex=5>
-										{{#each standardized 'races'}} <option {{selected ../race this}}>{{this}}</option> {{/each}}
-									</select>
-								</div>
-
-								<div class="col-sm-4">
-									<label>Alignment</label>
-									<select name="alignment" class="form-control" tabindex=6>
-										{{#each standardized 'alignments'}} <option {{selected ../alignment this}}>{{this}}</option> {{/each}}
-									</select>
-								</div>
+								<div class="col-sm-4"> {{> charSelectOption field='background'}} </div>
+                <div class="col-sm-4"> {{> charSelectOption field='race'}} </div>
+								<div class="col-sm-4"> {{> charSelectOption field='alignment'}} </div>
 							</div>
 
 							<div class="fullwidthline" style="margin: 50px 0 40px;"></div>
 
 							<h5>Physical</h5>
 							<div class="row">
-								<div class="col-sm-4">
-									<label>Armor Class</label>
-									<input type="text" name="ac" class="form-control" tabindex=15 value="{{ac}}">
-								</div>
-
-								<div class="col-sm-4">
-									<label>Initiative</label>
-									<input type="text" name="initiative" class="form-control" tabindex=16 value="{{initiative}}">
-								</div>
-
-								<div class="col-sm-4">
-									<label>Speed</label>
-									<input type="text" name="speed" class="form-control" tabindex=17 value="{{speed}}">
-								</div>
+								<div class="col-sm-4"> {{> charInput field='ac'}} </div>
+								<div class="col-sm-4"> {{> charInput field='initiative'}} </div>
+								<div class="col-sm-4"> {{> charInput field='speed'}} </div>
 							</div>
 
 							<div class="row" style="margin-top: 20px;">
-								<div class="col-sm-4">
-									<label>Hit Points</label>
-									<input type="text" name="hitpoints" class="form-control" tabindex=18 value="{{hitPoints}}">
-								</div>
-
-								<div class="col-sm-4">
-									<label>Hit Dice</label>
-									<input type="text" name="hitdice" class="form-control" tabindex=19 value="{{hitDice}}">
-								</div>
+								<div class="col-sm-4"> {{> charInput field='hitPoints'}} </div>
+								<div class="col-sm-4"> {{> charInput field='hitDice'}} </div>
 							</div>
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
