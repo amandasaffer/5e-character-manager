@@ -4,8 +4,7 @@ Characters = new Meteor.Collection('characters');
 CharacterSchema = new SimpleSchema({
   name: {
     type: String,
-    label: "Name",
-    name: 'charname'
+    label: "Name"
   },
   class: {
     type: String,
