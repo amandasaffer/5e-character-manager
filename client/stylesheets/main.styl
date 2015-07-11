@@ -400,16 +400,35 @@ ul.group-list
 form.create-character
 	label
 		font-family lato
-		font-size 14px
+		font-size 12px
+		text-transform uppercase
+		letter-spacing 1px
 		margin 0 0 7px
+		opacity .5
+	input, textarea, .form-control
+		background transparent
+		font-family lato
+		box-shadow none
+		padding-left 0
+		font-size 16px
+		color lighten(#2B271F, 15%) !important
+		border none
+		border-bottom 2px solid darken(#DBD5CA, 2%)
+		border-radius 0
+	select.form-control
+		border none
+		background transparent
+		box-shadow none
+		border-bottom 2px solid darken(#DBD5CA, 2%)
+		padding-left 0 !important
+		-webkit-appearance none
+	textarea
+		line-height 1.7
+		padding 0 0 10px 0 !important
+		margin-top 0
+		// add background color, too confusing
 	input[type=text]
 		height 34px
-	input[type=text], select, textarea
-		background-color #fff
-		padding-top 8px
-		box-shadow none
-		border none
-		font-family lato
 
 	h5
 		font-family lato
@@ -423,10 +442,10 @@ form.create-character
 	.input-group
 		&.input-group-sm
 			.input-group-addon
-				padding 8px 10px
+				padding 10px 10px 7px
+				border-radius 20px
 		.input-group-addon
 			background #E6E1D6
-			// border-color darken(#ddd, 25%)
 			border none
 			color darken(#ddd, 60%)
 
@@ -440,10 +459,13 @@ form.create-character
 			background #E45D38
 			font-size 11px
 			cursor pointer
-
+			border-radius 22px
+			&:hover
+				background darken(#E45D38, 10%)
 			i
 				position relative
 				top 2px
+				left 1px
 
 
 	.trait
@@ -454,13 +476,12 @@ form.create-character
 			background #E45D38
 			font-size 11px
 			cursor pointer
-
+			border-radius 22px
+			&:hover
+				background darken(#E45D38, 10%)
 			i
 				position relative
 				top 2px
-
-		// &:nth-child(1), &:nth-child(2), &:nth-child(3)
-		// 	margin-top 10px
 
 	.add-box
 		background darken(#E6E1D6, 5%)
