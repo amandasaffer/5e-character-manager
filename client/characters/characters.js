@@ -106,6 +106,15 @@ Template.manageCharacter.rendered = function() {
 	var formStep = new ReactiveVar(1);
 };
 
+// FORMS
+ReactiveForms.createElement({
+  template: 'basicInput',
+  validationEvent: 'keyup'
+});
+
+
+
+
 Template.manageCharacter.events({
 	'blur .ability': function(e) {
 		e.preventDefault();

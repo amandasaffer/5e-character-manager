@@ -1,13 +1,42 @@
 <template name="charInput">
   <label>{{label}}</label>
-  <input type="text" name={{name}} class="form-control" value="{{value}}">
+  <!-- TODO: debug, no longer need name attr? -->
+  <input type="text" class="form-control" value="{{value}}">
 </template>
 
 <template name="charSelectOption">
   <label>{{label}}</label>
   <select name="class" class="form-control" tabindex=2>
+    <!-- TODO: debug -->
     {{#each standardized 'classes'}} <option {{selected ../class this}}>{{this}}</option> {{/each}}
   </select>
+</template>
+
+<template name="charText">
+  <label>{{label}}</label>
+  <!-- TODO: debug -->
+  <textarea class="form-control" name="equipment" rows="6" style="resize: vertical;" value="{{value}}"></textarea>
+</template>
+
+<!-- TODO: debug -->
+<template name="charWeapon">
+  <div class="weapon">
+    <div class="col-sm-4">
+      <label>{{this.[0]}} <!-- name --></label>
+      <input type="text" class="weapon-input form-control" data-weapon-index="0" value="{{name}}">
+    </div>
+    <div class="col-sm-3">
+      <label>{{this.[1]}} <!-- atkbonus --></label>
+      <input type="text" class="weapon-input form-control" data-weapon-index="1" value="{{atkbonus}}">
+    </div>
+    <div class="col-sm-5">
+      <label>{{this.[2]}} <!-- damage --></label>
+      <div class="input-group">
+        <input type="text" class="weapon-input form-control" data-weapon-index="2" value="{{damage}}">
+        <span class="input-group-addon delete-weapon"><i class="fa fa-minus"></i></span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="manageCharacterForm">
@@ -49,27 +78,7 @@
 
 							<h5>Weapons</h5>
 							<div class="row">
-								{{#each weapons}}
-								<div class="weapon">
-									<div class="col-sm-4">
-										<label>Name</label>
-										<input type="text" class="weapon-input form-control" data-weapon-index="0" value="{{name}}">
-									</div>
-									<div class="col-sm-3">
-										<label>Atk Bonus</label>
-										<input type="text" class="weapon-input form-control" data-weapon-index="1" value="{{atkbonus}}">
-									</div>
-									<div class="col-sm-5">
-										<label>Damage</label>
-                    <div class="input-group">
-										  <input type="text" class="weapon-input form-control" data-weapon-index="2" value="{{damage}}">
-                      <span class="input-group-addon delete-weapon"><i class="fa fa-minus"></i></span>
-                    </div>
-									</div>
-								</div>
-                <hr class="spacer20">
-								{{/each}}
-
+								{{#each weapons}} {{> charWeapon field='weapons'}} {{/each}}
                 <hr class="spacer20">
                 <div class="col-md-12">
                   <button class="btn btn-success add-weapon">Add</button>
@@ -78,13 +87,9 @@
 
 							<div class="fullwidthline" style="margin: 40px 0 30px;"></div>
 
-
 							<h5>Equipment, etc.</h5>
 							<div class="row">
-								<div class="col-sm-12">
-									<label>Equipment</label>
-									<textarea class="form-control" name="equipment" rows="6" style="resize: vertical;" value="{{equipment}}"></textarea>
-								</div>
+								<div class="col-sm-12"> {{> charText field='equipment'}} </div>
 							</div>
 						</div>
 
