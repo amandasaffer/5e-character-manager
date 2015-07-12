@@ -1,12 +1,13 @@
+<!-- TODO: set placeholders -->
 <template name="charInput">
   <label>{{label}}</label>
   <!-- TODO: debug, no longer need name attr? -->
-  <input type="text" class="form-control" value="{{value}}">
+  <input type="text" class="form-control reactive-element" value="{{value}}">
 </template>
 
 <template name="charSelectOption">
   <label>{{label}}</label>
-  <select name="class" class="form-control" tabindex=2>
+  <select name="class" class="form-control reactive-element" tabindex=2>
     <!-- TODO: debug -->
     {{#each standardized 'classes'}} <option {{selected ../class this}}>{{this}}</option> {{/each}}
   </select>
@@ -15,24 +16,24 @@
 <template name="charText">
   <label>{{label}}</label>
   <!-- TODO: debug -->
-  <textarea class="form-control" name="equipment" rows="6" style="resize: vertical;" value="{{value}}"></textarea>
+  <textarea class="form-control reactive-element" name="equipment" rows="6" style="resize: vertical;" value="{{value}}"></textarea>
 </template>
 
-<!-- TODO: debug -->
+<!-- TODO: debug, use this or value? -->
 <template name="charWeapon">
   <div class="weapon">
     <div class="col-sm-4">
-      <label>{{this.[0]}} <!-- name --></label>
-      <input type="text" class="weapon-input form-control" data-weapon-index="0" value="{{name}}">
+      <label>Name</label>
+      <input type="text" class="weapon-input form-control reactive-element" data-weapon-index="0" value="{{this.[0]}}">
     </div>
     <div class="col-sm-3">
-      <label>{{this.[1]}} <!-- atkbonus --></label>
-      <input type="text" class="weapon-input form-control" data-weapon-index="1" value="{{atkbonus}}">
+      <label>Atk Bonus</label>
+      <input type="text" class="weapon-input form-control reactive-element" data-weapon-index="1" value="{{this.[1]}}">
     </div>
     <div class="col-sm-5">
-      <label>{{this.[2]}} <!-- damage --></label>
+      <label>Damage</label>
       <div class="input-group">
-        <input type="text" class="weapon-input form-control" data-weapon-index="2" value="{{damage}}">
+        <input type="text" class="weapon-input form-control reactive-element" data-weapon-index="2" value="{{this.[2]}}">
         <span class="input-group-addon delete-weapon"><i class="fa fa-minus"></i></span>
       </div>
     </div>
@@ -43,7 +44,8 @@
 	<div class="container" style="margin-top: 40px;">
 		<div class="row">
 			<div class="col-md-12">
-				<form class="form-horizontal create-character" role="form">
+        {{#characterForm schema=schema action=action}}
+				<!-- <form class="form-horizontal create-character" role="form"> -->
 					<div class="form-group" style="margin-bottom: 60px;">
 						<div class="col-sm-12 col-md-6">
 
@@ -204,18 +206,27 @@
 								<span class="add">Add</span>
 							</div>
 						</div>
+
 					</div>
 
-					<div class="form-group" style="margin-top: 10px;">
-						<div class="col-sm-12">
-							<button type="submit" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp; Update</button> &nbsp;
-							<button class="btn btn-danger delete-character"><i class="fa fa-close"></i>&nbsp; Delete</button>
-						</div>
-					</div>
+					{{/characterForm}}
 
 					<hr class="spacer60">
 				</form>
 			</div>
 		</div>
 	</div>
+</template>
+
+<template name="characterForm">
+  <form class="form-horizontal create-character" role="form">
+    {{> UI.contentBlock data=data context=context }}
+
+    <div class="form-group" style="margin-top: 10px;">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp; Update</button> &nbsp;
+        <button class="btn btn-danger delete-character"><i class="fa fa-close"></i>&nbsp; Delete</button>
+      </div>
+    </div>
+  </form>
 </template>
