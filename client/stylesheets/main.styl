@@ -405,28 +405,38 @@ form.create-character
 		letter-spacing 1px
 		margin 0 0 7px
 		opacity .5
-	input, textarea, .form-control
-		background transparent
+	input, select, textarea
 		font-family lato
-		box-shadow none
-		padding-left 0
-		font-size 16px
-		color lighten(#2B271F, 15%) !important
+		font-size 18px /* 16? or 18 */
 		border none
+		border-radius 0
+		box-shadow none
+		&:focus
+			// border-color darken(#DBD5CA, 25%) !important
+			// border-color #E45D38 !important
+			border-color #4F8E33 !important
+			box-shadow none
+	input[type=text]
+		background transparent
+		padding-left 0
+		color lighten(#2B271F, 15%) !important
 		border-bottom 2px solid darken(#DBD5CA, 2%)
 		border-radius 0
 	select.form-control
 		border none
 		background transparent
 		box-shadow none
+		padding-left 0
 		border-bottom 2px solid darken(#DBD5CA, 2%)
 		padding-left 0 !important
 		-webkit-appearance none
 	textarea
 		line-height 1.7
-		padding 0 0 10px 0 !important
+		padding 10px 15px
 		margin-top 0
-		// add background color, too confusing
+		font-size 14px !important
+		border-bottom 2px solid darken(#DBD5CA, 2%)
+		background #E6E1D6 !important
 	input[type=text]
 		height 34px
 
@@ -453,35 +463,37 @@ form.create-character
 		cursor pointer
 
 	.weapon
-		// margin-bottom 40px not working
 		.delete-weapon
-			color white
-			background #E45D38
 			font-size 11px
 			cursor pointer
-			border-radius 22px
+			padding 0 0 0 10px
+			background transparent
+			margin-left 10px
 			&:hover
-				background darken(#E45D38, 10%)
+				i
+					color #E45D38
 			i
 				position relative
 				top 2px
-				left 1px
+				color darken(#E6E1D6, 15%)
 
 
 	.trait
 		margin-bottom 50px
 
 		.delete-trait
-			color white
-			background #E45D38
 			font-size 11px
 			cursor pointer
-			border-radius 22px
+			padding 0 0 0 10px
+			background transparent
+			margin-left 10px
 			&:hover
-				background darken(#E45D38, 10%)
+				i
+					color #E45D38
 			i
 				position relative
 				top 2px
+				color darken(#E6E1D6, 15%)
 
 	.add-box
 		background darken(#E6E1D6, 5%)
