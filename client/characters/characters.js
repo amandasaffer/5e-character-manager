@@ -114,7 +114,7 @@ Template.manageCharacter.events({
 		var modifier = calculateModifier(abilityScore);
 		var scoreIndex = $(e.target).data('score-index');
 
-		if(modifier > 0) {
+		if(modifier > 0) { // add plus sign if necessary
 			modifier = '+' + modifier;
 		}
 
