@@ -7,7 +7,7 @@ merri = "Merriweather", serif
 html
 	overflow hidden
 	height 100%
-	
+
 body
 	font-size 16px
 	background #F1EBE0
@@ -20,6 +20,69 @@ body
 /* Header
  * Lorem ipsum dolor sit amet
  */
+
+#dashboard-panel-menu
+	width 120px
+	height 100vh
+	position fixed
+	background #2B271F
+
+	a.dashboard-brand
+		font-weight 700
+		font-size 24px
+		font-family lato
+		color white
+		position relative
+		top 15px
+		left 18px
+		opacity .8
+
+		strong
+			opacity .5
+			font-weight 900
+
+	ul
+		list-style-type none
+		margin 60px 0 0 0
+		padding 0
+		li
+			text-align center
+			padding 10px
+			display block
+			width 54px
+			height 54px
+			margin 0 auto 45px
+			border-radius 50%
+			border 1px solid #555
+			cursor pointer
+			i
+				color sandybrown
+				font-size 23px
+				position relative
+
+				&.fa-newspaper-o
+					top 7px
+				&.fa-user
+					top 5px
+
+			&:hover
+				border 1px solid darken(#F1EBE0, 10%)
+
+	// everything over 768px (tablet screens)
+	// @media handheld, screen and (min-width: 768px)
+
+	// everything over 992px (medium screens)
+	@media handheld, screen and (min-width: 992px)
+		width 98px
+		a.dashboard-brand
+			font-size 20px
+			left 15px
+	// everything over 1200px (large screens)
+	@media handheld, screen and (min-width: 1200px)
+		width 120px
+		a.dashboard-brand
+			font-size 24px
+			left 18px
 
 nav.navbar
 	height 70px
@@ -55,18 +118,6 @@ nav.navbar
 		strong
 			opacity .5
 			font-weight 900
-
-a.dashboard-brand
-	font-weight 700
-	font-size 24px
-	font-family lato
-	color white
-	position relative
-	top 15px
-
-	strong
-		opacity .5
-		font-weight 900
 
 #main-hero
 	height 100vh
@@ -502,7 +553,7 @@ form.create-character
 				color darken(#E6E1D6, 15%)
 
 	.add-box
-		background darken(#E6E1D6, 5%)
+		background #E6E1D6
 		text-align center
 		padding 55px 40px
 		border-radius 5px
@@ -518,7 +569,7 @@ form.create-character
 			opacity .7
 
 		&:hover
-			background #E6E1D6
+			background darken(#E6E1D6, 5%)
 
 .form-horizontal
 	label
@@ -549,3 +600,9 @@ form.create-character
 			font-size 11px
 			line-height 1.45
 			margin 10px 0
+
+.skill-col
+	// everything over 992px (medium screens)
+	@media handheld, screen and (min-width: 992px)
+		padding-left 20px
+		// padding-left 0

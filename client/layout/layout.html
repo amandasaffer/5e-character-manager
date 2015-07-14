@@ -8,13 +8,18 @@
 
 <template name="dashboard_layout">
   <div class="container-fluid">
-		<!-- TODO: implement dashboard sidebar -->
-		<div class="col-md-1" style="height: 100vh; position: fixed; background: #2B271F;">
-			<!-- blaze component may be useful here? research -->
+		<div id="dashboard-panel-menu">
 			<a class="dashboard-brand" href="{{pathFor 'home'}}">D&amp;D<strong>CS</strong></a>
+
+			<ul>
+				<li><i class="fa fa-newspaper-o fa-fw"></i></li>
+				<li><i class="fa fa-user fa-fw"></i></li>
+				<li><i class="fa fa-newspaper-o fa-fw"></i></li>
+				<li><i class="fa fa-user fa-fw"></i></li>
+			</ul>
 		</div>
 
-		<div class="col-md-11 col-md-offset-1">
+		<div class="col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1">
 			{{> yield}}
 		</div>
 	</div>

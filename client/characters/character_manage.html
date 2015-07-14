@@ -126,7 +126,7 @@
 
 						<hr class="spacer60 visible-sm visible-xs">
 
-						<div class="col-sm-12 col-md-6 general-proficiencies" style="padding-left: 50px;">
+						<div class="col-sm-12 col-md-6 general-proficiencies skill-col">
 							<h5>Skills <!-- &amp; Proficiencies --></h5>
 
 							<div class="row">
@@ -147,7 +147,7 @@
 									<label>Ability Scores</label>
 									<div class="row">
 										{{#each standardized 'abilityScores'}}
-										<div class="col-md-6">
+										<div class="col-sm-6 col-md-6">
 											<div class="input-group input-group-sm" style="width: 100%;">
 												<span class="input-group-addon fixed fat">{{abbrev}}</span>
 												<input type="text" data-score-index="{{index}}" class="form-control ability" value="{{getArrayValue ../abilityScores index}}">
@@ -164,7 +164,7 @@
 									<label>Saving Throws</label>
 									<div class="row">
 										{{#each standardized 'saveProficiencies'}}
-										<div class="col-sm-6 col-md-6">
+										<div class="col-sm-4 col-md-6">
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">{{name}}</span>
 												<span data-score-index="{{index}}" class="input-group-addon fixed">{{isProficient ../abilityModifiers index ../proficiency ../proficiencies name}}</span>
@@ -183,7 +183,7 @@
 									<label>Skill Proficiencies</label>
 									<div class="row">
 										{{#each standardized 'skillProficiencies'}}
-										<div class="col-sm-6 col-md-6">
+										<div class="col-sm-4 col-md-6">
 											<div class="input-group input-group-sm">
 												<span class="input-group-addon fixed prof-name">{{name}} ({{attribute}})</span>
 												<span data-score-index="{{index}}" class="input-group-addon prof-num fixed {{name}}-prof">{{isProficient ../abilityModifiers index ../proficiency ../proficiencies name}}</span>
