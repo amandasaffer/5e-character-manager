@@ -82,6 +82,8 @@ body
 				border-radius 3px
 				font-weight 300
 				visibility hidden
+				opacity 0
+				transition opacity .3s ease-in-out
 				&::after
 					right 100%
 					top 50%
@@ -100,6 +102,8 @@ body
 				border 1px solid darken(#F1EBE0, 10%)
 				span
 					visibility visible
+					opacity 1
+					transition-delay .32s
 
 	// everything over 768px (tablet screens)
 	// @media handheld, screen and (min-width: 768px)
