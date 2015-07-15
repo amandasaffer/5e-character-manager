@@ -18,6 +18,7 @@
 									<select name="class" class="form-control" tabindex=2>
 										{{#each standardized 'classes'}} <option {{selected ../class this}}>{{this}}</option> {{/each}}
 									</select>
+									<i class="fa fa-sort-desc pull-right drop-arrow"></i>
 								</div>
 
 								<div class="col-sm-3">
@@ -32,6 +33,7 @@
 									<select name="background" class="form-control" tabindex=4>
 										{{#each standardized 'backgrounds'}} <option {{selected ../background this}}>{{this}}</option> {{/each}}
 									</select>
+									<i class="fa fa-sort-desc pull-right drop-arrow"></i>
 								</div>
 
 								<div class="col-sm-4">
@@ -39,6 +41,7 @@
 									<select name="race" class="form-control" tabindex=5>
 										{{#each standardized 'races'}} <option {{selected ../race this}}>{{this}}</option> {{/each}}
 									</select>
+									<i class="fa fa-sort-desc pull-right drop-arrow"></i>
 								</div>
 
 								<div class="col-sm-4">
@@ -46,6 +49,7 @@
 									<select name="alignment" class="form-control" tabindex=6>
 										{{#each standardized 'alignments'}} <option {{selected ../alignment this}}>{{this}}</option> {{/each}}
 									</select>
+									<i class="fa fa-sort-desc pull-right drop-arrow"></i>
 								</div>
 							</div>
 
@@ -142,14 +146,14 @@
 								</div>
 							</div>
 
-							<div class="row" style="margin-top: 25px;">
+							<div class="row" style="margin-top: 10px;">
 								<div class="col-sm-12 ability-scores">
 									<label>Ability Scores</label>
-									<div class="row">
+									<div class="row" style="margin-top: 10px;">
 										{{#each standardized 'abilityScores'}}
 										<div class="col-sm-6 col-md-6">
 											<div class="input-group input-group-sm" style="width: 100%;">
-												<span class="input-group-addon fixed fat">{{abbrev}}</span>
+												<span class="input-group-addon fixed">{{abbrev}}</span>
 												<input type="text" data-score-index="{{index}}" class="form-control ability" value="{{getArrayValue ../abilityScores index}}">
 				  							<span class="base-modifier input-group-addon fixed thin">{{getArrayValue ../abilityModifiers index}}</span>
 											</div>
@@ -196,7 +200,6 @@
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
 
