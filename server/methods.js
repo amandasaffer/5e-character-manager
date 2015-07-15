@@ -8,11 +8,6 @@ Meteor.methods({
       throw new Meteor.Error(401, "You need to log in to create characters.");
     }
 
-    // ensure the character has a name
-    if (!characterAttributes.name) {
-      throw new Meteor.Error(422, "Please enter a name for your character.");
-    }
-
     var character = _.extend(characterAttributes, {
       userId: user._id,
       owner: user.username,
