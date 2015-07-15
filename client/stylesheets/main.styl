@@ -26,6 +26,7 @@ body
 	height 100vh
 	position fixed
 	background #262522
+	z-index 11111
 
 	a.dashboard-brand
 		font-weight 700
@@ -68,7 +69,7 @@ body
 				&.fa-group
 					top 6px
 
-			span
+			span // TODO: z-index issue
 				position absolute
 				left 72px
 				top 15px
@@ -320,22 +321,23 @@ nav.navbar
 
 
 #page-head
-	height 120px
-	margin-top 70px
+	height 65px
 	background url('/images/ToDKeyArt1.jpg')
 	background-size cover
 	background-position 50% 40%
 	margin-bottom 40px
-	padding-top 20px
+
+	.screen
+		height 100%
+		width 100%
+		background rgba(241, 235, 224, .93)
 
 	h3
-		color white
-		opacity .9
+		color #333
 		line-height 1.2
 		font-family lato
-		color white
 		text-transform uppercase
-		font-size 32px
+		font-size 20px
 		font-weight 700
 
 h1, h2, h3, h4, h5, h6

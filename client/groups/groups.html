@@ -1,14 +1,16 @@
 <template name="groups">
 	<div id="page-head">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-					<h3>Groups</h3>
+		<div class="screen">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<h3>Groups</h3>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
@@ -16,12 +18,12 @@
 
 				<ul class="group-list">
 				    {{#each groups}}
-				      <li>{{name}}  
+				      <li>{{name}}
 				      {{#if isInRole 'admin'}} &nbsp;<i id="{{_id}}" class="fa fa-minus-circle"></i> {{/if}}
 				      </li>
 				    {{/each}}
 				</ul>
-				
+
 				{{> addGroup}}
 			</div>
 		</div>
