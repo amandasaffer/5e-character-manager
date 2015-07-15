@@ -25,7 +25,7 @@ body
 	width 120px
 	height 100vh
 	position fixed
-	background #2B271F
+	background #262522
 
 	a.dashboard-brand
 		font-weight 700
@@ -55,6 +55,7 @@ body
 			border-radius 50%
 			border 1px solid #555
 			cursor pointer
+			position relative
 			i
 				color sandybrown
 				font-size 23px
@@ -64,9 +65,41 @@ body
 					top 7px
 				&.fa-user
 					top 5px
+				&.fa-group
+					top 6px
+
+			span
+				position absolute
+				left 72px
+				top 15px
+				font-family lato
+				color darken(#F1EBE0, 10%)
+				font-size 10px
+				letter-spacing 1px
+				text-transform uppercase
+				background lighten(#333, 5%)
+				padding 4px 9px
+				border-radius 3px
+				font-weight 300
+				visibility hidden
+				&::after
+					right 100%
+					top 50%
+					border solid transparent
+					content " "
+					height 0
+					width 0
+					position absolute
+					pointer-events none
+					border-color rgba(136, 183, 213, 0)
+					border-right-color lighten(#333, 5%)
+					border-width 7px
+					margin-top -7px
 
 			&:hover
 				border 1px solid darken(#F1EBE0, 10%)
+				span
+					visibility visible
 
 	// everything over 768px (tablet screens)
 	// @media handheld, screen and (min-width: 768px)
@@ -82,7 +115,7 @@ body
 		width 120px
 		a.dashboard-brand
 			font-size 24px
-			left 18px
+			left 19px
 
 nav.navbar
 	height 70px
@@ -468,6 +501,7 @@ form.create-character
 		border none
 		border-radius 0
 		box-shadow none
+	input, textarea
 		&:focus
 			// border-color darken(#DBD5CA, 25%) !important
 			// border-color #E45D38 !important
@@ -587,6 +621,10 @@ form.create-character
 						width 35px
 					&.fat
 						width 65px
+			.ability
+				margin 0 0 0 10px
+				width 87%
+				display inline-block
 
 		.general-proficiencies
 			.input-group
@@ -600,6 +638,11 @@ form.create-character
 			font-size 11px
 			line-height 1.45
 			margin 10px 0
+
+		.drop-arrow
+			position relative
+			bottom 25px
+			opacity .3
 
 .skill-col
 	// everything over 992px (medium screens)

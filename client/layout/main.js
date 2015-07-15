@@ -7,3 +7,12 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
+Template.dashboard_layout.events({
+  'click .groups': function(e) {
+    Router.go('groups');
+  },
+  'click .characters': function(e) {
+    Router.go('characters');
+  },
+});
