@@ -1,16 +1,20 @@
 <template name="characters">
 	<div id="page-head" class="hidden-xs">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-8">
-					<h3>Character Sheets</h3>
+		<div class="screen">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-8">
+						<h3>Character Sheets</h3>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-sm btn-success pull-right" id="add-character"><i class="fa fa-plus"></i>&nbsp; Add</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<hr class="spacer60 visible-xs">
-	<hr class="spacer40 visible-xs">
 
 	<div class="container">
 		{{#characterTableWrapper}}
@@ -35,12 +39,6 @@
 
 <template name="characterTableWrapper">
   <table id="characters">
-    <thead>
-      <tr>
-        <td><!--Characters--></td>
-				<button class="btn btn-sm btn-success" id="add-character"><i class="fa fa-plus"></i>&nbsp; Add</button>
-      </tr>
-    </thead>
     <tbody>
       {{> UI.contentBlock}}
     </tbody>
