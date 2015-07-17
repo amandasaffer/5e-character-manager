@@ -44,7 +44,7 @@ body
 
 	ul
 		list-style-type none
-		margin 60px 0 0 0
+		margin 30px 0 0 0
 		padding 0
 		li
 			text-align center
@@ -54,11 +54,12 @@ body
 			height 54px
 			margin 0 auto 45px
 			border-radius 50%
-			border 1px solid #555
+			// border 1px solid #555
 			cursor pointer
 			position relative
+			background darken(#262522, 15%)
 			i
-				color sandybrown
+				color lighten(sandybrown, 5%)
 				font-size 23px
 				position relative
 
@@ -100,7 +101,7 @@ body
 					margin-top -7px
 
 			&:hover
-				border 1px solid darken(#F1EBE0, 10%)
+				// border 1px solid darken(#F1EBE0, 10%)
 				span
 					visibility visible
 					opacity 1
@@ -321,16 +322,18 @@ nav.navbar
 
 
 #page-head
-	height 65px
+	height 60px
 	background url('/images/ToDKeyArt1.jpg')
 	background-size cover
 	background-position 50% 40%
 	margin-bottom 40px
+	border-bottom 1px solid darken(#E6E1D6, 10%)
 
 	.screen
 		height 100%
 		width 100%
-		background rgba(241, 235, 224, .93)
+		padding-top 13px
+		background rgba(241, 235, 224, .96)
 
 	h3
 		color #333
@@ -424,26 +427,11 @@ ul.group-list
 		top 0
 		right 0
 
-	thead
-		font-weight 800
-		font-size 12px
-		font-family lato
-		text-transform uppercase
-		letter-spacing 1px
-		tr
-			border none
-			width 100%
-		td
-			padding 0 0 60px 10px
-
-	tr
-		border-top 1px solid #E6E1D6
-
-		&:nth-child(even)
-			background #E6E1D6
+	tr:nth-child(odd)
+		background #E6E1D6
 
 	td
-		padding 22px 10px 15px
+		padding 22px 20px 15px 10px
 		span.name
 			display block
 			font-size 15px
@@ -460,9 +448,13 @@ ul.group-list
 				opacity 1
 		a
 			opacity 1
+			background darken(#E6E1D6, 7%)
+			text-align center
+			padding 5px 3px
+			border-radius 3px
 
 		&:first-child
-			width 74%
+			width 70%
 			padding-left 20px
 
 #addChar
