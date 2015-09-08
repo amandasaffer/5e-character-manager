@@ -1,41 +1,25 @@
 <template name="characters">
-	<div id="page-head" class="hidden-xs">
-		<div class="screen">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-8">
-						<h4>Characters</h4>
-					</div>
-					<div class="col-md-4">
-						<button class="btn btn-sm btn-success pull-right" id="add-character"><i class="fa fa-plus"></i>&nbsp; Add</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- <hr class="spacer60"> -->
+	{{> pageHead title="Characters" addChar="true"}}
 
 	<div class="container">
-
 		{{#characterTableWrapper}}
 	    {{#each characters}}
 	      {{> characterRow}}
 	    {{/each}}
-	  {{/characterTableWrapper}}
+		{{/characterTableWrapper}}
 	</div>
 
 	<div id="addChar" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-			<h3>Create</h3>
-      <form id="create-character" role="form">
-				<input type="text" name="charname" placeholder="Name" class="form-control" tabindex=1>
-				<button class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
-      </form>
-    </div>
-  </div>
-</div>
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+				<h3>Create</h3>
+	      <form id="create-character" role="form">
+					<input type="text" name="charname" placeholder="Name" class="form-control" tabindex=1>
+					<button class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
+	      </form>
+	    </div>
+	  </div>
+	</div>
 </template>
 
 <template name="characterTableWrapper">

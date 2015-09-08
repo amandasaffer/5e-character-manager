@@ -1,24 +1,11 @@
 <template name="manageCharacter">
-	<div id="page-head" class="hidden-xs">
-		<div class="screen">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-8">
-						<h4>Characters</h4>
-					</div>
-					<div class="col-md-4">
-						<!-- <button class="btn btn-sm btn-success pull-right" id="add-character"><i class="fa fa-plus"></i>&nbsp; Add</button> -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> pageHead title="Characters"}}
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<form class="form-horizontal create-character" role="form">
-					<div class="form-group" style="margin-bottom: 60px;">
+					<div class="form-group">
 						<div class="col-sm-12 col-md-6">
 
 							<h5>Overview</h5>
@@ -222,7 +209,6 @@
 					<hr class="spacer30">
 
 					<h5>Features &amp; Traits</h5>
-
 					<div class="form-group" style="margin-top: 0; padding-top; 0;">
 						<div id="traits">
 							{{#each traits}}
