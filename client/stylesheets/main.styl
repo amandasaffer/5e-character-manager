@@ -43,19 +43,24 @@ body
 			font-weight 900
 	
 	.rect
-		height 70px
-		background darken(#262522, 15%)
+		height 80px
+		background goldenrod
 		text-align center
 		font-family lato
-		padding-top 23px
+		padding-top 28px
 		
 		a
 			font-size 18px
 			font-weight 700
 			color white
-			opacity .7
+			opacity .8
 			text-transform uppercase
 			letter-spacing 1px
+			
+			&:hover, &:active
+				text-decoration none
+			&:hover
+				opacity 1
 
 	ul
 		list-style-type none
@@ -73,7 +78,8 @@ body
 			position relative
 			background darken(#262522, 15%)
 			i
-				color lighten(sandybrown, 5%)
+				color white
+				opacity .7
 				font-size 23px
 				position relative
 
@@ -321,8 +327,8 @@ nav.navbar
 
 
 #page-head
-	height 70px
-	padding-top 15px
+	height 80px
+	padding-top 20px
 	background #e6e0d5
 	margin-bottom 40px
 
@@ -497,22 +503,20 @@ form.create-character
 		box-shadow none
 	input, textarea
 		&:focus
-			// border-color darken(#DBD5CA, 25%) !important
-			// border-color #E45D38 !important
 			border-color #4F8E33 !important
 			box-shadow none
 	input[type=text]
 		background transparent
 		padding-left 0
 		color lighten(#2B271F, 15%) !important
-		border-bottom 2px solid darken(#DBD5CA, 2%)
+		border-bottom 2px solid #DBD5CA
 		border-radius 0
 	select.form-control
 		border none
 		background transparent
 		box-shadow none
 		padding-left 0
-		border-bottom 2px solid darken(#DBD5CA, 2%)
+		border-bottom 2px solid #DBD5CA
 		padding-left 0 !important
 		-webkit-appearance none
 	textarea
@@ -520,7 +524,7 @@ form.create-character
 		padding 10px 15px
 		margin-top 0
 		font-size 14px !important
-		border-bottom 2px solid darken(#DBD5CA, 2%)
+		border-bottom 2px solid #DBD5CA
 		background #E6E1D6 !important
 	input[type=text]
 		height 34px
