@@ -8,18 +8,20 @@
 
 <template name="dashboard_layout">
   <div class="container-fluid">
-		<div id="dashboard-panel-menu">
-			<!-- <a class="dashboard-brand" href="{{pathFor 'home'}}">D&amp;D<strong>CS</strong></a> -->
-			<ul>
-				<li class="characters"><i class="fa fa-newspaper-o fa-fw"></i> <span>Characters</span></li>
-				<li class="groups"><i class="fa fa-group fa-fw"></i> <span>Groups</span></li>
-				<li><i class="fa fa-newspaper-o fa-fw"></i></li>
-				<li><i class="fa fa-user fa-fw"></i> <span>Account</span></li>
-			</ul>
-		</div>
-		<!-- TODO: test padding configuration, NOT SATISFIED WITH MEDIA QUERIES HERE -->
-		<div class="col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1" style="padding-left: 0; padding-right: 0;">
-			{{> yield}}
+		<div class="row">
+			<div class="col-sm-1 col-md-1 col-lg-1" id="dashboard-panel-menu">
+				<div class="rect"><a href="#">D&amp;D</a></div>
+				<ul>
+					<li class="characters"><i class="fa fa-newspaper-o fa-fw"></i> <span>Characters</span></li>
+					<li class="groups"><i class="fa fa-group fa-fw"></i> <span>Groups</span></li>
+					<li><i class="fa fa-newspaper-o fa-fw"></i></li>
+					<li><i class="fa fa-user fa-fw"></i> <span>Account</span></li>
+				</ul>
+			</div>
+			
+			<div class="col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1" id="main-yield">
+				{{> yield}}
+			</div>
 		</div>
 	</div>
 </template>

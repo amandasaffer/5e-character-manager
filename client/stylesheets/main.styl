@@ -14,19 +14,19 @@ body
 	overflow auto
 	height 100%
 
-.container-fluid
-	padding 0
-
 /* Header
  * Lorem ipsum dolor sit amet
  */
 
+#main-yield
+	padding 0
+
 #dashboard-panel-menu
-	width 120px
 	height 100vh
-	position fixed
 	background #262522
 	z-index 11111
+	padding 0
+	position fixed
 
 	a.dashboard-brand
 		font-weight 700
@@ -41,6 +41,21 @@ body
 		strong
 			opacity .5
 			font-weight 900
+	
+	.rect
+		height 70px
+		background darken(#262522, 15%)
+		text-align center
+		font-family lato
+		padding-top 23px
+		
+		a
+			font-size 18px
+			font-weight 700
+			color white
+			opacity .7
+			text-transform uppercase
+			letter-spacing 1px
 
 	ul
 		list-style-type none
@@ -54,7 +69,6 @@ body
 			height 54px
 			margin 0 auto 45px
 			border-radius 50%
-			// border 1px solid #555
 			cursor pointer
 			position relative
 			background darken(#262522, 15%)
@@ -107,21 +121,6 @@ body
 					opacity 1
 					transition-delay .32s
 
-	// everything over 768px (tablet screens)
-	// @media handheld, screen and (min-width: 768px)
-
-	// everything over 992px (medium screens)
-	@media handheld, screen and (min-width: 992px)
-		width 98px
-		a.dashboard-brand
-			font-size 20px
-			left 15px
-	// everything over 1200px (large screens)
-	@media handheld, screen and (min-width: 1200px)
-		width 120px
-		a.dashboard-brand
-			font-size 24px
-			left 19px
 
 nav.navbar
 	height 70px
@@ -322,26 +321,23 @@ nav.navbar
 
 
 #page-head
-	height 60px
-	background url('/images/ToDKeyArt1.jpg')
-	background-size cover
-	background-position 50% 40%
+	height 70px
+	padding-top 15px
+	background #e6e0d5
 	margin-bottom 40px
-	border-bottom 1px solid darken(#E6E1D6, 10%)
 
-	.screen
-		height 100%
-		width 100%
-		padding-top 13px
-		background rgba(241, 235, 224, .96)
-
-	h3
+	h4.title
 		color #333
 		line-height 1.2
 		font-family lato
 		text-transform uppercase
-		font-size 20px
+		font-size 18px
+		letter-spacing 1px
 		font-weight 700
+	
+	.btn-sm
+		border-radius 25px
+		padding 10px 20px 9px
 
 h1, h2, h3, h4, h5, h6
 	font-family lato
@@ -448,10 +444,10 @@ ul.group-list
 				opacity 1
 		a
 			opacity 1
-			background darken(#E6E1D6, 7%)
 			text-align center
 			padding 5px 3px
 			border-radius 3px
+			color darken(sandybrown, 10%)
 
 		&:first-child
 			width 70%
@@ -608,6 +604,11 @@ form.create-character
 		margin 0 0 10px 0
 	.form-group
 		margin-top 40px
+		
+		&:first-child
+			margin-top 0
+		&:last-child
+			margin-bottom 60px
 		.ability-scores, .saving-throws, .general-proficiencies
 			.input-group
 				margin-bottom 10px
