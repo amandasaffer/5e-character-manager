@@ -1,9 +1,13 @@
 <template name="insertCharacter">
-  {{> quickForm collection="Characters" id="insertCharacter" type="insert"}}
+  <div class="container">
+  	{{> quickForm collection="Characters" id="insertCharacter" type="insert"}}
+  </div>
 </template>
 
 <template name="updateCharacter">
-	{{> quickForm collection="Characters" id="updateCharacter" type="update"}}
+	<div class="container">
+		{{> quickForm collection="Characters" id="updateCharacter" type="update"}}
+	</div>
 </template>
 
-<!-- TODO: change these to autoforms -->
+<!-- TODO: change these to autoforms with custom templates -->
