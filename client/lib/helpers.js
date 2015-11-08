@@ -10,8 +10,42 @@ Template.registerHelper('checkProficiency', function(key, value) {
 	}
 });
 
+Template.registerHelper('cleanProficiency', function(text) {
+  text = text.replace('(STR)','');
+  text = text.replace('(DEX)','');
+  text = text.replace('(CON)','');
+  text = text.replace('(INT)','');
+  text = text.replace('(WIS)','');
+  text = text.replace('(CHA)','');
+
+  if(/\s+$/.test(text)) {
+    text = text.substr(0, text.length - 1);
+  }
+  return text;
+});
+
 Template.registerHelper('getArrayValue', function(array, index) {
   return array[index];
+});
+
+Template.registerHelper('inArray', function(array, value) {
+  for(i = 0; i < array.length; i++) {
+    if(array[i] == value) {
+      return true;
+    }
+  }
+});
+
+Template.registerHelper('calculateModifier' function(score) {
+  var modifier = Math.floor((score - 10) / 2);
+  return modifier;
+});
+
+Template.registerHelper('positiveMod', function(num) {
+  if(num > 0) {
+    num = '+' + num;
+  }
+  return num;
 });
 
 Template.registerHelper('isProficient', function(base, index, modifier, key, value) {
