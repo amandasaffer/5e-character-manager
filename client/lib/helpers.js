@@ -36,7 +36,7 @@ Template.registerHelper('inArray', function(array, value) {
   }
 });
 
-Template.registerHelper('calculateModifier' function(score) {
+Template.registerHelper('calculateModifier', function(score) {
   var modifier = Math.floor((score - 10) / 2);
   return modifier;
 });
