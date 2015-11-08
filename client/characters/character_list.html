@@ -1,22 +1,12 @@
 <template name="characters">
 	<div class="container">
+		<a class="btn" id="create">Create New</a>
+		
 		{{#characterTableWrapper}}
 	    {{#each characters}}
 	      {{> characterRow}}
 	    {{/each}}
 		{{/characterTableWrapper}}
-	</div>
-
-	<div id="addChar" class="modal fade" tabindex="-1" role="dialog">
-	  <div class="modal-dialog modal-sm">
-	    <div class="modal-content">
-				<h3>Create</h3>
-	      <form id="create-character" role="form">
-					<input type="text" name="charname" placeholder="Name" class="form-control" tabindex=1>
-					<button class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
-	      </form>
-	    </div>
-	  </div>
 	</div>
 </template>
 
