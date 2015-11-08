@@ -8,12 +8,3 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
-
-Template.dashboardLayout.events({
-  'click .groups': function(e) {
-    Router.go('groups');
-  },
-  'click .characters': function(e) {
-    Router.go('characters');
-  },
-});
