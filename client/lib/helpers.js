@@ -48,21 +48,3 @@ Template.registerHelper('addMod', function(num) {
 Template.registerHelper("formatDate", function(date) {
   return moment(new Date(date)).format("M/DD/YY h:mmA");
 });
-
-Template.registerHelper('standardized', function(key) {
-  if (key === 'classes') {
-    return standardCharacter.classes;
-  } else if (key === 'backgrounds') {
-    return standardCharacter.backgrounds;
-  } else if (key === 'races') {
-    return standardCharacter.races;
-  } else if (key === 'alignments') {
-    return standardCharacter.alignments;
-  } else if (key === 'abilityScores') {
-    return standardCharacter.abilityScores;
-  } else if (key === 'saveProficiencies') {
-    return standardCharacter.saveProficiencies;
-  } else if (key === 'skillProficiencies') {
-    return standardCharacter.skillProficiencies;
-  }
-});
