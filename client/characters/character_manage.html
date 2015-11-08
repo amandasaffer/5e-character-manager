@@ -1,5 +1,4 @@
 <template name="manageCharacter">
-	{{> dashboardHeader title="Characters"}}
 
 	<div class="container">
 		<div class="row">
@@ -212,12 +211,10 @@
 					<div class="form-group" style="margin-top: 0; padding-top; 0;">
 						<div id="traits">
 							{{#each traits}}
-							<!-- TODO: Implement delete button  -->
 								<div class="col-sm-6 col-md-4 trait">
 									<div class="row">
 										<div class="col-sm-12">
 											<div class="input-group">
-												<!-- <span class="input-group-addon"><i class="fa fa-file-o"></i></span> -->
 												<input type="text" class="trait-name form-control" placeholder="Feature Name" value="{{name}}">
                         <span class="input-group-addon delete-trait"><i class="fa fa-minus-circle fa-2x"></i></span>
 											</div>
