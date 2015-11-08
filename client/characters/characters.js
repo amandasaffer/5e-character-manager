@@ -42,9 +42,6 @@ var inArray = function(array, value) {
 }
 
 Template.characters.events({
-	'click #add-character': function(e) {
-		$('#addChar').modal('toggle');
-	},
 	'click .delete-character': function(e) {
 		e.preventDefault();
 
@@ -315,7 +312,7 @@ Template.manageCharacter.events({
 
 Template.characters.helpers({
 	characters: function() {
-		return Characters.find({userId: Meteor.user()._id, name: {"$exists": true }}, {sort: {timestamp : -1}});
+		return Characters.find({userId: Meteor.user()._id, name: {"$exists": true }}, {sort: {createdAt: -1}});
 	}
 });
 
