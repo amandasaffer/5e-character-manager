@@ -19,3 +19,5 @@ aldeed:simple-schema
 templates:forms
 ongoworks:security
 reactive-var
+aldeed:autoform
+aldeed:collection2

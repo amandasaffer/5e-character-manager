@@ -6,7 +6,7 @@
     {{> yield}}
 </template>
 
-<template name="dashboard_layout">
+<template name="dashboardLayout">
   <div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-1 col-md-1 col-lg-1" id="dashboard-panel-menu">
@@ -20,6 +20,8 @@
 			</div>
 			
 			<div class="col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1" id="main-yield">
+				<!-- eventually put this here -->
+				<!-- {{> dashboardHeader title="Characters" addChar="true"}} -->
 				{{> yield}}
 			</div>
 		</div>

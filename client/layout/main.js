@@ -1,3 +1,4 @@
+// fix this shit
 Meteor.subscribe('groups');
 Meteor.subscribe('characters');
 Meteor.subscribe('user-characters');
@@ -8,7 +9,7 @@ if (Meteor.isServer) {
   });
 }
 
-Template.dashboard_layout.events({
+Template.dashboardLayout.events({
   'click .groups': function(e) {
     Router.go('groups');
   },
