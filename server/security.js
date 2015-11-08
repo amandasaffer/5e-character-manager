@@ -7,5 +7,5 @@ Security.defineMethod("ifOwned", {
 });
 
 Characters.permit('insert').ifLoggedIn().apply();
-Characters.permit('update').exceptProps(['userId', 'owner', 'updated']).ifOwned().apply();
+Characters.permit('update').exceptProps(['userId', 'createdAt']).ifOwned().apply();
 Characters.permit('remove').ifLoggedIn().ifOwned().apply();

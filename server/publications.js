@@ -8,7 +8,7 @@ Meteor.publish('characters', function() {
 	return Characters.find();
 });
 
-// publish all the current user's characters
-Meteor.publish('user-characters', function () {
-	return Characters.find({userId: this.userId}, {sort: {name: -1}});
+// TODO: publish a user's own characters
+Meteor.publish('usersCharacters', function(user) {
+	return Characters.find({userId: user});
 });
