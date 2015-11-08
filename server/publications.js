@@ -8,7 +8,11 @@ Meteor.publish('characters', function() {
 	return Characters.find();
 });
 
-// TODO: publish a user's own characters
 Meteor.publish('usersCharacters', function(user) {
+	return Characters.find({userId: user});
+});
+
+// TODO: publish a user's own groups
+Meteor.publish('groupsBelongedTo', function(user) {
 	return Characters.find({userId: user});
 });
