@@ -6,6 +6,7 @@ merri = "Merriweather", serif
 
 html
 	font-size 13px
+	letter-spacing 1px
 	
 body
 	overflow auto
@@ -72,7 +73,7 @@ nav.navbar
 		background transparent
 		border none
 
-		a.navbar-brand
+		a.navbar-brand, ul li a
 			color white
 			opacity .8
 			
@@ -82,16 +83,20 @@ nav.navbar
 	background url('/images/ToDKeyArt1.jpg')
 	background-size cover
 	background-position 50% 40%
-	text-align center
 
-	h1
+	h1,h2
 		color white
 		line-height 1.2
+		margin 0
+		letter-spacing 1px
+	h1
 		text-transform uppercase
 		font-weight 900
-		margin 0 0 30px 0
-		letter-spacing 1px
 		font-size 66px
+	h2
+		font-weight 300
+		opacity .75
+		margin-bottom 30px
 	span
 		font-family lato
 		text-transform uppercase
@@ -106,127 +111,14 @@ nav.navbar
 			opacity .5
 			margin-left 3px
 			margin-right 2px
-
-	.btn
-		font-size 15px
-		font-weight 400
-		padding 15px 33px 14px
-		letter-spacing 2px
-		border-radius 39px
-
-		i
-			opacity .4
-			margin-right 2px
-
-		&:active
-				position relative
-				top 1px
-
-		&.signup
-			background lighten(#E35720, 5%)
-			border 1px solid #E35720
-			box-shadow 0px 1px 1px #53381D
-
-			&:hover
-				background lighten(#E35720, 15%)
-				border 1px solid lighten(#E35720, 10%)
-
-		&.login
-			background darken(#333, 5%)
-			border 1px solid darken(#333, 7%)
-			color #eee
-
-			&:hover
-				background #333
-				border 1px solid #333
-
 	
 	#welcome
-		padding-top 38vh
-
-	// Create Account / Login Forms
-	.create-acc, .login-form
-		text-align left
-		padding-top 35vh
-
-		h3
-			color white
-			text-align center
-			margin-bottom 10px
-
-		span
-			margin-left 0
-			padding-left 0
-			cursor pointer
-			display inline-block
-			margin-bottom 10px
-
-			&:hover
-				opacity .7
-		// Create Acc / Login Form Styles
-		#create-new-account, #login-form
-			margin-top 5px
-			margin-bottom 10px
-
-			input[type=text], input[type=password]
-				background rgba(0,0,0,0.35)
-				padding 24px 25px 23px
-				font-size 16px
-				border-radius 25px
-				border none
-				color #fff
-				margin-bottom 20px
-				font-family lato
-				font-weight 300
-
-			input::-webkit-input-placeholder
-				color #ddd
-				border none
-				box-shadow none
-				text-shadow none
-				opacity .67
-
-			.checkbox
-				margin-top 0
-				margin-left 5px
-
-				// everything over 1200px (large screens)
-				@media handheld, screen and (min-width: 1200px)
-					margin-left 30px
-					margin-bottom 0
-
-			label
-				font-family lato
-				color #fff
-
-				span
-					opacity .9
-					font-size 14px
-					font-weight 300
-					display block
-					text-transform none
-					margin 0 20px 0 4px
-
-			button[type=submit]
-				padding 14px 25px
-				font-size 14px
-				border-radius 25px
-				background lighten(#c55124, 5%)
-				border none
-				display block
-				width 100%
-				color #fff
-
-				&:hover
-					background #c55124
-
-				&:focus
-					outline 0
+		padding-top 37vh
 
 	.screen
 		height 100%
 		width 100%
-		background rgba(25, 25, 25, .15)
+		background rgba(25, 25, 25, .2)
 
 	.scroll-down
 		position absolute

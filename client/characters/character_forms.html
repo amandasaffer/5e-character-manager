@@ -5,40 +5,128 @@
   	{{# autoForm collection="Characters" id="insertCharacters" schema=Schemas.Characters type="insert"}}
   	<div class="section row">
   		<div class="section-title col-md-12">
-  			
+  			<h1>Section 1: Basics</h1>
   		</div>
   		<div class="col-md-6">
+  			<div class="row">
+  				<div class="col-md-9">
+  					{{> afFieldInput name='name' type='text' template='charText'}}
+  				</div>
+  				<div class="col-md-3">
+  					{{> afFieldInput name='level' type='text' template='charText'}}
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-6">
+  					{{> afFieldInput name='class' options='allowed' type='select' template='charSelect'}}
+  				</div>
+  				<div class="col-md-6">
+  					{{> afFieldInput name='race' options='allowed' type='select' template='charSelect'}}
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-6">
+  					{{> afFieldInput name='background' options='allowed' type='select' template='charSelect'}}
+  				</div>
+  				<div class="col-md-6">
+  					{{> afFieldInput name='alignment' options='allowed' type='select' template='charSelect'}}
+  				</div>
+  			</div>
+  		</div>
 
-  			{{> afFieldInput name='name' type='text' template='charTextInput'}}
-  			<div class="row">
-  				<div class="col-md-6">
-  					{{> afFieldInput name='level' type='text' template='charTextInput'}}
+  		<div class="col-md-6">
+
+  			<div class="character-info-panel">		
+  				<div class="character-info">
+  					<div class="info">
+  						<span class="title">Your Class</span>
+  						<span class="attr">Bard</span>
+  					</div>
+  					<div class="info">
+  						<span class="title">Primary Attribute</span>
+  						<span class="attr">Charisma</span>
+  					</div>
+  					<div class="info">
+  						<span class="title">Secondary Attribute</span>
+  						<span class="attr">Dexterity</span>
+  					</div>
   				</div>
-  				<div class="col-md-6">
-  					{{> afFieldInput name='class' type='text' template='charTextInput'}}
+
+	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
+	  		</div>
+
+	  		<div class="character-info-panel">		
+  				<div class="character-info">
+  					<div class="info">
+  						<span class="title">Your Race</span>
+  						<span class="attr">Elf</span>
+  					</div>
+  					<div class="info">
+  						<span class="title">Key Traits</span>
+  						<span class="attr">Darkvision, Fey Ancestry</span>
+  					</div>
   				</div>
-  			</div>
-  			<div class="row">
-  				<div class="col-md-6">
-  					{{> afFieldInput name='race' type='text' template='charTextInput'}}
-  				</div>
-  				<div class="col-md-6">
-  					{{> afFieldInput name='background' type='text' template='charTextInput'}}
-  				</div>
-  			</div>
-  			<div class="row">
-  				<div class="col-md-6">
-  					{{> afFieldInput name='alignment' type='text' template='charTextInput'}}
-  				</div>
-  			</div>
+
+	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
+	  		</div>
 
   		</div>
+  	</div>
+
+  	<div class="section row">
+  		<div class="section-title col-md-12">
+  			<h1>Section X</h1>
+  		</div>
+
+			<div class="col-md-6">
+				<!-- todo: ability scores -->
+				<div class="row">
+					{{> afArrayField name="abilityScores" template="abilityScores"}}
+				</div>
+			</div>
 
   		<div class="col-md-6">
   			<div class="character-info-panel">
 	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	  			<a href="#"><div class="expand"><i class="ion-plus"></i></div></a>
+	  			<a href="#"><div class="expand rect"><span>Learn More</span> <i class="ion-plus"></i></div></a>
 	  		</div>
+  		</div>
+  	</div>
+
+  	<div class="section row">
+  		<div class="section-title col-md-12">
+  			<h1>Section X</h1>
+  		</div>
+
+  		<div class="col-md-6">
+  			<div class="row">
+  				<div class="col-md-4">
+  					{{> afFieldInput name='ac' type='text' template='charText'}}
+  				</div>
+  				<div class="col-md-4">
+  					{{> afFieldInput name='initiative' type='text' template='charText'}}
+  				</div>
+  				<div class="col-md-4">
+  					{{> afFieldInput name='speed' type='text' template='charText'}}
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-6">
+  					{{> afFieldInput name='hitPoints' type='text' template='charText'}}
+  				</div>
+  				<div class="col-md-6">
+  					{{> afFieldInput name='hitDice' type='text' template='charText'}}
+  				</div>
+  			</div>
+  			<!-- TODO: weapons -->
+  		</div>
+
+  		<div class="col-md-6">
+  			<div class="row">
+  				{{> afArrayField name="weapons" template="weapons"}}
+  			</div>
   		</div>
   	</div>
 
@@ -55,9 +143,49 @@
 	</div>
 </template>
 
-<template name="afInputText_charTextInput">
-	<input type="text" value="{{this.value}}" class="character-text-input"/>
+<template name="afInputText_charText">
+	<input type="text" value="{{this.value}}" class="char-input char-text"/>
 	<label>{{afFieldLabelText name=this.atts.name}}</label>
+</template>
+
+<template name="afSelect_charSelect">
+  <select class="char-input char-select">
+    {{#each this.items}}
+    {{#if this.optgroup}}
+    <optgroup label="{{this.optgroup}}">
+      {{#each this.items}}
+      <option {{afSelectOptionAtts}}>{{this.label}}</option>
+      {{/each}}
+    </optgroup>
+    {{else}}
+    <option {{afSelectOptionAtts}}>{{this.label}}</option>
+    {{/if}}
+    {{/each}}
+  </select>
+  <label>{{afFieldLabelText name=this.atts.name}}</label>
+</template>
+
+<template name="afArrayField_abilityScores">
+	{{#afEachArrayItem name=this.atts.name}}
+		<div class="col-md-4">
+			<input type="text" value="{{this.value}}" class="char-input char-text"/>
+			<label>{{scoreName}}</label>
+		</div>
+	{{/afEachArrayItem}}
+</template>
+
+<template name="afArrayField_weapons">
+	{{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+		<div class="col-md-6">
+			{{> afFieldInput name=this.current.name type='text' template='charText'}}
+		</div>
+		<div class="col-md-3">
+			{{> afFieldInput name=this.current.atkBonus type='text' template='charText'}}
+		</div>
+		<div class="col-md-3">
+			{{> afFieldInput name=this.current.damage type='text' template='charText'}}
+		</div>
+	{{/afEachArrayItem}}
 </template>
 
 <!-- TODO: change these to autoforms with custom templates -->
