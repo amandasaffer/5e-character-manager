@@ -2,7 +2,7 @@
   <div id="character-form" class="container">
   	<!-- {{> quickForm collection="Characters" id="insertCharacter" type="insert"}} -->
 
-  	{{# autoForm collection="Characters" id="insertCharacters" schema=Schemas.Characters type="insert"}}
+  	{{# autoForm collection="Characters" id="insertCharacter" schema=Schemas.Characters type="insert"}}
   	<div class="section row">
   		<div class="section-title col-md-12">
   			<h1>Section 1: Basics</h1>
@@ -18,10 +18,10 @@
   			</div>
   			<div class="row">
   				<div class="col-md-6">
-  					{{> afFieldInput name='class' options='allowed' type='select' template='charSelect'}}
+  					{{> afFieldInput name='race' options='allowed' type='select' template='charSelect'}}
   				</div>
   				<div class="col-md-6">
-  					{{> afFieldInput name='race' options='allowed' type='select' template='charSelect'}}
+  					{{> afFieldInput name='class' options='allowed' type='select' template='charSelect'}}
   				</div>
   			</div>
   			<div class="row">
@@ -35,12 +35,26 @@
   		</div>
 
   		<div class="col-md-6">
+  			<div class="character-info-panel">		
+  				<div class="character-info">
+  					<div class="info">
+  						<span class="title">Your Race</span>
+  						<span class="attr">{{currentFieldValue 'race'}}</span>
+  					</div>
+  					<div class="info">
+  						<span class="title">Key Traits</span>
+  						<span class="attr">Darkvision, Fey Ancestry</span>
+  					</div>
+  				</div>
 
+	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
+	  		</div>
   			<div class="character-info-panel">		
   				<div class="character-info">
   					<div class="info">
   						<span class="title">Your Class</span>
-  						<span class="attr">Bard</span>
+  						<span class="attr">{{currentFieldValue 'class'}}</span>
   					</div>
   					<div class="info">
   						<span class="title">Primary Attribute</span>
@@ -49,22 +63,6 @@
   					<div class="info">
   						<span class="title">Secondary Attribute</span>
   						<span class="attr">Dexterity</span>
-  					</div>
-  				</div>
-
-	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
-	  		</div>
-
-	  		<div class="character-info-panel">		
-  				<div class="character-info">
-  					<div class="info">
-  						<span class="title">Your Race</span>
-  						<span class="attr">Elf</span>
-  					</div>
-  					<div class="info">
-  						<span class="title">Key Traits</span>
-  						<span class="attr">Darkvision, Fey Ancestry</span>
   					</div>
   				</div>
 
@@ -149,7 +147,7 @@
 </template>
 
 <template name="afSelect_charSelect">
-  <select class="char-input char-select">
+  <select class="char-input char-select" name='{{this.atts.name}}' data-schema-key='{{this.atts.name}}'>
     {{#each this.items}}
     {{#if this.optgroup}}
     <optgroup label="{{this.optgroup}}">
