@@ -18,7 +18,11 @@
 				<li><a href="{{pathFor 'groups'}}">Groups</a></li>
 				<li><a href="{{pathFor 'characters'}}">Characters</a></li>
 		    <li>{{> loginButtons }}</li>
-		    </ul>
+		  </ul>
+      {{else}}
+      <ul class="nav navbar-nav navbar-right">
+        <li>{{> loginButtons }}</li>
+      </ul>
 	    {{/if}}
     </div>
 	</nav>

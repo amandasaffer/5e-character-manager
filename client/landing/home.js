@@ -1,5 +1,6 @@
 Template.home.rendered = function(e) {
-	$('.navbar').addClass('home-page');
+	$('.navbar').addClass('home-page navbar-fixed-top');
+	$('.navbar').removeClass('navbar-static-top');
 	$('.navbar-brand').addClass('reset-home');
 	Session.set('homeStatus', 'default');
 	Session.setDefault('homeStatus', 'default');
@@ -12,7 +13,8 @@ Template.home.rendered = function(e) {
 // };
 
 Template.home.destroyed = function(e) {
-	$('.navbar').removeClass('home-page');
+	$('.navbar').removeClass('home-page navbar-fixed-top');
+	$('.navbar').addClass('navbar-static-top');
 	$('.navbar-brand').removeClass('reset-home');
 	Session.set('homeStatus', 'default');
 };
