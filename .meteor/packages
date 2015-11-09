@@ -6,7 +6,6 @@
 meteor-platform
 stylus
 mizzao:bootstrap-3
-natestrauser:font-awesome
 iron:router
 sacha:spin
 accounts-base
@@ -22,3 +21,4 @@ reactive-var
 aldeed:autoform
 aldeed:collection2
 accounts-ui
+pagebakers:ionicons
