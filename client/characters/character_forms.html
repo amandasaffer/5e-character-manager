@@ -1,6 +1,48 @@
 <template name="insertCharacter">
-  <div class="container">
-  	{{> quickForm collection="Characters" id="insertCharacter" type="insert"}}
+  <div id="character-form" class="container">
+  	<!-- {{> quickForm collection="Characters" id="insertCharacter" type="insert"}} -->
+
+  	{{# autoForm collection="Characters" id="insertCharacters" schema=Schemas.Characters type="insert"}}
+  	<div class="section row">
+  		<div class="section-title col-md-12">
+  			
+  		</div>
+  		<div class="col-md-6">
+
+  			{{> afFieldInput name='name' type='text' template='charTextInput'}}
+  			<div class="row">
+  				<div class="col-md-6">
+  					{{> afFieldInput name='level' type='text' template='charTextInput'}}
+  				</div>
+  				<div class="col-md-6">
+  					{{> afFieldInput name='class' type='text' template='charTextInput'}}
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-6">
+  					{{> afFieldInput name='race' type='text' template='charTextInput'}}
+  				</div>
+  				<div class="col-md-6">
+  					{{> afFieldInput name='background' type='text' template='charTextInput'}}
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-6">
+  					{{> afFieldInput name='alignment' type='text' template='charTextInput'}}
+  				</div>
+  			</div>
+
+  		</div>
+
+  		<div class="col-md-6">
+  			<div class="character-info-panel">
+	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  		</div>
+  		</div>
+  	</div>
+
+  	<button type="submit" class="btn btn-primary">Create Character</button>
+  	{{/autoForm}}
   </div>
 </template>
 
@@ -8,6 +50,11 @@
 	<div class="container">
 		{{> quickForm collection="Characters" id="updateCharacter" type="update"}}
 	</div>
+</template>
+
+<template name="afInputText_charTextInput">
+	<input type="text" value="{{this.value}}" class="character-text-input"/>
+	<label>{{afFieldLabelText name=this.atts.name}}</label>
 </template>
 
 <!-- TODO: change these to autoforms with custom templates -->
