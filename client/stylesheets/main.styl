@@ -4,29 +4,67 @@
 lato = "Lato", sans-serif
 merri = "Merriweather", serif
 
-html
-	overflow hidden
-	height 100%
-
 body
 	font-size 16px
-	background #F1EBE0
+	background #F4F4F4
 	overflow auto
-	height 100%
+
+#body-wrapper
+	margin-top 85px
 
 /* Header
  * Lorem ipsum dolor sit amet
  */
 
-#main-yield
-	padding 0
-#body-wrapper
-	margin-top 100px
-
 nav.navbar
-	height 70px
+	height 55px
 	font-family lato
+	padding 0 20px 0 10px
+	
+	// everything over 768px (tablet screens)
+	@media handheld, screen and (min-width: 768px)
+		padding 0 20px
 
+	// Full Navigation
+	ul
+		font-size 14px
+		line-height 1
+		padding 0
+		
+		li
+			padding 18px 20px 17px 0		
+		li a
+			padding 0
+		
+		// TODO: replace with accounts-ui-unstyled & move
+		a.login-link-text
+			text-decoration none !important
+			color white
+			position relative
+			top 2.5px
+			opacity .4
+			&:hover
+				opacity 1
+	
+	// Mobile Navbar Toggle
+	.navbar-toggle
+		margin 22px 0 20px 0
+		border none
+		padding 0
+		opacity .8
+
+	// Logo / Wordmark
+	a.navbar-brand
+		font-weight 800
+		letter-spacing 1px
+		font-size 24px
+		padding 18px 2px 8px
+
+		strong
+			opacity .5
+			font-weight 900
+	
+	// Home Page-Specific Styles
 	&.home-page
 		background transparent
 		border none
@@ -34,29 +72,7 @@ nav.navbar
 		a.navbar-brand
 			color white
 			opacity .8
-
-		.navbar-nav
-			display none
-
-	.navbar-header
-		height 70px
-		padding-top 10px
-
-	.navbar-collapse
-		padding-top 10px
-
-	ul
-		font-family lato
-		font-size 16px
-		line-height 1
-
-	a.navbar-brand
-		font-weight 700
-		font-size 24px
-
-		strong
-			opacity .5
-			font-weight 900
+			
 
 #main-hero
 	height 100vh
@@ -67,7 +83,6 @@ nav.navbar
 
 	h1
 		color white
-		opacity .95
 		line-height 1.2
 		text-transform uppercase
 		font-weight 900
@@ -116,16 +131,17 @@ nav.navbar
 		&.login
 			background darken(#333, 5%)
 			border 1px solid darken(#333, 7%)
-			// box-shadow 0px 1px 2px #111
 			color #eee
 
 			&:hover
 				background #333
 				border 1px solid #333
 
-	.welcome
+	
+	#welcome
 		padding-top 38vh
 
+	// Create Account / Login Forms
 	.create-acc, .login-form
 		text-align left
 		padding-top 35vh
@@ -144,7 +160,7 @@ nav.navbar
 
 			&:hover
 				opacity .7
-
+		// Create Acc / Login Form Styles
 		#create-new-account, #login-form
 			margin-top 5px
 			margin-bottom 10px
@@ -166,7 +182,6 @@ nav.navbar
 				box-shadow none
 				text-shadow none
 				opacity .67
-
 
 			.checkbox
 				margin-top 0
