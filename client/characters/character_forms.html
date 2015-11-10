@@ -18,18 +18,27 @@
   			</div>
   			<div class="row">
   				<div class="col-md-6">
-  					{{> afFieldInput name='race' options='allowed' type='select' template='charSelect'}}
+  					{{> afFieldInput name='race' options='allowed' firstOption='' type='select' template='charSelect'}}
   				</div>
   				<div class="col-md-6">
-  					{{> afFieldInput name='class' options='allowed' type='select' template='charSelect'}}
+  					{{> afFieldInput name='class' options='allowed' firstOption='' type='select' template='charSelect'}}
   				</div>
   			</div>
   			<div class="row">
   				<div class="col-md-6">
-  					{{> afFieldInput name='background' options='allowed' type='select' template='charSelect'}}
+  					{{> afFieldInput name='background' options='allowed' firstOption='' type='select' template='charSelect'}}
   				</div>
   				<div class="col-md-6">
-  					{{> afFieldInput name='alignment' options='allowed' type='select' template='charSelect'}}
+  					{{> afFieldInput name='alignment' options='allowed' firstOption='' type='select' template='charSelect'}}
+  				</div>
+  			</div>
+  			<div class="row image-upload">
+  				<div class="col-md-5">
+  					<div style="height: 210px; width: 210px; border: 1px solid #ddd;"></div>
+  				</div>
+  				<div class="col-md-7">
+  					<label class="top">Image Upload</label>
+  					<p>Upload an image from your computer to represent your character.</p>
   				</div>
   			</div>
   		</div>
@@ -70,6 +79,35 @@
 	  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
 	  		</div>
 
+	  		<div class="row">
+	  			<div class="col-md-6">
+	  				<div class="character-info-panel">		
+		  				<div class="character-info">
+		  					<div class="info">
+		  						<span class="title">Your Background</span>
+		  						<span class="attr">{{currentFieldValue 'background'}}</span>
+		  					</div>
+		  				</div>
+
+			  			<p>Lorem ipsum dolor sit amet draco dorm consectetur adipisicing elit.</p>
+			  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
+			  		</div>
+	  			</div>
+	  			<div class="col-md-6">
+	  				<div class="character-info-panel">		
+		  				<div class="character-info">
+		  					<div class="info">
+		  						<span class="title">Your Alignment</span>
+		  						<span class="attr">{{currentFieldValue 'alignment'}}</span>
+		  					</div>
+		  				</div>
+
+			  			<p>Lorem ipsum dolor sit amet draco consectetur adipisicing elit.</p>
+			  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
+			  		</div>
+	  			</div>
+	  		</div>
+
   		</div>
   	</div>
 
@@ -81,14 +119,19 @@
 			<div class="col-md-6">
 				<!-- todo: ability scores -->
 				<div class="row">
-					{{> afArrayField name="abilityScores" template="abilityScores"}}
+					{{#each ability in abilities}}
+						<div class="col-md-4">
+							{{> afFieldInput name=fieldName label=false type="text" template="charAbility"}}
+							<label>{{ability.name}}</label>
+						</div>
+					{{/each}}
 				</div>
 			</div>
 
   		<div class="col-md-6">
   			<div class="character-info-panel">
 	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	  			<a href="#"><div class="expand rect"><span>Learn More</span> <i class="ion-plus"></i></div></a>
+	  			<a href="#"><div class="expand"><i class="ion-plus"></i></div></a>
 	  		</div>
   		</div>
   	</div>
@@ -146,18 +189,23 @@
 	<label>{{afFieldLabelText name=this.atts.name}}</label>
 </template>
 
+<template name="afInputText_charAbility">
+	<input type="text" value="{{this.value}}" class="char-input char-ability"/>
+	<input type="text" value="(+0)" class="char-input ability-target" disabled />
+</template>
+
 <template name="afSelect_charSelect">
   <select class="char-input char-select" name='{{this.atts.name}}' data-schema-key='{{this.atts.name}}'>
     {{#each this.items}}
-    {{#if this.optgroup}}
-    <optgroup label="{{this.optgroup}}">
-      {{#each this.items}}
-      <option {{afSelectOptionAtts}}>{{this.label}}</option>
-      {{/each}}
-    </optgroup>
-    {{else}}
-    <option {{afSelectOptionAtts}}>{{this.label}}</option>
-    {{/if}}
+    	{{#if this.optgroup}}
+		    <optgroup label="{{this.optgroup}}">
+		      {{#each this.items}}
+		      <option {{afSelectOptionAtts}}>{{this.label}}</option>
+		      {{/each}}
+		    </optgroup>
+	    {{else}}
+	    	<option {{afSelectOptionAtts}}>{{this.label}}</option>
+	    {{/if}}
     {{/each}}
   </select>
   <label>{{afFieldLabelText name=this.atts.name}}</label>
