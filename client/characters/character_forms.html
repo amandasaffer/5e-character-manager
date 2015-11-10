@@ -7,44 +7,48 @@
   		<div class="section-title col-md-12">
   			<h1>Section 1: Basics</h1>
   		</div>
-  		<div class="col-md-6">
+  		<div class="col-sm-12 col-md-6">
   			<div class="row">
-  				<div class="col-md-9">
+  				<div class="col-sm-9 col-md-9">
+  					<!-- todo: pass col options? -->
   					{{> afFieldInput name='name' type='text' template='charText'}}
   				</div>
-  				<div class="col-md-3">
+  				<div class="col-sm-3 col-md-3">
   					{{> afFieldInput name='level' type='text' template='charText'}}
   				</div>
   			</div>
   			<div class="row">
-  				<div class="col-md-6">
+  				<div class="col-sm-6 col-md-6">
   					{{> afFieldInput name='race' options='allowed' firstOption='' type='select' template='charSelect'}}
   				</div>
-  				<div class="col-md-6">
+  				<div class="col-sm-6 col-md-6">
   					{{> afFieldInput name='class' options='allowed' firstOption='' type='select' template='charSelect'}}
   				</div>
   			</div>
   			<div class="row">
-  				<div class="col-md-6">
+  				<div class="col-sm-6 col-md-6">
   					{{> afFieldInput name='background' options='allowed' firstOption='' type='select' template='charSelect'}}
   				</div>
-  				<div class="col-md-6">
+  				<div class="col-sm-6 col-md-6">
   					{{> afFieldInput name='alignment' options='allowed' firstOption='' type='select' template='charSelect'}}
   				</div>
   			</div>
-  			<div class="row image-upload">
-  				<div class="col-md-5">
-  					<div style="height: 210px; width: 210px; border: 1px solid #ddd;"></div>
+  			<div class="row image-upload hidden-sm">
+  				<div class="col-sm-4 col-md-4">
+  					<div style="height: 165px; width: 165px; border: 1px solid #ccc;"></div>
   				</div>
-  				<div class="col-md-7">
-  					<label class="top">Image Upload</label>
-  					<p>Upload an image from your computer to represent your character.</p>
+  				<div class="col-sm-7 col-md-8">
+  					<label class="top">Character Portrait</label>
+  					<p>Select an image from your computer to represent your character (optional).</p>
+  					<button><i class="icon ion-plus"></i> Upload</button>
+  					<span class="system-message">Upload successful. Looks great!</span>
   				</div>
   			</div>
   		</div>
 
-  		<div class="col-md-6">
-  			<div class="character-info-panel">		
+			<!-- TODO: pull out into separate template -->
+  		<div class="col-sm-12 col-md-6">
+				<div class="character-info-panel">		
   				<div class="character-info">
   					<div class="info">
   						<span class="title">Your Race</span>
@@ -58,7 +62,8 @@
 
 	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
-	  		</div>
+				</div>
+
   			<div class="character-info-panel">		
   				<div class="character-info">
   					<div class="info">
@@ -74,13 +79,12 @@
   						<span class="attr">Dexterity</span>
   					</div>
   				</div>
-
 	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
 	  		</div>
 
 	  		<div class="row">
-	  			<div class="col-md-6">
+	  			<div class="col-sm-6 col-md-6">
 	  				<div class="character-info-panel">		
 		  				<div class="character-info">
 		  					<div class="info">
@@ -93,7 +97,7 @@
 			  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
 			  		</div>
 	  			</div>
-	  			<div class="col-md-6">
+	  			<div class="col-sm-6 col-md-6">
 	  				<div class="character-info-panel">		
 		  				<div class="character-info">
 		  					<div class="info">
@@ -107,9 +111,8 @@
 			  		</div>
 	  			</div>
 	  		</div>
-
-  		</div>
-  	</div>
+	  	</div>
+	  </div>
 
   	<div class="section row">
   		<div class="section-title col-md-12">
@@ -120,7 +123,7 @@
 				<!-- todo: ability scores -->
 				<div class="row">
 					{{#each ability in abilities}}
-						<div class="col-md-4">
+						<div class="col-sm-4 col-md-4">
 							{{> afFieldInput name=fieldName label=false type="text" template="charAbility"}}
 							<label>{{ability.name}}</label>
 						</div>

@@ -13,14 +13,23 @@ a
 		text-decoration none
 
 button
-	padding 15px 23px 16px
-	font-size 1.23rem
+	padding 12px 20px 11px
+	font-size 1.1rem
 	background #333
 	color white
 	letter-spacing 1px
 	border none
 	font-family lato
 	border-radius 1px
+	
+	&:hover
+		background darken(#333, 10%)
+	&:active
+		position relative
+		top 1px
+	&.large
+		font-size 1.23rem
+		padding 15px 23px 16px
 
 input
 	font-family lato
@@ -29,3 +38,14 @@ input
 .white-standard-text
 	color white
 	letter-spacing 1px
+
+span.system-message
+	@extend p
+	color #bbb
+	display block
+	margin 10px 0
+	
+	&.success
+		color green
+	&.warning
+		color red

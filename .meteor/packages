@@ -35,3 +35,5 @@ random
 ejson
 spacebars
 check
+cfs:standard-packages
+cfs:gridfs

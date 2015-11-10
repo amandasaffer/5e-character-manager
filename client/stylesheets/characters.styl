@@ -112,6 +112,8 @@
 	
 	button
 		background #DB8A00
+		&:hover
+			background #333
 	
 	.character-info-panel
 		background #f4f4f4
@@ -134,7 +136,7 @@
 			.info
 				float left
 				border-right 1px solid #DCDCDC
-				padding 3px 45px 3px 20px
+				padding 3px 18px 3px 13px
 				&:first-child
 					padding-left 0
 				&:last-child
@@ -143,12 +145,16 @@
 				&:hover
 					span.title
 						color #DB8A00
+				
+				// everything over 1200px (large screens)
+				@media handheld, screen and (min-width: 1200px)
+					padding 3px 45px 3px 20px
 			span.title
 				font-size .8rem
 				text-transform uppercase
 				color #9B9B9B
 				display block
-				margin-bottom 4px
+				margin-bottom 2px
 			span.attr
 				font-size 1.3rem
 				letter-spacing .5
