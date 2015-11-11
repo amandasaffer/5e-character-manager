@@ -28,5 +28,8 @@ Template.insertCharacter.helpers({
 Template.infoPanel.helpers({
 	fieldValue: function() {
 		return AutoForm.getFieldValue(this.fieldName, 'insertCharacter');
+	},
+	paragraph: function() {
+		return 'Lorem ipsum dolor sit amet, consec tetur adipisicing elit sed do lorem ipsum dolor sit amet eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 	}
 });

@@ -46,63 +46,25 @@
   			</div>
   		</div>
 
-			<!-- TODO: pull out character-info-panels out into separate template -->
   		<div class="col-sm-12 col-md-6">
 				{{#if fieldHasValue 'race'}}
-					{{> infoPanel fieldName='race' }}
+					{{> infoPanel fieldName='race' charLimit=245}}
 				{{/if}}
 
 				{{#if fieldHasValue 'class'}}
-	  			<div class="character-info-panel">		
-	  				<div class="character-info">
-	  					<div class="info">
-	  						<span class="title">Your Class</span>
-	  						<span class="attr">{{currentFieldValue 'class'}}</span>
-	  					</div>
-	  					<div class="info">
-	  						<span class="title">Primary Attribute</span>
-	  						<span class="attr">Charisma</span>
-	  					</div>
-	  					<div class="info">
-	  						<span class="title">Secondary Attribute</span>
-	  						<span class="attr">Dexterity</span>
-	  					</div>
-	  				</div>
-		  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-		  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
-		  		</div>
+	  			{{> infoPanel fieldName='class' charLimit=245}}
 	  		{{/if}}
 
 	  		<div class="row">
 	  			{{#if fieldHasValue 'background'}}
-	  			<div class="col-sm-6 col-md-6">
-	  				<div class="character-info-panel">		
-		  				<div class="character-info">
-		  					<div class="info">
-		  						<span class="title">Your Background</span>
-		  						<span class="attr">{{currentFieldValue 'background'}}</span>
-		  					</div>
-		  				</div>
-
-			  			<p>Lorem ipsum dolor sit amet draco dorm consectetur adipisicing elit.</p>
-			  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
-			  		</div>
-	  			</div>
+		  			<div class="col-sm-6 col-md-6">
+		  				{{> infoPanel fieldName='background' charLimit=70}}
+		  			</div>
 	  			{{/if}}
 	  			{{#if fieldHasValue 'alignment'}}
-	  			<div class="col-sm-6 col-md-6">
-	  				<div class="character-info-panel">		
-		  				<div class="character-info">
-		  					<div class="info">
-		  						<span class="title">Your Alignment</span>
-		  						<span class="attr">{{currentFieldValue 'alignment'}}</span>
-		  					</div>
-		  				</div>
-
-			  			<p>Lorem ipsum dolor sit amet draco consectetur adipisicing elit.</p>
-			  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
-			  		</div>
-	  			</div>
+	  				<div class="col-sm-6 col-md-6">
+		  				{{> infoPanel fieldName='alignment' charLimit=70}}
+		  			</div>
 	  			{{/if}}
 	  		</div>
 	  	</div>
@@ -296,9 +258,18 @@
 				<span class="title">Key Traits</span>
 				<span class="attr">Darkvision, Fey Ancestry</span>
 			</div>
+			<!-- TODO: create info template -->
+			<!-- <div class="info">
+				<span class="title">Primary Attribute</span>
+				<span class="attr">Charisma</span>
+			</div>
+			<div class="info">
+				<span class="title">Secondary Attribute</span>
+				<span class="attr">Dexterity</span>
+			</div> -->
 		</div>
 
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		<p>{{excerpt paragraph charLimit}}</p>
 		<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
 	</div>
 </template>

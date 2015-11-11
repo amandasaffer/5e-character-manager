@@ -79,6 +79,15 @@ Template.registerHelper('addMod', function(num) {
   return num;
 });
 
+UI.registerHelper('excerpt', function(e, limit) {
+  var str = e;
+  if (str.length < limit) {
+    return str;
+  } else {
+    return str.substr( 0, limit ) + "...";
+  }
+});
+
 Template.registerHelper("formatDate", function(date) {
   return moment(new Date(date)).format("M/DD/YY h:mmA");
 });
