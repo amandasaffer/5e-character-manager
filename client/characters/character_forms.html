@@ -46,44 +46,35 @@
   			</div>
   		</div>
 
-			<!-- TODO: pull out into separate template -->
+			<!-- TODO: pull out character-info-panels out into separate template -->
   		<div class="col-sm-12 col-md-6">
-				<div class="character-info-panel">		
-  				<div class="character-info">
-  					<div class="info">
-  						<span class="title">Your Race</span>
-  						<span class="attr">{{currentFieldValue 'race'}}</span>
-  					</div>
-  					<div class="info">
-  						<span class="title">Key Traits</span>
-  						<span class="attr">Darkvision, Fey Ancestry</span>
-  					</div>
-  				</div>
+				{{#if fieldHasValue 'race'}}
+					{{> infoPanel fieldName='race' }}
+				{{/if}}
 
-	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
-				</div>
-
-  			<div class="character-info-panel">		
-  				<div class="character-info">
-  					<div class="info">
-  						<span class="title">Your Class</span>
-  						<span class="attr">{{currentFieldValue 'class'}}</span>
-  					</div>
-  					<div class="info">
-  						<span class="title">Primary Attribute</span>
-  						<span class="attr">Charisma</span>
-  					</div>
-  					<div class="info">
-  						<span class="title">Secondary Attribute</span>
-  						<span class="attr">Dexterity</span>
-  					</div>
-  				</div>
-	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
-	  		</div>
+				{{#if fieldHasValue 'class'}}
+	  			<div class="character-info-panel">		
+	  				<div class="character-info">
+	  					<div class="info">
+	  						<span class="title">Your Class</span>
+	  						<span class="attr">{{currentFieldValue 'class'}}</span>
+	  					</div>
+	  					<div class="info">
+	  						<span class="title">Primary Attribute</span>
+	  						<span class="attr">Charisma</span>
+	  					</div>
+	  					<div class="info">
+	  						<span class="title">Secondary Attribute</span>
+	  						<span class="attr">Dexterity</span>
+	  					</div>
+	  				</div>
+		  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
+		  		</div>
+	  		{{/if}}
 
 	  		<div class="row">
+	  			{{#if fieldHasValue 'background'}}
 	  			<div class="col-sm-6 col-md-6">
 	  				<div class="character-info-panel">		
 		  				<div class="character-info">
@@ -97,6 +88,8 @@
 			  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
 			  		</div>
 	  			</div>
+	  			{{/if}}
+	  			{{#if fieldHasValue 'alignment'}}
 	  			<div class="col-sm-6 col-md-6">
 	  				<div class="character-info-panel">		
 		  				<div class="character-info">
@@ -110,6 +103,7 @@
 			  			<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
 			  		</div>
 	  			</div>
+	  			{{/if}}
 	  		</div>
 	  	</div>
 	  </div>
@@ -129,13 +123,67 @@
 						</div>
 					{{/each}}
 				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						{{> afFieldInput name='proficiencyBonus' type='text' template='charText'}}
+					</div>
+					<div class="col-md-6">
+						{{> afFieldInput name='passivePerception' type='text' template='charText'}}
+					</div>
+				</div>
 			</div>
 
   		<div class="col-md-6">
   			<div class="character-info-panel">
-	  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  			<div class="row">
+	  				<div class="col-md-4">
+	  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  				</div>
+	  				<div class="col-md-4">
+	  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  				</div>
+	  				<div class="col-md-4">
+	  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  				</div>
+	  			</div>
 	  			<a href="#"><div class="expand"><i class="ion-plus"></i></div></a>
 	  		</div>
+  		</div>
+  	</div>
+
+  	<div class="section row">
+  		<div class="section-title col-md-12">
+  			<h1>Section X</h1>
+  		</div>
+
+  		<div class="col-md-6">
+  			<div class="row">
+  				<div class="col-md-4">
+  					{{> afFieldInput name='ac' type='text' template='charText'}}
+  				</div>
+  				<div class="col-md-4">
+  					{{> afFieldInput name='initiative' type='text' template='charText'}}
+  				</div>
+  				<div class="col-md-4">
+  					{{> afFieldInput name='speed' type='text' template='charText'}}
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-6">
+  					{{> afFieldInput name='hitPoints' type='text' template='charText'}}
+  				</div>
+  				<div class="col-md-6">
+  					{{> afFieldInput name='hitDice' type='text' template='charText'}}
+  				</div>
+  			</div>
+  			<!-- TODO: weapons -->
+  		</div>
+
+  		<div class="col-md-6">
+  			<div class="row">
+  				{{> afArrayField name="weapons" template="weapons"}}
+  			</div>
   		</div>
   	</div>
 
@@ -235,6 +283,24 @@
 			{{> afFieldInput name=this.current.damage type='text' template='charText'}}
 		</div>
 	{{/afEachArrayItem}}
+</template>
+
+<template name="infoPanel">
+	<div class="character-info-panel">		
+		<div class="character-info">
+			<div class="info">
+				<span class="title">Your {{fieldName}}</span>
+				<span class="attr">{{fieldValue}}</span>
+			</div>
+			<div class="info">
+				<span class="title">Key Traits</span>
+				<span class="attr">Darkvision, Fey Ancestry</span>
+			</div>
+		</div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
+	</div>
 </template>
 
 <!-- TODO: change these to autoforms with custom templates -->

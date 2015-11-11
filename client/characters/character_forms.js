@@ -8,6 +8,10 @@ Template.registerHelper("currentFieldValue", function (fieldName) {
   return AutoForm.getFieldValue(fieldName) || 'None';
 });
 
+Template.registerHelper("fieldHasValue", function (fieldName) {
+  return AutoForm.getFieldValue(fieldName);
+});
+
 Template.insertCharacter.helpers({
 	abilities: function () { 
 		return [
@@ -18,5 +22,11 @@ Template.insertCharacter.helpers({
 			{ name: 'Wisdom', fieldName: 'abilityScores.4' },
 			{ name: 'Charisma', fieldName: 'abilityScores.5' }
 		];
+	}
+});
+
+Template.infoPanel.helpers({
+	fieldValue: function() {
+		return AutoForm.getFieldValue(this.fieldName, 'insertCharacter');
 	}
 });
