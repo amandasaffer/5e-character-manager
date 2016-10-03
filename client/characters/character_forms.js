@@ -13,7 +13,7 @@ Template.registerHelper("fieldHasValue", function (fieldName) {
 });
 
 Template.insertCharacter.helpers({
-	abilities: function () { 
+	abilities: function () {
 		return [
 			{ name: 'Strength', fieldName: 'abilityScores.0' },
 			{ name: 'Dexterity', fieldName: 'abilityScores.1' },
@@ -31,5 +31,8 @@ Template.infoPanel.helpers({
 	},
 	paragraph: function() {
 		return 'Lorem ipsum dolor sit amet, consec tetur adipisicing elit sed do lorem ipsum dolor sit amet eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
+	},
+	requiresTraits: function() {
+		return this.fieldName == 'background' || this.fieldName == 'alignment';
 	}
 });

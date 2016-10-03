@@ -1,7 +1,5 @@
 <template name="insertCharacter">
   <div id="character-form" class="container">
-  	<!-- {{> quickForm collection="Characters" id="insertCharacter" type="insert"}} -->
-
   	{{# autoForm collection="Characters" id="insertCharacter" schema=Schemas.Characters type="insert"}}
   	<div class="section row">
   		<div class="section-title col-md-12">
@@ -10,7 +8,6 @@
   		<div class="col-sm-12 col-md-6">
   			<div class="row">
   				<div class="col-sm-9 col-md-9">
-  					<!-- todo: pass col options? -->
   					{{> afFieldInput name='name' type='text' template='charText'}}
   				</div>
   				<div class="col-sm-3 col-md-3">
@@ -19,64 +16,54 @@
   			</div>
   			<div class="row">
   				<div class="col-sm-6 col-md-6">
-  					{{> afFieldInput name='race' options='allowed' firstOption='' type='select' template='charSelect'}}
+  					{{> afFieldInput name='race' options='allowed' type='select' template='charSelect'}}
   				</div>
   				<div class="col-sm-6 col-md-6">
-  					{{> afFieldInput name='class' options='allowed' firstOption='' type='select' template='charSelect'}}
+  					{{> afFieldInput name='class' options='allowed' type='select' template='charSelect'}}
   				</div>
   			</div>
   			<div class="row">
   				<div class="col-sm-6 col-md-6">
-  					{{> afFieldInput name='background' options='allowed' firstOption='' type='select' template='charSelect'}}
+  					{{> afFieldInput name='background' options='allowed' type='select' template='charSelect'}}
   				</div>
   				<div class="col-sm-6 col-md-6">
-  					{{> afFieldInput name='alignment' options='allowed' firstOption='' type='select' template='charSelect'}}
+  					{{> afFieldInput name='alignment' options='allowed' type='select' template='charSelect'}}
   				</div>
   			</div>
-  			<div class="row image-upload hidden-sm">
-  				<div class="col-sm-4 col-md-4">
-  					<div style="height: 165px; width: 165px; border: 1px solid #ccc;"></div>
-  				</div>
-  				<div class="col-sm-7 col-md-8">
-  					<label class="top">Character Portrait</label>
-  					<p>Select an image from your computer to represent your character (optional).</p>
-  					<button><i class="icon ion-plus"></i> Upload</button>
-  					<span class="system-message">Upload successful. Looks great!</span>
-  				</div>
-  			</div>
+            <div class="row image-upload hidden-sm">
+                <div class="col-sm-4 col-md-4">
+                    <div style="height: 165px; width: 165px; border: 1px solid #ccc;"></div>
+                </div>
+                <div class="col-sm-7 col-md-8">
+                    <label class="top">Character Portrait</label>
+                    <p>Select an image from your computer to represent your character (optional).</p>
+                    <button><i class="icon ion-plus"></i> Upload</button>
+                    <span class="system-message">Upload successful. Looks great!</span>
+                </div>
+            </div>
   		</div>
 
   		<div class="col-sm-12 col-md-6">
-				{{#if fieldHasValue 'race'}}
-					{{> infoPanel fieldName='race' charLimit=245}}
-				{{/if}}
-
-				{{#if fieldHasValue 'class'}}
-	  			{{> infoPanel fieldName='class' charLimit=245}}
-	  		{{/if}}
+			{{> infoPanel fieldName='race' charLimit=245}}
+  			{{> infoPanel fieldName='class' charLimit=245}}
 
 	  		<div class="row">
-	  			{{#if fieldHasValue 'background'}}
-		  			<div class="col-sm-6 col-md-6">
-		  				{{> infoPanel fieldName='background' charLimit=70}}
-		  			</div>
-	  			{{/if}}
-	  			{{#if fieldHasValue 'alignment'}}
-	  				<div class="col-sm-6 col-md-6">
-		  				{{> infoPanel fieldName='alignment' charLimit=70}}
-		  			</div>
-	  			{{/if}}
+	  			<div class="col-sm-6 col-md-6">
+	  				{{> infoPanel fieldName='background' charLimit=70}}
+	  			</div>
+  				<div class="col-sm-6 col-md-6">
+	  				{{> infoPanel fieldName='alignment' charLimit=70}}
+	  			</div>
 	  		</div>
 	  	</div>
 	  </div>
 
   	<div class="section row">
   		<div class="section-title col-md-12">
-  			<h1>Section X</h1>
+  			<h1>Ability Scores</h1>
   		</div>
 
 			<div class="col-md-6">
-				<!-- todo: ability scores -->
 				<div class="row">
 					{{#each ability in abilities}}
 						<div class="col-sm-4 col-md-4">
@@ -97,26 +84,13 @@
 			</div>
 
   		<div class="col-md-6">
-  			<div class="character-info-panel">
-	  			<div class="row">
-	  				<div class="col-md-4">
-	  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	  				</div>
-	  				<div class="col-md-4">
-	  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	  				</div>
-	  				<div class="col-md-4">
-	  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	  				</div>
-	  			</div>
-	  			<a href="#"><div class="expand"><i class="ion-plus"></i></div></a>
-	  		</div>
+  			<!-- right side -->
   		</div>
   	</div>
 
   	<div class="section row">
   		<div class="section-title col-md-12">
-  			<h1>Section X</h1>
+  			<h1>Ability Scores</h1>
   		</div>
 
   		<div class="col-md-6">
@@ -248,30 +222,21 @@
 </template>
 
 <template name="infoPanel">
-	<div class="character-info-panel">		
+	<div class="character-info-panel">
 		<div class="character-info">
 			<div class="info">
 				<span class="title">Your {{fieldName}}</span>
 				<span class="attr">{{fieldValue}}</span>
 			</div>
+            {{#unless requiresTraits}}
 			<div class="info">
 				<span class="title">Key Traits</span>
 				<span class="attr">Darkvision, Fey Ancestry</span>
 			</div>
-			<!-- TODO: create info template -->
-			<!-- <div class="info">
-				<span class="title">Primary Attribute</span>
-				<span class="attr">Charisma</span>
-			</div>
-			<div class="info">
-				<span class="title">Secondary Attribute</span>
-				<span class="attr">Dexterity</span>
-			</div> -->
+            {{/unless}}
 		</div>
 
 		<p>{{excerpt paragraph charLimit}}</p>
 		<a href="#"><div class="expand square"><i class="ion-plus"></i></div></a>
 	</div>
 </template>
-
-<!-- TODO: change these to autoforms with custom templates -->
